@@ -1,0 +1,46 @@
+//* ---- 💫 https://github.com/JaKooLit 💫 ---- *//
+/* Waybar Modules Extras */
+
+/* This is where you can add Extra Modules you wish. copy.sh will try to restore*/
+/* this file along with the unique configs and styles. */
+/* IMPORTANT, be mindful with , or ". else waybar will not start */
+
+{
+  "custom/wendu": {
+    "interval": 3,
+    "tooltip": false,
+    "exec": "bash -c '~/.config/waybar/scripts/temperature.bash'",
+    "return-type": "text",
+    "format": "{}",
+    "critical-threshold": 82,
+	  "on-click-right": "$HOME/.config/hypr/scripts/WaybarScripts.sh --nvtop"
+  },
+  "group/jk_mod": {
+	  "orientation": "inherit",
+	  "drawer": {
+		  "transition-duration": 500,
+		  "children-class": "custom/wendu",
+		  "transition-left-to-right": true
+          },
+	  "modules": [
+      "custom/wendu",
+      "cpu",
+      "memory",
+      "disk"
+	  ]
+  },
+  "group/ctrl_mod": {
+	  "orientation": "inherit",
+	  "drawer": {
+		  "transition-duration": 500,
+		  "children-class": "backlight",
+		  "transition-left-to-right": true
+          },
+	  "modules": [
+      "backlight",
+      "pulseaudio",
+      "pulseaudio#microphone",
+      "bluetooth"
+	  ]
+  },
+}
