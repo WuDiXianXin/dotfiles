@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 获取 CPU 温度
-CPU_TEMP1=$(cat /sys/class/hwmon/hwmon7/temp1_input)
+CPU_TEMP1=$(cat /sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input)
 CPU_TEMP1_C=$(echo "scale=1; $CPU_TEMP1 / 1000" | bc)
 
 # 获取 GPU 温度、使用率、显存使用情况
