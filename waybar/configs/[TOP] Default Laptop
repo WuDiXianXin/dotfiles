@@ -40,8 +40,8 @@
 	"custom/separator#dot-line",
 	"custom/weather",
 	"custom/separator#dot-line",
-	"idle_inhibitor",
-	"custom/hint",
+	"idle_inhibitor",	
+	"custom/hint",	
 	],
 
 "modules-right": [
