@@ -9,7 +9,7 @@
   "custom/wendu": {
     "interval": 3,
     "tooltip": false,
-    "exec": "bash -c '~/.config/waybar/scripts/temperature.bash'",
+    "exec": "bash -c '~/.config/waybar/scripts/Info.bash'",
     "return-type": "text",
     "format": "{}",
     "critical-threshold": 82,
