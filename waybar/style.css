@@ -1,0 +1,224 @@
+/* 全局样式 */
+* {
+    border: none;
+    border-radius: 4px;  /* 统一圆角 */
+    font-size: 17px;
+    min-height: 0;
+}
+
+/* 整个waybar栏样式 */
+#waybar {
+    background-color: rgba(30, 30, 30, 0.85);  /* 半透明深色背景，不遮挡窗口内容 */
+    color: #e0e0e0;  /* 默认文本色 */
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+/* 所有模块通用样式（统一内边距和间距） */
+.modules-left, .modules-right {
+    padding: 0 8px;
+}
+
+#cpu,
+#tray,
+#disk,
+#clock,
+#memory,
+#battery,
+#network,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#custom-swap,
+#idle_inhibitor,
+#custom-cpu_temp,
+#custom-gpu_temp,
+#custom-nvme_temp,
+#power-profiles-daemon,
+#custom-gpu_utilization,
+#custom-gpu_memory_utilization {
+    padding: 0 6px;
+    margin: 0 2px;
+    background-color: rgba(50, 50, 50, 0.6);  /* 模块背景色（比栏背景略浅） */
+}
+
+/* 鼠标悬停效果（增强交互感） */
+#cpu:hover,
+#tray:hover,
+#disk:hover,
+#clock:hover,
+#memory:hover,
+#network:hover,
+#battery:hover,
+#backlight:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#custom-swap:hover,
+#idle_inhibitor:hover,
+#custom-cpu_temp:hover,
+#custom-gpu_temp:hover,
+#custom-nvme_temp:hover,
+#power-profiles-daemon:hover,
+#custom-gpu_utilization:hover,
+#custom-gpu_memory_utilization:hover {
+    background-color: rgba(100, 100, 100, 1.0);  /* 悬停时加深背景 */
+}
+
+
+/* 左侧核心监控模块样式 */
+/* 时钟模块 */
+#clock {
+    color: #8be9fd;  /* 浅蓝色，突出时间 */
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+/* 磁盘模块 */
+#disk {
+    color: #50fa7b;  /* 绿色，代表存储状态 */
+}
+
+/* CPU模块 */
+#cpu {
+    color: #f1fa8c;  /* 浅黄色，区分CPU */
+}
+#cpu.warning { color: #ffd700; }
+#cpu.critical { color: #ff5555; animation: blink 1s infinite alternate; }
+
+
+/* CPU温度模块（带状态色） */
+#custom-cpu_temp {
+    color: #ffb86c;  /* 默认温度色（适中） */
+}
+#custom-cpu_temp.warning {  /* 中高温度（如60-80℃） */
+    color: #ffd700;
+}
+#custom-cpu_temp.critical {  /* 高温（如>80℃） */
+    color: #ff5555;
+    animation: blink 1s infinite alternate;  /* 闪烁警告 */
+}
+
+/* 内存模块 */
+#memory {
+    color: #bd93f9;  /* 紫色，区分内存 */
+}
+#memory.warning { color: #ffd700; }
+#memory.critical { color: #ff5555; animation: blink 1s infinite alternate; }
+
+/* Swap模块 */
+#custom-swap {
+    color: #ff79c6;  /* 粉色，区分Swap */
+}
+
+/* NVMe温度模块（带状态色） */
+#custom-nvme_temp {
+    color: #ffb86c;
+}
+#custom-nvme_temp.warning {
+    color: #ffd700;
+}
+#custom-nvme_temp.critical {
+    color: #ff5555;
+    animation: blink 1s infinite alternate;
+}
+
+/* GPU相关模块（统一紫色系，区分硬件类型） */
+#custom-gpu_utilization {
+    color: #d6acff;
+}
+#custom-gpu_memory_utilization {
+    color: #d6acff;
+    background-color: rgba(60, 40, 80, 0.6);  /* 略深背景，区分GPU内存 */
+}
+#custom-gpu_temp {
+    color: #ffb86c;
+}
+#custom-gpu_temp.warning {
+    color: #ffd700;
+}
+#custom-gpu_temp.critical {  /* GPU高温（如>85℃） */
+    color: #ff5555;
+    animation: blink 1s infinite alternate;
+}
+
+/* 右侧功能模块样式 */
+/* 电池模块 */
+#battery {
+    color: #50fa7b;  /* 绿色，电量充足 */
+}
+#battery.warning {  /* 电量低（30-15%） */
+    color: #ffd700;
+}
+#battery.critical {  /* 电量极低（<15%） */
+    color: #ff5555;
+    animation: blink 1s infinite alternate;
+}
+#battery.charging {  /* 充电中 */
+    color: #8be9fd;
+}
+
+/* 网络模块 */
+#network {
+    color: #8be9fd;  /* 连接状态 */
+}
+
+#network.disconnected {  /* 断开连接状态 */
+    color: #6272a4;
+}
+
+/* 音量模块 */
+#pulseaudio {
+    color: #bd93f9;  /* 紫色，区分音频 */
+}
+#pulseaudio.muted {  /* 静音状态 */
+    color: #6272a4;
+}
+
+/* 亮度模块 */
+#backlight {
+    color: #f1fa8c;  /* 浅黄色，类似亮度 */
+}
+
+/* 蓝牙模块 */
+#bluetooth {
+    color: #8be9fd;  /* 浅蓝色 */
+}
+#bluetooth.disabled {  /* 关闭状态 */
+    color: #6272a4;
+}
+
+/* 电源模式模块 */
+#power-profiles-daemon {
+    color: #ff79c6;  /* 粉色，区分电源模式 */
+}
+
+/* 防休眠模块 */
+#idle_inhibitor {
+    color: #f1fa8c;
+}
+
+/* 系统托盘 */
+#tray {
+    background-color: rgba(50, 50, 50, 0.4);  /* 托盘背景略浅 */
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #ff5555;
+}
+
+/* 窗口标题（右侧） */
+#hyprland-window {
+    color: #e0e0e0;
+    padding: 0 10px;
+    font-style: italic;  /* 区分窗口标题和系统信息 */
+}
+
+/* 动画效果（警告闪烁） */
+@keyframes blink {
+    to {
+        background-color: rgba(255, 85, 85, 0.3);  /* 闪烁时的背景色变化 */
+    }
+}
