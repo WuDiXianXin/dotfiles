@@ -1,17 +1,17 @@
 {
-  "height": 40,
+  "height": 30,
   "spacing": 3,
   "modules-left": [
-    "clock",
     "disk",
+    "custom/nvme_temp",
     "cpu",
     "custom/cpu_temp",
     "memory",
     "custom/swap",
-    "custom/nvme_temp",
     "custom/gpu_utilization",
     "custom/gpu_memory_utilization",
     "custom/gpu_temp",
+    "clock",
     "battery",
     "network#speed"
   ],
@@ -52,10 +52,10 @@
     "tooltip": false,
     "exec": "~/.config/waybar/scripts/swap.bash",
     "return-type": "json",
-    "format": "Swap: {text}%"
+    "format": "{text}% 󰍛 "
   },
   "cpu": {
-    "format": "{usage}%  ",
+    "format": "  {usage}%",
     "tooltip": false,
     "thresholds": {
       "warning": 70,
@@ -71,7 +71,7 @@
     "format-icons": ["", "", ""]
   },
   "memory": {
-    "format": "{}%  ",
+    "format": "󰈸 {}%",
     "thresholds": {
       "warning": 70,
       "critical": 90
@@ -82,7 +82,7 @@
     "tooltip": false,
     "exec": "~/.config/waybar/scripts/nvme_temp.bash",
     "return-type": "json",
-    "format": "NVMe: {text} {icon} ",
+    "format": "{text} {icon} ",
     "format-icons": ["", "", ""]
   },
   "custom/gpu_stats_updater": {
@@ -96,7 +96,7 @@
     "tooltip": false,
     "exec": "cat ~/.cache/waybar_gpu/utilization.json",
     "return-type": "json",
-    "format": "Nvidia: {text}%"
+    "format": "󱢓  {text}%"
   },
   "custom/gpu_memory_utilization": {
     "interval": 10,
