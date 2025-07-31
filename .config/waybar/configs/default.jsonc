@@ -22,7 +22,6 @@
     "custom/gpu_stats_updater"
   ],
   "modules-right": [
-    "hyprland/window",
     "idle_inhibitor",
     "power-profiles-daemon",
     "pulseaudio",

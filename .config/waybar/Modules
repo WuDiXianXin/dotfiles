@@ -1,4 +1,5 @@
 {
+
   "idle_inhibitor": {
     "format": "{icon} ",
     "format-icons": {
@@ -24,7 +25,7 @@
     "tooltip": false,
     "exec": "~/.config/waybar/scripts/swap.bash",
     "return-type": "json",
-    "format": "{text}% 󰍛 "
+    "format": "{text}% 󰍛"
   },
   "cpu": {
     "format": "  {usage}%",
@@ -39,8 +40,7 @@
     "tooltip": false,
     "exec": "~/.config/waybar/scripts/cpu_temp.bash",
     "return-type": "json",
-    "format": "{text} {icon} ",
-    "format-icons": ["", "", ""]
+    "format": "{text} ",
   },
   "memory": {
     "format": "󰈸 {}%",
@@ -54,8 +54,7 @@
     "tooltip": false,
     "exec": "~/.config/waybar/scripts/nvme_temp.bash",
     "return-type": "json",
-    "format": "{text} {icon} ",
-    "format-icons": ["", "", ""]
+    "format": "{text} ",
   },
   "custom/gpu_stats_updater": {
     "exec": "~/.config/waybar/scripts/gpu_stats.bash",
@@ -82,8 +81,7 @@
     "tooltip": false,
     "exec": "cat ~/.cache/waybar_gpu/temperature.json",
     "return-type": "json",
-    "format": "{text} {icon} ",
-    "format-icons": ["", "", ""]
+    "format": "{text} ",
   },
   "backlight": {
     "tooltip": false,
@@ -96,10 +94,7 @@
       "critical": 15
     },
     "format": "{capacity}% {icon} ",
-    "format-full": "{capacity}% {icon} ",
-    "format-charging": "{capacity}%  ",
-    "format-plugged": "{capacity}%  ",
-    "format-alt": "{time} {icon} ",
+    "format-charging": "{capacity}% ",
     "format-icons": ["", "", "", "", ""]
   },
   "power-profiles-daemon": {
