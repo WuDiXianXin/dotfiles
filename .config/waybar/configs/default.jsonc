@@ -2,7 +2,7 @@
   "include": [
   "$HOME/.config/waybar/Modules"
   ],
-  "height": 30,
+  "height": 35,
   "spacing": 3,
   "modules-left": [
     "disk",

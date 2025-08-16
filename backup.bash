@@ -8,14 +8,15 @@ CONFIG_DIRS=(
   "kitty"
   "nvim"
   "waybar"
+  "foot"
 )
 
 # 要备份的家目录文件
-HOME_FILES=(
-  ".bashrc"
-  ".inputrc"
-  ".condarc"
-)
+# HOME_FILES=(
+# ".bashrc"
+# ".inputrc"
+# ".condarc"
+# )
 
 # 要备份的家目录子目录
 HOME_SUBDIRS=(
@@ -33,6 +34,6 @@ for subdir in "${HOME_SUBDIRS[@]}"; do
 done
 
 # 备份家目录文件
-for file in "${HOME_FILES[@]}"; do
-  rsync "$HOME/$file" "./"
-done
+# for file in "${HOME_FILES[@]}"; do
+#   rsync "$HOME/$file" "./"
+# done

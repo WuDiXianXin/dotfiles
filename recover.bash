@@ -8,6 +8,7 @@ CONFIG_DIRS=(
   "kitty"
   "nvim"
   "waybar"
+  "foot"
 )
 
 # 要恢复的家目录文件
