@@ -1,0 +1,32 @@
+{
+  "include": [
+  "$HOME/.config/waybar/Modules"
+  ],
+  "height": 35,
+  "spacing": 3,
+  "modules-left": [
+    "disk",
+    "custom/nvme_temp",
+    "cpu",
+    "custom/cpu_temp",
+    "memory",
+    "custom/swap",
+    "custom/gpu_utilization",
+    "custom/gpu_memory_utilization",
+    "custom/gpu_temp",
+    "clock",
+    "battery",
+    "network#speed"
+  ],
+  "modules-center": [
+    "custom/gpu_stats_updater"
+  ],
+  "modules-right": [
+    "idle_inhibitor",
+    "power-profiles-daemon",
+    "pulseaudio",
+    "bluetooth",
+    "backlight",
+    "tray"
+  ]
+}

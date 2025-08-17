@@ -1,0 +1,89 @@
+* { border: none; border-radius: 4px; font-size: 14px; min-height: 0; }
+
+#waybar { background-color: rgba(30, 30, 30, 0.85); color: #e0e0e0; transition-property: background-color; transition-duration: 0.5s; }
+
+.modules-left, .modules-right { padding: 0 8px; }
+
+#clock,
+#disk,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#backlight,
+#bluetooth,
+#tray,
+#idle_inhibitor,
+#power-profiles-daemon,
+#custom-cpu_temp,
+#custom-swap,
+#custom-nvme_temp,
+#custom-gpu_utilization,
+#custom-gpu_memory_utilization,
+#custom-gpu_temp { padding: 0 6px; margin: 0 2px; background-color: rgba(50, 50, 50, 0.6); }
+
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#network:hover,
+#custom-swap:hover { background-color: rgba(70, 70, 70, 0.8); }
+
+#clock { color: #8be9fd; font-weight: bold; padding: 0 8px; }
+
+#disk { color: #50fa7b; }
+
+#cpu { color: #f1fa8c; }
+#cpu.warning { background-color: rgba(180, 160, 40, 0.7); }
+#cpu.critical { background-color: rgba(180, 50, 50, 0.7); animation: blink 1s infinite alternate; }
+
+#memory { color: #bd93f9; }
+#memory.warning { background-color: rgba(180, 160, 40, 0.7); }
+#memory.critical { background-color: rgba(180, 50, 50, 0.7); animation: blink 1s infinite alternate; }
+
+#custom-cpu_temp { color: #ffb86c; }
+#custom-cpu_temp.warning { background-color: rgba(180, 120, 40, 0.7); }
+#custom-cpu_temp.critical { background-color: rgba(180, 50, 50, 0.7); animation: blink 1s infinite alternate; }
+
+#custom-swap { color: #ff79c6; }
+
+#custom-nvme_temp { color: #ffb86c; }
+#custom-nvme_temp.warning { background-color: rgba(180, 120, 40, 0.7); }
+#custom-nvme_temp.critical { background-color: rgba(180, 50, 50, 0.7); animation: blink 1s infinite alternate; }
+
+#custom-gpu_utilization { color: #d6acff; }
+#custom-gpu_memory_utilization { color: #d6acff; }
+
+#custom-gpu_temp { color: #ffb86c;}
+#custom-gpu_temp.warning { background-color: rgba(180, 120, 40, 0.7); }
+#custom-gpu_temp.critical { background-color: rgba(180, 50, 50, 0.7); animation: blink 1s infinite alternate; }
+
+#battery { color: #fff; }
+#battery.warning { background-color: rgba(180, 160, 40, 0.7); }
+#battery.critical { background-color: rgba(180, 50, 50, 0.7); animation: blink 1s infinite alternate; }
+#battery.charging { background-color: rgba(80, 250, 123, 0.6); }
+
+#pulseaudio { color: #bd93f9; }
+#pulseaudio.muted { color: #6272a4; }
+
+#backlight { color: #f1fa8c; }
+
+#bluetooth { color: #8be9fd; }
+#bluetooth.disabled { color: #6272a4; }
+
+#power-profiles-daemon { color: #ff79c6; }
+
+#idle_inhibitor { color: #f1fa8c; }
+
+#tray { background-color: rgba(50, 50, 50, 0.4); }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: #ff5555; }
+
+#hyprland-window { color: #e0e0e0; padding: 0 10px; font-style: italic; }
+
+@keyframes blink {
+    to {
+        background-color: rgba(255, 85, 85, 0.3);
+    }
+}

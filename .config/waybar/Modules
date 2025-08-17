@@ -1,0 +1,143 @@
+{
+
+  "idle_inhibitor": {
+    "format": "{icon} ",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "spacing": 10,
+  },
+  "clock": {
+    "tooltip": false,
+    "format": "  {:%H:%M    %m-%d}"
+  },
+  "disk": {
+    "interval": 120,
+    "path": "/",
+    "format": "󰋊  {percentage_used}%",
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
+  },
+  "custom/swap": {
+    "interval": 10,
+    "tooltip": false,
+    "exec": "~/.config/waybar/scripts/swap.bash",
+    "return-type": "json",
+    "format": "{text}% 󰍛"
+  },
+  "cpu": {
+    "format": "  {usage}%",
+    "tooltip": false,
+    "thresholds": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "custom/cpu_temp": {
+    "interval": 10,
+    "tooltip": false,
+    "exec": "~/.config/waybar/scripts/cpu_temp.bash",
+    "return-type": "json",
+    "format": "{text} ",
+  },
+  "memory": {
+    "format": "󰈸 {}%",
+    "thresholds": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "custom/nvme_temp": {
+    "interval": 10,
+    "tooltip": false,
+    "exec": "~/.config/waybar/scripts/nvme_temp.bash",
+    "return-type": "json",
+    "format": "{text} ",
+  },
+  "custom/gpu_stats_updater": {
+    "exec": "~/.config/waybar/scripts/gpu_stats.bash",
+    "interval": 10,
+    "format": "",
+    "visible": false
+  },
+  "custom/gpu_utilization": {
+    "interval": 10,
+    "tooltip": false,
+    "exec": "cat ~/.cache/waybar_gpu/utilization.json",
+    "return-type": "json",
+    "format": "󱢓  {text}%"
+  },
+  "custom/gpu_memory_utilization": {
+    "interval": 10,
+    "tooltip": false,
+    "exec": "cat ~/.cache/waybar_gpu/mem_utilization.json",
+    "return-type": "json",
+    "format": "{text}%"
+  },
+  "custom/gpu_temp": {
+    "interval": 10,
+    "tooltip": false,
+    "exec": "cat ~/.cache/waybar_gpu/temperature.json",
+    "return-type": "json",
+    "format": "{text} ",
+  },
+  "backlight": {
+    "tooltip": false,
+    "format": "{percent}% {icon} ",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon} ",
+    "format-charging": "{capacity}% ",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "power-profiles-daemon": {
+    "format": "{icon} ",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "network#speed": {
+    "interval": 3,
+    "format": "{ifname}",
+    "format-wifi": "{icon}    {bandwidthUpBytes}   {bandwidthDownBytes}",
+    "format-ethernet": "󰌘     {bandwidthUpBytes}   {bandwidthDownBytes}",
+    "format-disconnected": "󰌙  ",
+    "tooltip-format": "{ipaddr}",
+    "format-linked": "󰈁 {ifname} (No IP)",
+    "tooltip-format-wifi": "{essid}  {icon}  {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname}  󰌘 ",
+    "tooltip-format-disconnected": "󰌙   Disconnected",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}  {format_source}",
+    "format-muted": "  {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": " ",
+    "format-icons": ["", "", ""],
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+  "bluetooth": {
+    "format": " ",
+    "format-disabled": " ",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": " {device_alias}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": " {device_alias} 󰂄 {device_battery_percentage}%",
+    "tooltip": true,
+	  "on-click": "blueberry"
+  }
+}
