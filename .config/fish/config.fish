@@ -39,6 +39,7 @@ if status is-interactive
     alias s="source"
     alias sv="sudo nvim"
     alias vf="v ~/.config/fish/config.fish"
+    alias vh="v ~/.config/hypr/hyprland.conf"
     alias sf="s ~/.config/fish/config.fish"
     alias MG="sudo mount /dev/nvme0n1p3 ~/dev/git"
     alias cls="clear"
