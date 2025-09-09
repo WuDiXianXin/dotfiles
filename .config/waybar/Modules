@@ -1,5 +1,4 @@
 {
-
   "idle_inhibitor": {
     "format": "{icon} ",
     "format-icons": {
@@ -139,5 +138,15 @@
     "tooltip-format-enumerate-connected": " {device_alias} 󰂄 {device_battery_percentage}%",
     "tooltip": true,
 	  "on-click": "blueberry"
+  },
+  "niri/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "focused": ""
+    }
   }
 }

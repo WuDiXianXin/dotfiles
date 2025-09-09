@@ -9,19 +9,7 @@ if status is-interactive
     bind --mode insert \ce fish_edit_commandline
     bind --mode default v fish_edit_commandline
     # ========== 路径管理 ==========
-    set -q CARGO_HOME || set CARGO_HOME $HOME/.cargo
-    fish_add_path $CARGO_HOME/bin
-    # >>> conda initialize >>>
-    if test -f ~/miniconda3/bin/conda
-        eval ~/miniconda3/bin/conda shell.fish hook $argv | source
-    else
-        if test -f ~/miniconda3/etc/fish/conf.d/conda.fish
-            . ~/miniconda3/etc/fish/conf.d/conda.fish
-        else
-            set -x PATH ~/miniconda3/bin $PATH
-        end
-    end
-    # <<< conda initialize <<<
+    source "$HOME/.cargo/env.fish"
     # ========== Rust ==========
     # set -x RUSTFLAGS "-C linker=lld"
     set -x RUSTC_WRAPPER sccache
@@ -41,7 +29,7 @@ if status is-interactive
     alias vf="v ~/.config/fish/config.fish"
     alias vh="v ~/.config/hypr/hyprland.conf"
     alias sf="s ~/.config/fish/config.fish"
-    alias MG="sudo mount /dev/nvme0n1p3 ~/dev/git"
+    alias MG="sudo mount /dev/nvme0n1p3 ~/dev/local/"
     alias cls="clear"
     alias mkd="mkdir -p"
     alias fdf="fd -H -t f"

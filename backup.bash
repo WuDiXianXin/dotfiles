@@ -2,13 +2,16 @@
 
 # 要备份的配置目录
 CONFIG_DIRS=(
-  "fish"
-  "fnott"
   "hypr"
+  "niri"
+  "fish"
   "kitty"
-  "nvim"
-  "waybar"
   "foot"
+  "fnott"
+  "waybar"
+  "fuzzel"
+  "swaylock"
+  "nvim"
 )
 
 # 要备份的家目录文件
@@ -19,19 +22,19 @@ CONFIG_DIRS=(
 # )
 
 # 要备份的家目录子目录
-HOME_SUBDIRS=(
-  "bash"
-)
+# HOME_SUBDIRS=(
+#   "bash"
+# )
 
 # 备份配置目录
 for dir in "${CONFIG_DIRS[@]}"; do
   rsync -a "$HOME/.config/$dir" "./.config/"
 done
 
-# 备份家目录子目录
-for subdir in "${HOME_SUBDIRS[@]}"; do
-  rsync -a "$HOME/$subdir" "./"
-done
+# # 备份家目录子目录
+# for subdir in "${HOME_SUBDIRS[@]}"; do
+#   rsync -a "$HOME/$subdir" "./"
+# done
 
 # 备份家目录文件
 # for file in "${HOME_FILES[@]}"; do
