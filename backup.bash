@@ -12,6 +12,7 @@ CONFIG_DIRS=(
   "fuzzel"
   "swaylock"
   "nvim"
+  "environment.d"
 )
 
 # 要备份的家目录文件

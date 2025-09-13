@@ -12,6 +12,7 @@ CONFIG_DIRS=(
   "fuzzel"
   "swaylock"
   "nvim"
+  "environment.d"
 )
 
 # 要恢复的家目录文件
