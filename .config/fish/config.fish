@@ -10,6 +10,14 @@ if status is-interactive
     bind --mode default v fish_edit_commandline
     # ========== 路径管理 ==========
     source "$HOME/.cargo/env.fish"
+    # 设置 Android SDK 根目录
+    set -gx ANDROID_SDK_ROOT ~/Android/Sdk
+    # 将最新版 cmdline-tools 加入 PATH（优先使用 latest 目录下的工具）
+    set -gx PATH $ANDROID_SDK_ROOT/cmdline-tools/latest/bin $PATH
+    # 添加 platform-tools（含 adb 等工具）
+    set -gx PATH $ANDROID_SDK_ROOT/platform-tools $PATH
+    # 添加 build-tools（含编译工具）
+    set -gx PATH $ANDROID_SDK_ROOT/build-tools/35.0.0 $PATH
     # ========== Rust ==========
     # set -x RUSTFLAGS "-C linker=lld"
     set -x RUSTC_WRAPPER sccache
@@ -40,6 +48,7 @@ if status is-interactive
     alias GA="git add ."
     alias GC="git commit"
     alias show="fastfetch"
+    alias gt="GDK_BACKEND=wayland godot --rendering-driver vulkan"
     # ========== 工具管理 ==========
     starship init fish | source
     fzf --fish | source
