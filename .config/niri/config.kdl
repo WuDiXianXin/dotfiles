@@ -27,8 +27,6 @@ input {
     // 鼠标
     mouse {
         off
-        // natural-scroll
-        // accel-speed 0.4
     }
 }
 
@@ -69,6 +67,7 @@ layout {
 
     // 默认宽度全屏
     default-column-width { proportion 1.0; }
+    // default-column-width { }
 
     // 窗口聚焦
     focus-ring { off; }
@@ -83,11 +82,59 @@ layout {
     struts { }
 }
 
+// 关闭热脚
+gestures {
+    hot-corners { off; }
+}
+
+environment {
+    // 渲染环境优化
+    // GTK应用在XWayland下保持1倍缩放
+    GDK_SCALE "1"
+
+    // 禁用NVIDIA硬件光标加速
+    WLR_NO_HARDWARE_CURSORS "1"
+
+    // NVIDIA渲染后端配置
+    WLR_RENDERER "vulkan"
+    WLR_RENDERER_ALLOW_SOFTWARE "1"
+    GBM_BACKEND "nvidia-drm"
+    __NV_PRIME_RENDER_OFFLOAD "1"
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"
+    NVIDIA_DRIVER_CAPABILITIES "graphics,compute"
+
+    // 确保Vulkan应用强制使用NVIDIA
+    __VK_LAYER_NV_optimus "NVIDIA_only"
+    VK_ICD_FILENAMES "/usr/share/vulkan/icd.d/nvidia_icd.json"
+
+    // NVIDIA游戏性能优化
+    __GL_MaxFramesAllowed "1"
+    // 关闭垂直同步，可能导致画面撕裂
+    __GL_SYNC_TO_VBLANK "0"
+
+    // Qt应用Wayland适配
+    // 优先Wayland，失败回退XWayland
+    QT_QPA_PLATFORM "wayland"
+    // 自动适配屏幕缩放（避免手动设置DPI）
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    //  禁用QT窗口装饰
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_PLUGIN_PATH "/usr/lib/qt/plugins"
+    QT_QPA_PLATFORM_PLUGIN_PATH "/usr/lib/qt/plugins/platforms"
+
+    // GTK应用Wayland适配
+    // 优先Wayland后端
+    GDK_BACKEND "wayland,x11"
+    CLUTTER_BACKEND "wayland,x11"
+
+}
+
 // 关闭进入桌面环境的命令提示
 hotkey-overlay { skip-at-startup; }
 
 // 自启动
 spawn-at-startup "waybar"
+spawn-at-startup "~/.config/fish/functions/battery_alert.fish"
 // 自启动shell命令
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -154,7 +201,7 @@ binds {
     Mod+B hotkey-overlay-title="Run an Application: firefox" { spawn "firefox"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+E hotkey-overlay-title="Run an Application: nautilus" { spawn "nautilus"; }
-    Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // 关闭当前窗口
     Mod+Q repeat=false { close-window; }
@@ -189,7 +236,9 @@ binds {
     Mod+O repeat=false { toggle-overview; }
 
     // 聚焦到下方工作区，触摸板三指下滑
+    Mod+U     { focus-workspace-down; }
     // 聚焦到上方工作区，触摸板三指上滑
+    Mod+I     { focus-workspace-up; }
     // 将当前列移动到下方工作区
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     // 将当前列移动到上方工作区
