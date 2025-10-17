@@ -8,8 +8,8 @@ input {
             // 键盘布局
             // variant "colemak"
         }
-        // 默认打开小键盘
-        numlock
+        // 小键盘
+        // numlock
     }
 
     // 触摸板
@@ -26,7 +26,6 @@ input {
 
     // 鼠标
     mouse {
-        off
     }
 }
 

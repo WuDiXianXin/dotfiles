@@ -19,7 +19,6 @@ if status is-interactive
     # 添加 build-tools（含编译工具）
     set -gx PATH $ANDROID_SDK_ROOT/build-tools/35.0.0 $PATH
     # ========== Rust ==========
-    # set -x RUSTFLAGS "-C linker=lld"
     set -x RUSTC_WRAPPER sccache
     set -x SCCACHE_DIR "$HOME/.cache/sccache"
     set -x SCCACHE_CACHE_SIZE 20G
@@ -48,7 +47,6 @@ if status is-interactive
     alias GA="git add ."
     alias GC="git commit"
     alias show="fastfetch"
-    alias gt="GDK_BACKEND=wayland godot --rendering-driver vulkan"
     # ========== 工具管理 ==========
     starship init fish | source
     fzf --fish | source
