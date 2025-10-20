@@ -28,13 +28,12 @@ if status is-interactive
     set -x SCCACHE_IDLE_TIMEOUT 3600
     # ========== 别名管理 ==========
     alias e="eza --icons --group-directories-first --git"
-    alias et="e --tree --level=2 --git-ignore"
+    alias et="e --git-ignore -T -L" # 后面跟数字代表显示层级
     alias eal="e -a -l"
     alias v="nvim"
     alias s="source"
     alias sv="sudo nvim"
     alias vf="v ~/.config/fish/config.fish"
-    alias vh="v ~/.config/hypr/hyprland.conf"
     alias sf="s ~/.config/fish/config.fish"
     alias MG="sudo mount /dev/nvme0n1p3 ~/dev/local/"
     alias cls="clear"
