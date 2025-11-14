@@ -26,6 +26,8 @@ if status is-interactive
     set -x SCCACHE_MAX_STORES 100
     set -x SCCACHE_NO_DISTRIBUTED 1
     set -x SCCACHE_IDLE_TIMEOUT 3600
+    set -x RUSTUP_UPDATE_ROOT https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+    set -x RUSTUP_DIST_SERVER https://mirrors.tuna.tsinghua.edu.cn/rustup
     # ========== 别名管理 ==========
     alias e="eza --icons --group-directories-first --git"
     alias et="e --git-ignore -T -L" # 后面跟数字代表显示层级
@@ -36,6 +38,7 @@ if status is-interactive
     alias vf="v ~/.config/fish/config.fish"
     alias sf="s ~/.config/fish/config.fish"
     alias MG="sudo mount /dev/nvme0n1p3 ~/dev/local/"
+    alias MG1="sudo mount /dev/nvme0n1p5 ~/dev/windows/"
     alias cls="clear"
     alias mkd="mkdir -p"
     alias fdf="fd -H -t f"
