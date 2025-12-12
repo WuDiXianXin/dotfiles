@@ -1,224 +1,493 @@
-/* 全局样式 */
+@import "colors.css";
+/* @import "/home/shorin/.cache/wal/colors-waybar.css"; */
+
+/* 核心逻辑：全相对单位 (em) 改造
+   基准字体大小：18px
+   如果需要整体放大缩小，只需修改下方的 18px 即可
+*/
 * {
     border: none;
-    border-radius: 4px;  /* 统一圆角 */
-    font-size: 17px;
-    min-height: 0;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font Propo";
+    font-size: 16.6px; /* 基准大小 */
+    opacity: 1;
 }
 
-/* 整个waybar栏样式 */
-#waybar {
-    background-color: rgba(30, 30, 30, 0.85);  /* 半透明深色背景，不遮挡窗口内容 */
-    color: #e0e0e0;  /* 默认文本色 */
-    transition-property: background-color;
-    transition-duration: 0.5s;
+window#waybar {
+    background: transparent;
+    color: @on_surface;
 }
 
-/* 所有模块通用样式（统一内边距和间距） */
-.modules-left, .modules-right {
-    padding: 0 8px;
+/* 鼠标悬浮信息提示 */
+tooltip {
+    background: @secondary_container;
+    border: 0.17em solid @outline; /* 3px */
+    opacity: 1;
 }
 
-#cpu,
-#tray,
-#disk,
-#clock,
-#memory,
-#battery,
-#network,
-#backlight,
-#bluetooth,
-#pulseaudio,
-#custom-swap,
-#idle_inhibitor,
-#custom-cpu_temp,
-#custom-gpu_temp,
-#custom-nvme_temp,
-#power-profiles-daemon,
-#custom-gpu_utilization,
-#custom-gpu_memory_utilization {
-    padding: 0 6px;
-    margin: 0 2px;
-    background-color: rgba(50, 50, 50, 0.6);  /* 模块背景色（比栏背景略浅） */
-}
-
-/* 鼠标悬停效果（增强交互感） */
-#cpu:hover,
-#tray:hover,
-#disk:hover,
-#clock:hover,
-#memory:hover,
-#network:hover,
-#battery:hover,
-#backlight:hover,
-#bluetooth:hover,
-#pulseaudio:hover,
-#custom-swap:hover,
-#idle_inhibitor:hover,
-#custom-cpu_temp:hover,
-#custom-gpu_temp:hover,
-#custom-nvme_temp:hover,
-#power-profiles-daemon:hover,
-#custom-gpu_utilization:hover,
-#custom-gpu_memory_utilization:hover {
-    background-color: rgba(100, 100, 100, 1.0);  /* 悬停时加深背景 */
+tooltip label {
+    color: @on_surface;
+    font-size: 0.89em; /* 16px */
 }
 
 
-/* 左侧核心监控模块样式 */
-/* 时钟模块 */
-#clock {
-    color: #8be9fd;  /* 浅蓝色，突出时间 */
-    font-weight: bold;
-    padding: 0 8px;
+/* 工作区 */
+#workspaces button {
+    padding: 0px 0.56em; /* 10px */
+    background: @surface;
+    color: @tertiary_container;
 }
 
-/* 磁盘模块 */
-#disk {
-    color: #50fa7b;  /* 绿色，代表存储状态 */
+/* #workspaces label {
+    font-size: 1.22em; 
+} */
+
+#workspaces button:hover {
+    background: @on_tertiary;
 }
 
-/* CPU模块 */
-#cpu {
-    color: #f1fa8c;  /* 浅黄色，区分CPU */
-}
-#cpu.warning { color: #ffd700; }
-#cpu.critical { color: #ff5555; animation: blink 1s infinite alternate; }
-
-
-/* CPU温度模块（带状态色） */
-#custom-cpu_temp {
-    color: #ffb86c;  /* 默认温度色（适中） */
-}
-#custom-cpu_temp.warning {  /* 中高温度（如60-80℃） */
-    color: #ffd700;
-}
-#custom-cpu_temp.critical {  /* 高温（如>80℃） */
-    color: #ff5555;
-    animation: blink 1s infinite alternate;  /* 闪烁警告 */
+#workspaces button.active{
+    color:@tertiary;
 }
 
-/* 内存模块 */
-#memory {
-    color: #bd93f9;  /* 紫色，区分内存 */
-}
-#memory.warning { color: #ffd700; }
-#memory.critical { color: #ff5555; animation: blink 1s infinite alternate; }
-
-/* Swap模块 */
-#custom-swap {
-    color: #ff79c6;  /* 粉色，区分Swap */
+#custom-right_div.5 {
+    background: @surface_container_high;
+    color: @surface;
+    font-size: 1.39em; /* 25px */
+    padding: 0px;
 }
 
-/* NVMe温度模块（带状态色） */
-#custom-nvme_temp {
-    color: #ffb86c;
-}
-#custom-nvme_temp.warning {
-    color: #ffd700;
-}
-#custom-nvme_temp.critical {
-    color: #ff5555;
-    animation: blink 1s infinite alternate;
+/* waybar niri taskbar */
+.niri-taskbar {
+    background: @surface_container_high;
+    padding: 0 0 0 0.28em; /* 5px */
 }
 
-/* GPU相关模块（统一紫色系，区分硬件类型） */
-#custom-gpu_utilization {
-    color: #d6acff;
-}
-#custom-gpu_memory_utilization {
-    color: #d6acff;
-    background-color: rgba(60, 40, 80, 0.6);  /* 略深背景，区分GPU内存 */
-}
-#custom-gpu_temp {
-    color: #ffb86c;
-}
-#custom-gpu_temp.warning {
-    color: #ffd700;
-}
-#custom-gpu_temp.critical {  /* GPU高温（如>85℃） */
-    color: #ff5555;
-    animation: blink 1s infinite alternate;
+.niri-taskbar button:hover {
+    background: @surface_container;
 }
 
-/* 右侧功能模块样式 */
-/* 电池模块 */
-#battery {
-    color: #50fa7b;  /* 绿色，电量充足 */
-}
-#battery.warning {  /* 电量低（30-15%） */
-    color: #ffd700;
-}
-#battery.critical {  /* 电量极低（<15%） */
-    color: #ff5555;
-    animation: blink 1s infinite alternate;
-}
-#battery.charging {  /* 充电中 */
-    color: #8be9fd;
+.niri-taskbar button.focused {
+    background: @surface;
 }
 
-/* 网络模块 */
-#network {
-    color: #8be9fd;  /* 连接状态 */
+.niri-taskbar button.urgent {
+    background-color: @tertiary;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
-
-#network.disconnected {  /* 断开连接状态 */
-    color: #6272a4;
-}
-
-/* 音量模块 */
-#pulseaudio {
-    color: #bd93f9;  /* 紫色，区分音频 */
-}
-#pulseaudio.muted {  /* 静音状态 */
-    color: #6272a4;
-}
-
-/* 亮度模块 */
-#backlight {
-    color: #f1fa8c;  /* 浅黄色，类似亮度 */
-}
-
-/* 蓝牙模块 */
-#bluetooth {
-    color: #8be9fd;  /* 浅蓝色 */
-}
-#bluetooth.disabled {  /* 关闭状态 */
-    color: #6272a4;
-}
-
-/* 电源模式模块 */
-#power-profiles-daemon {
-    color: #ff79c6;  /* 粉色，区分电源模式 */
-}
-
-/* 防休眠模块 */
-#idle_inhibitor {
-    color: #f1fa8c;
-}
-
-/* 系统托盘 */
-#tray {
-    background-color: rgba(50, 50, 50, 0.4);  /* 托盘背景略浅 */
-}
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #ff5555;
-}
-
-/* 窗口标题（右侧） */
-#hyprland-window {
-    color: #e0e0e0;
-    padding: 0 10px;
-    font-style: italic;  /* 区分窗口标题和系统信息 */
-}
-
-/* 动画效果（警告闪烁） */
 @keyframes blink {
     to {
-        background-color: rgba(255, 85, 85, 0.3);  /* 闪烁时的背景色变化 */
+        background-color: @primary;
+        color: @error;
     }
+}
+
+/* 窗口名 */
+#window {
+    padding: 0px 0.56em; /* 10px */
+    background-color: @surface_container_high;
+    color: @on_surface;
+}
+
+#window label {
+    font-size: 0.89em; /* 16px */
+}
+
+window#waybar.empty #window {
+    background-color: @surface_container_high;
+}
+
+#custom-right_div.6 {
+    color: @surface_container_high;
+    font-size: 1.39em; /* 25px */
+    padding: 0px;
+}
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+
+/* 中间 */
+
+#custom-left_div.3 {
+    color: @surface_container_high;
+    padding: 0px;
+    font-size: 1.39em; /* 25px */
+}
+
+
+#bluetooth {
+    padding: 0px 0.3em 0px 0.5em; /* 7px */
+    font-size: 1.25em; /* 20px */
+}
+#bluetooth.disabled{
+    padding: 0px 0.22em 0px 0.46em ;
+}
+
+#network {
+    padding: 0px 0.34em; /* 7px */
+    font-size: 1.2em; /* 22px */
+}
+
+#custom-settings {
+    padding: 0px 0.39em; /* 7px */
+    font-size: 1.06em; /* 19px */
+}
+
+#custom-screenshot {
+    padding: 0 0.4em; /* 7px */
+    font-size: 1.28em; /* 22px */
+}
+
+/* wf-recoder脚本 */
+#custom-wfrec {
+  padding: 0 0.3em; /* 7px */
+  font-size: 1.1em;
+}
+
+#custom-wfrec.recording,
+#custom-wfrec,
+#bluetooth,
+#network,
+#custom-settings,
+#custom-screenshot {
+    background-color: @surface_container_high;
+    color: @secondary;
+}
+
+/* 录制中 */
+#custom-wfrec.recording {
+  color: @error;            
+}
+/* #custom-wfrec,
+#custom-screenshot{
+    color: @secondary;
+} */
+
+#custom-left_div.2 {
+    background-color: @surface_container_high;
+    color: @tertiary;
+    padding: 0px 0px;
+    font-size: 1.39em; /* 25px */
+}
+
+#power-profiles-daemon,
+#custom-colorpicker,
+#idle_inhibitor {
+    background-color: @tertiary;
+    color: @on_tertiary;
+    padding: 0px 0.36em; /* 6px */
+}
+#idle_inhibitor.activated{
+    padding: 0px 0.4em 0px 0.4em;
+}
+#power-profiles-daemon{
+    padding: 0px 0.4em 0em 0.36em;
+}
+#power-profiles-daemon.performance {
+    color: @on_error;
+    font-size: 1.28em; /* 23px */
+    padding: 0px 0.32em 0px 0.45em; /* 9px 8px */
+}
+
+#power-profiles-daemon.balanced {
+    color: @on_tertiary;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #1aa052;
+
+}
+
+/* 菜单 */
+#custom-left_div.11 {
+    background-color: @tertiary;
+    color: @surface_container
+}
+#custom-applauncher {
+    font-size: 1.39em; /* 25px */
+    padding: 0px 0.39em; /* 7px */
+    margin: 0px;
+    background-color: @primary;
+    color: @on_primary;
+
+}
+#custom-right_div.1,
+#custom-left_div.1 {
+    background-color: @surface_container;
+    color: @primary;
+}
+#custom-left_div.1,
+#custom-right_div.1 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 1.39em; /* 25px */
+}
+#custom-left_div.11,
+#custom-right_div.11 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.39em; /* 25px */
+}
+#custom-right_div.11 {
+
+    background-color: @secondary;
+    color: @surface_container;
+}
+
+/*中间右边第二级*/
+
+#clock {
+    padding: 0px 0.45em 0em 0.45em; /* 8px */
+}
+
+#clock {
+    background-color: @secondary;
+    color: @on_secondary;
+}
+
+#custom-right_div.2 {
+    background-color: @surface_container_high;
+    color: @secondary;
+    padding: 0px;
+    font-size: 1.39em; /* 25px */
+}
+
+#custom-cava {
+    background-color: @surface_container_high;
+    color: @primary;
+    padding: 0px 0.39em; /* 7px */
+}
+
+#mpris {
+    background-color: @surface_container_high;
+    color: @primary;
+    padding: 0px 0.39em 0px 0px; /* 7px 0 0 */
+}
+
+#custom-right_div.3 {
+
+    color: @surface_container_high;
+    padding: 0px 0.2em 0px 0px ;
+    font-size: 1.39em; /* 25px */
+}
+#custom-right_div.4 {
+    /* background-color: @surface_container_high; */
+    color: @on_secondary;
+    padding: 0px;
+    font-size: 1.39em; /* 25px */
+}
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+/* —————————————————————————————————————————————————————————————————————————— */
+
+/* 右侧 */
+
+
+#custom-left_div.7 {
+    /* background-color: @surface_container_high; */
+    color: @surface_bright;
+    font-size: 1.39em; /* 25px */
+    padding: 0px;
+}
+
+
+#custom-updates {
+    border-radius: 0px;
+    padding: 0px 0.17em 0px 0.39em; /* 3px 7px */
+    background-color: @surface_bright;
+    color: @error;
+
+}
+
+#tray {
+    padding: 0px 0.39em 0px 0.39em; /* 7px */
+    font-size: 1.11em; /* 20px */
+    background-color: @surface_bright;
+}
+
+
+#custom-left_div.4 {
+    background-color: @surface_bright;
+    color: @surface_container_high;
+    padding: 0px;
+    font-size: 1.39em; /* 25px */
+}
+/* 亮度 */
+#custom-ddcutil-day,
+#custom-ddcutil-night,
+#custom-ddcutil-sleep,
+#custom-separator.1 {
+    background-color: @surface_container_high;
+    color: @tertiary;
+    padding: 0px 0.33em; /* 5px */
+}
+
+#backlight {
+    background-color: @surface_container_high;
+    color: @tertiary;
+    padding: 0px 0.28em 0px 0px; /* 5px */
+}
+
+#backlight-slider {
+    background-color: @surface_container_high;
+    padding: 0px 0.28em 0px 0px; /* 5px */
+}
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+#backlight-slider trough {
+    min-height: 0.56em; /* 10px */
+    min-width: 4.44em;  /* 80px */
+    border-radius: 0.28em; /* 5px */
+    opacity: 0;
+    background-color: @background;
+}
+
+#backlight-slider highlight {
+    min-width: 0.56em; /* 10px */
+    border-radius: 0.28em; /* 5px */
+    background-color: @tertiary;
+}
+
+/* 音视频 */
+#privacy {
+    padding: 0px 0.39em; /* 7px */
+}
+
+#privacy {
+    background-color: @surface_container_high;
+    color: @error;
+}
+
+#pulseaudio {
+    padding: 0px 0px 0px 0.28em; /* 5px */
+}
+
+#pulseaudio-slider {
+    padding: 0px 0px 0px 0.56em; /* 10px */
+    margin: 0px;
+}
+
+#pulseaudio-slider,
+#pulseaudio {
+    background-color: @surface_container_high;
+    color: @tertiary;
+}
+
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    box-shadow: none;
+    background: none;
+}
+
+#pulseaudio-slider trough {
+    min-height: 0.56em; /* 10px */
+    min-width: 4.44em; /* 80px */
+    border-radius: 0.28em; /* 5px */
+    background-color: @surface;
+}
+
+#pulseaudio-slider highlight {
+    min-width: 0px;
+    border-radius: 0.28em; /* 5px */
+    background-color: @tertiary;
+}
+
+#custom-left_div.8 {
+    background-color: @surface_container_high;
+    color: @surface_container;
+    font-size: 1.39em; /* 25px */
+    padding: 0px;
+}
+
+
+/* 电池 */
+
+#battery {
+    background-color: @surface_container;
+    color: @secondary;
+    padding: 0px 0.39em; /* 7px */
+}
+
+#battery.critical:not(.charging) {
+    background-color: @surface_container;
+    color: @error;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    padding: 0px 0.39em; /* 7px */
+}
+
+/* powermenu电源菜单 */
+#custom-left_div.5 {
+    background-color: @surface_container;
+    color: @surface;
+    padding: 0px;
+    font-size: 1.39em; /* 25px */
+}
+#custom-wlogout {
+    padding: 0px 0.83em 0px 0.56em; /* 15px 10px */
+    font-size: 1.39em; /* 25px */
+}
+
+#custom-wlogout,
+#custom-reboot,
+#custom-lockscreen,
+#custom-logout {
+    background-color: @surface;
+    color: @error;
+    padding: 0px 0.56em; /* 10px */
+}
+
+
+
+
+
+#clock.date {
+    padding: 0px 0.39em; /* 7px */
+}
+#custom-datelogo,
+#clock.date {
+    background-color: @secondary_container;
+    color: @on_secondary_container;
+}
+
+#custom-swaync {
+    background-color: @surface_container_high;
+    color: @on_surface_container;
+    padding: 0px 0.83em; /* 15px */
+}
+
+#custom-mako {
+    background-color: @surface_container_high;
+    color: @on_surface_container;
+    padding: 0px 0.83em; /* 15px */
+}
+
+#custom-left_div.6 {
+    background-color: @surface;
+    color: @surface_container_high;
+    padding: 0px;
+    font-size: 1.39em; /* 25px */
 }

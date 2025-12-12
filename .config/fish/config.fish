@@ -18,6 +18,11 @@ if status is-interactive
     set -gx PATH $ANDROID_SDK_ROOT/platform-tools $PATH
     # 添加 build-tools（含编译工具）
     set -gx PATH $ANDROID_SDK_ROOT/build-tools/35.0.0 $PATH
+
+    set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk
+    set -gx PATH $JAVA_HOME/bin $PATH
+
+    set -gx WASM_OPT /usr/bin/wasm-opt
     # ========== Rust ==========
     set -x RUSTC_WRAPPER sccache
     set -x SCCACHE_DIR "$HOME/.cache/sccache"
@@ -41,6 +46,17 @@ if status is-interactive
     alias MG1="sudo mount /dev/nvme0n1p5 ~/dev/windows/"
     alias cls="clear"
     alias mkd="mkdir -p"
+    # 替换 rm 为回收站删除，避免误删
+    alias rm='trash-put'
+    alias rmy='trash-put -f -v'
+    # 恢复回收站文件（rm restore）
+    alias rmre='trash-restore'
+    # 从回收站彻底删除某文件（rm remove）
+    alias rmrm='trash-rm'
+    # 查看回收站文件列表（rm list）
+    alias rmlist='trash-list'
+    # 清空回收站（rm all，谨慎使用）
+    alias rmall='trash-empty'
     alias fdf="fd -H -t f"
     alias fdd="fd -H -t d"
     alias GP="git push"

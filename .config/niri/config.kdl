@@ -87,6 +87,7 @@ gestures {
 }
 
 environment {
+
     // 渲染环境优化
     // GTK应用在XWayland下保持1倍缩放
     GDK_SCALE "1"
@@ -133,7 +134,7 @@ hotkey-overlay { skip-at-startup; }
 
 // 自启动
 spawn-at-startup "waybar"
-spawn-at-startup "~/.config/fish/functions/battery_alert.fish"
+spawn-at-startup "swww-daemon"
 // 自启动shell命令
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -230,6 +231,23 @@ binds {
     // And you can also move a whole workspace to another monitor:
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
 
+    Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+WheelScrollDown      { focus-column-right; }
+    Mod+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+WheelScrollUp   { move-column-left; }
+
     // 打开/关闭概览（工作区和窗口的缩放视图）
     // 触摸板四指上滑/下滑也可触发
     Mod+O repeat=false { toggle-overview; }
@@ -312,8 +330,8 @@ binds {
     // 切换窗口为浮动 / 平铺模式
     // Mod+V       { toggle-window-floating; }
     // 在浮动窗口和平铺窗口间切换焦点
-    // Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     // 切换列的标签式显示（垂直标签而非堆叠）
+    // Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     // Mod+W { toggle-column-tabbed-display; }
 
     // Actions to switch layouts.
