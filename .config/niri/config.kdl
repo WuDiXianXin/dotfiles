@@ -134,10 +134,10 @@ hotkey-overlay { skip-at-startup; }
 
 // 自启动
 spawn-at-startup "waybar"
-spawn-at-startup "swww-daemon"
+// spawn-at-startup "swww-daemon"
 // 自启动shell命令
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-sh-at-startup "linux-wallpaperengine --screen-root eDP-1 --screen-root HDMI-A-1 --fps 15 --scaling fill ~/wallpaperengine/3625547979/"
 
 // 告诉客户端平铺样式，省略窗口栏
 prefer-no-csd

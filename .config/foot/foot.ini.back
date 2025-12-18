@@ -6,7 +6,7 @@ font=Maple Mono NF CN:size=18
 lines=1000
 
 [colors]
-alpha=0.5
+alpha=0.2
 background=111111  #111111
 foreground=dddddd  #dddddd
 flash=7f7f00       #7f7f00
