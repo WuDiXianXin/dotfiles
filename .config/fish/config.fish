@@ -46,6 +46,7 @@ if status is-interactive
     alias MG1="sudo mount /dev/nvme0n1p5 ~/dev/windows/"
     alias cls="clear"
     alias mkd="mkdir -p"
+    alias backup-dir-contents="~/bash/backup-dir-contents.bash"
     # 替换 rm 为回收站删除，避免误删
     alias rm='trash-put'
     alias rmy='trash-put -f -v'
