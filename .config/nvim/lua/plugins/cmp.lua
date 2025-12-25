@@ -48,7 +48,7 @@ return {
         default = { 'path', 'lsp', 'snippets', 'buffer' },
         providers = {
           buffer = { enabled = true, max_items = 6 },
-          snippets = { score_offset = 99 },
+          snippets = { score_offset = 0 },
         },
       },
 
