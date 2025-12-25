@@ -52,15 +52,16 @@ return {
         },
       },
 
-      -- 新增：动态添加 crates 来源（仅当 crates.nvim 已加载时）
-      setup = function()
-        local cmp = require('blink.cmp')
-        -- 检查 crates.nvim 是否已加载（通过 pcall 安全检测）
-        local ok, crates = pcall(require, 'crates')
-        if ok then
-          cmp.register_source('crates', crates.cmp_source())
-        end
-      end,
+      -- -- 新增：动态添加 crates 来源（仅当 crates.nvim 已加载时）
+      -- setup = function()
+      --   local cmp = require('blink.cmp')
+      --   -- 检查 crates.nvim 是否已加载（通过 pcall 安全检测）
+      --   local ok, crates = pcall(require, 'crates')
+      --   if ok then
+      --     cmp.register_source('crates', crates.cmp_source())
+      --   end
+      -- end,
+
 
       fuzzy = {
         implementation = 'prefer_rust_with_warning',

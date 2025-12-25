@@ -85,25 +85,34 @@ return {
         },
       })
 
-      -- 6. Python: pyright（推荐，轻量、类型检查强）
-      vim.lsp.config('pyright', {
+
+      -- 6. Python: pylyzer（快速静态代码分析 & 语言服务器，替代pyright）
+      vim.lsp.config('pylyzer', {
         on_attach = on_attach,
-        -- 更推荐放在 root_dir 检测里自动识别 venv
-        root_dir = require('lspconfig.util').root_pattern('pyproject.toml', 'setup.py', '.git'),
+
+        -- pylyzer 核心命令：启动语言服务器模式
+        cmd = { 'pylyzer', '--server' },
+        -- 仅对python文件生效
+        filetypes = { 'python' },
+        -- pylyzer 运行环境配置：指定Erg依赖的路径
+        cmd_env = {
+          ERG_PATH = vim.env.ERG_PATH or vim.fs.joinpath(vim.uv.os_homedir(), '.erg'),
+        },
+        -- pylyzer 功能配置
         settings = {
           python = {
+            diagnostics = true,     -- 启用代码诊断（语法/逻辑错误检测）
+            inlayHints = true,      -- 启用内嵌提示（如类型提示、参数名提示）
+            smartCompletion = true, -- 启用智能补全
+            checkOnType = false,    -- 关闭输入时实时检查（可根据需求改为true，注意性能消耗）
+            -- 保留原pyright中实用的分析配置（pylyzer兼容部分类似配置）
             analysis = {
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
-              diagnosticMode = 'workspace', -- 或 'openFilesOnly'
+              diagnosticMode = 'workspace', -- 或 'openFilesOnly'（仅检查打开的文件，更快）
             },
           },
         },
-      })
-
-      -- 7. Java: jdtls（Eclipse JDT Language Server，功能最全）
-      vim.lsp.config('jdtls', {
-        on_attach = on_attach,
       })
 
       -- ==================== 启用所有 LSP ====================
@@ -113,8 +122,7 @@ return {
         'bashls',
         'fish_lsp',
         'clangd',
-        'pyright',
-        'jdtls',
+        'pylyzer',
       })
     end,
   },

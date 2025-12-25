@@ -17,8 +17,6 @@ return {
         'c',
         'cpp',
         'python',
-        'java',
-        'javadoc', -- 可选：Java 文档注释更好支持
       })
 
       -- 大文件禁用高亮/indent（直接用 vim.treesitter API）
