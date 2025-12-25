@@ -1,0 +1,16 @@
+{
+  "runtime.version": "LuaJIT",
+  "runtime.path": [
+    "lua/?.lua",
+    "lua/?/init.lua",
+    "${VIMRUNTIME}/lua/?.lua",
+    "${VIMRUNTIME}/lua/?/init.lua"
+  ],
+  "diagnostics.globals": ["vim"],
+  "workspace.checkThirdParty": false,
+  "workspace.library": [
+    "${VIMRUNTIME}",
+    "${3rd}/luv/library"
+  ],
+  "telemetry.enable": false
+}
