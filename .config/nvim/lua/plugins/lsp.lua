@@ -45,16 +45,16 @@ return {
       })
 
       -- 2. Rust Analyzer
-      vim.lsp.config('rust_analyzer', {
-        on_attach = on_attach,
-        settings = {
-          ['rust-analyzer'] = {
-            check = { command = 'clippy' },
-            cargo = { allFeatures = true },
-            procMacro = { enable = true },
-          },
-        },
-      })
+      -- vim.lsp.config('rust_analyzer', {
+      --   on_attach = on_attach,
+      --   settings = {
+      --     ['rust-analyzer'] = {
+      --       check = { command = 'clippy' },
+      --       cargo = { allFeatures = true },
+      --       procMacro = { enable = true },
+      --     },
+      --   },
+      -- })
 
       -- 3. Bash LSP
       vim.lsp.config('bashls', {
@@ -118,7 +118,7 @@ return {
       -- ==================== 启用所有 LSP ====================
       vim.lsp.enable({
         'lua_ls',
-        'rust_analyzer',
+        -- 'rust_analyzer',
         'bashls',
         'fish_lsp',
         'clangd',
