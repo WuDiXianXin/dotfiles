@@ -25,19 +25,13 @@ nmap('<leader>rR', function() vim.cmd.RustLsp({ 'runnables', bang = true }) end,
 nmap('<leader>tt', function() vim.cmd.RustLsp('testables') end, 'Rust: 选择并运行测试')
 nmap('<leader>tT', function() vim.cmd.RustLsp({ 'testables', bang = true }) end, 'Rust: 重跑上一个测试')
 
--- ===================== 调试（与全局 DAP 不冲突） =====================
-nmap('<leader>rd', function() vim.cmd.RustLsp('debuggables') end, 'Rust: 选择并调试 Debuggable')
-nmap('<leader>rD', function() vim.cmd.RustLsp({ 'debuggables', bang = true }) end, 'Rust: 重跑上一个调试')
-
 -- ===================== 宏 & 代码结构 =====================
 nmap('<leader>em', function() vim.cmd.RustLsp('expandMacro') end, 'Rust: 递归展开宏')
 nmap('<leader>jl', function() vim.cmd.RustLsp('joinLines') end, 'Rust: 智能连接行')
-nmap('<leader>ss', function() vim.cmd.RustLsp('ssr') end, 'Rust: 结构搜索替换 (SSR)')
 
 -- ===================== Cargo & 依赖 =====================
 nmap('<leader>ro', function() vim.cmd.RustLsp('openCargo') end, 'Rust: 打开 Cargo.toml')
 nmap('<leader>rc', function() vim.cmd.RustLsp('reloadWorkspace') end, 'Rust: 重载 Workspace')
-nmap('<leader>cd', function() vim.cmd.RustLsp('crateDetail') end, 'Rust: 查看 Crate 详情 (crates.io)')
 nmap('<leader>od', function() vim.cmd.RustLsp('openDocs') end, 'Rust: 打开 docs.rs 文档')
 
 -- ===================== 诊断 & 错误解释 =====================
