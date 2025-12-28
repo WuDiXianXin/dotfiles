@@ -196,6 +196,6 @@ nmap('<leader>fh', ':Pick help<CR>', '搜索帮助文档')
 nmap('<leader>e', ':lua MiniFiles.open()<CR>', '打开文件管理器')
 
 -- ==================== Markview.nvim 相关 ====================
-nmap('<leader>M', '<cmd>Markview<cr>', 'Toggle Markview preview');
-nmap('<leader>m', '<cmd>Markview toggle<cr>', 'Toggle Markview');
-nmap('<leader>ms', '<cmd>Markview splitToggle<cr>', 'Markview split view');
+nmap('<leader>M', '<cmd>Markview<cr>', '全局完全开关 markview 渲染（包括所有缓冲区）');
+nmap('<leader>m', '<cmd>Markview toggle<cr>', '只切换当前 Markdown 文件的渲染');
+nmap('<leader>ms', '<cmd>Markview splitToggle<cr>', '打开/关闭分屏实时预览');
