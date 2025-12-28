@@ -194,3 +194,8 @@ nmap('<leader>fG', ':Pick grep<CR>', '静态文本搜索')
 nmap('<leader>fr', ':Pick resume<CR>', '恢复上次查找')
 nmap('<leader>fh', ':Pick help<CR>', '搜索帮助文档')
 nmap('<leader>e', ':lua MiniFiles.open()<CR>', '打开文件管理器')
+
+-- ==================== Markview.nvim 相关 ====================
+nmap('<leader>M', '<cmd>Markview<cr>', 'Toggle Markview preview');
+nmap('<leader>m', '<cmd>Markview toggle<cr>', 'Toggle Markview');
+nmap('<leader>ms', '<cmd>Markview splitToggle<cr>', 'Markview split view');

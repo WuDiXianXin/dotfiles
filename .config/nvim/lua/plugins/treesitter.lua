@@ -17,6 +17,10 @@ return {
         'c',
         'cpp',
         'python',
+        'html',
+        'latex',
+        'typst',
+        'yaml',
       })
 
       -- 大文件禁用高亮/indent（直接用 vim.treesitter API）
