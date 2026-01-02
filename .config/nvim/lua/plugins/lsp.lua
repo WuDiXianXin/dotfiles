@@ -7,7 +7,7 @@ return {
       { 'SmiteshP/nvim-navic', branch = 'master' }, -- 面包屑
     },
     config = function()
-      local navic = require("nvim-navic")
+      local navic = require('nvim-navic')
 
       local on_attach = function(client, bufnr)
         if client.server_capabilities.documentSymbolProvider then
@@ -72,7 +72,7 @@ return {
         cmd = {
           'clangd',
           '--background-index',
-          '--clang-tidy',            -- 可选：启用 clang-tidy 检查
+          '--clang-tidy', -- 可选：启用 clang-tidy 检查
           '--header-insertion=iwyu', -- 智能头文件插入
           '--completion-style=detailed',
           '--function-arg-placeholders',
@@ -85,7 +85,6 @@ return {
         },
       })
 
-
       -- 6. Python: pylyzer（快速静态代码分析 & 语言服务器，替代pyright）
       vim.lsp.config('pylyzer', {
         on_attach = on_attach,
@@ -96,15 +95,16 @@ return {
         filetypes = { 'python' },
         -- pylyzer 运行环境配置：指定Erg依赖的路径
         cmd_env = {
-          ERG_PATH = vim.env.ERG_PATH or vim.fs.joinpath(vim.uv.os_homedir(), '.erg'),
+          ERG_PATH = vim.env.ERG_PATH
+            or vim.fs.joinpath(vim.uv.os_homedir(), '.erg'),
         },
         -- pylyzer 功能配置
         settings = {
           python = {
-            diagnostics = true,     -- 启用代码诊断（语法/逻辑错误检测）
-            inlayHints = true,      -- 启用内嵌提示（如类型提示、参数名提示）
+            diagnostics = true, -- 启用代码诊断（语法/逻辑错误检测）
+            inlayHints = true, -- 启用内嵌提示（如类型提示、参数名提示）
             smartCompletion = true, -- 启用智能补全
-            checkOnType = false,    -- 关闭输入时实时检查（可根据需求改为true，注意性能消耗）
+            checkOnType = false, -- 关闭输入时实时检查（可根据需求改为true，注意性能消耗）
             -- 保留原pyright中实用的分析配置（pylyzer兼容部分类似配置）
             analysis = {
               autoSearchPaths = true,

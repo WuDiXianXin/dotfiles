@@ -5,8 +5,6 @@ input {
     keyboard {
         xkb {
             layout "us"
-            // 键盘布局
-            // variant "colemak"
         }
         // 小键盘
         // numlock
@@ -22,10 +20,16 @@ input {
         natural-scroll
         // 移动速度
         accel-speed 0.4
+        // 根据你移动触摸板的速度动态调整指针加速
+        accel-profile "adaptive"
     }
 
     // 鼠标
     mouse {
+      natural-scroll        // 和触摸板保持一致的自然滚动方向
+      accel-speed 0.4       // 和触摸板一样的指针速度
+      accel-profile "adaptive"  // 动态加速，更自然（推荐）
+      // tap                  // 如果你的鼠标支持点击触摸（极少数轨迹球支持），否则别加
     }
 }
 
@@ -33,13 +37,21 @@ output "eDP-1" {
     // 多显示器：设置为主显示器；如果存在多个，则按顺序决定谁是主显示器
     focus-at-startup
     // 分辨率，可以使用 niri msg outputs 查看
-    mode "1920x1080@60.012"
+    mode "1920x1080@165.004"
+    // mode "preferred"
+    // 启用 VRR，只在需要时激活，避免潜在闪烁
+    variable-refresh-rate on-demand=true
     // 缩放
-    scale 1
+    // scale 1
     // 旋转
-    transform "normal"
+    // transform "normal"
     // 位置
     position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@165.000"
+    position x=1920 y=0
 }
 
 layout {
@@ -52,33 +64,48 @@ layout {
 
     // 窗口列宽预设, Mod + R
     preset-column-widths {
-        proportion 0.5
-        proportion 0.75
+        proportion 0.33
+        proportion 0.66
         proportion 1.0
     }
 
     // 窗口行高预设, Mod + Shift + R
     preset-window-heights {
-        proportion 0.5
-        proportion 0.75
+        proportion 0.33
+        proportion 0.66
         proportion 1.0
     }
 
     // 默认宽度全屏
-    default-column-width { proportion 1.0; }
+    // default-column-width { proportion 1.0; }
     // default-column-width { }
 
     // 窗口聚焦
-    focus-ring { off; }
+    focus-ring {
+        off  // 注释掉或删除这行来开启
+        width 1                  // 环宽度（逻辑像素，推荐 3~6）
+        // active-color "#89b4fa"   // 活跃窗口颜色（蓝紫，Arch 默认风）
+        // inactive-color "#45475a" // 非活跃（灰）
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        // active-color "#74c7ec"   // Catppuccin Peach，柔和橙
+        active-color "#a6e3a1"   // Catppuccin Green，清新绿
+        inactive-color "#585b70"
+        // 你可以加 gradient 等高级，但简单颜色就够
+    }
 
     // 窗口边框
     border { off; }
 
-    // 窗口阴影
-    shadow { }
-
     // 预留全屏边框距离
-    struts { }
+    struts { 
+      top 10
+      bottom 10
+      left 10
+      right 10
+    }
+
+    // 窗口阴影，不支持
+    shadow { }
 }
 
 // 关闭热脚
@@ -137,7 +164,7 @@ spawn-at-startup "waybar"
 // spawn-at-startup "swww-daemon"
 // 自启动shell命令
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-spawn-sh-at-startup "swaybg -i ~/Pictures/wallpapers/sea-dream-night-1080p.jpg &"
+spawn-sh-at-startup "swaybg -i ~/Pictures/wallpapers/海梦_夜景.jpg &"
 
 // 告诉客户端平铺样式，省略窗口栏
 prefer-no-csd
@@ -154,22 +181,27 @@ animations {
     slowdown 2.0
 }
 
-// Work around WezTerm's initial configure bug
 window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match app-id="QQ"
+    open-maximized true
+    variable-refresh-rate true
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
+    match app-id=r#"^mpv$"#  // mpv 播放器
+    open-fullscreen true                // 默认全屏
+    variable-refresh-rate true
+}
+window-rule {
+    match app-id=r#"^steam_app_"#  // Steam 游戏
+    variable-refresh-rate true
+}
+
+window-rule {
+    match app-id=r#"^(firefox|org\.mozilla\.firefox)$"#
+    match title=r#"(Picture-in-Picture|画中画)"#
+    // open-floating true
+    variable-refresh-rate true
 }
 
 // 保护密码管理器窗口不被屏幕捕获，增强安全性

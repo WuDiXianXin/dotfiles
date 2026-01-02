@@ -29,7 +29,9 @@ return {
           local buf = args.buf
           local max_filesize = vim.g.bigfile_size or 2 * 1024 * 1024
           local buf_name = vim.api.nvim_buf_get_name(buf)
-          if buf_name == '' then return end
+          if buf_name == '' then
+            return
+          end
           local ok, stats = pcall(vim.uv.fs_stat, buf_name)
           if ok and stats and stats.size > max_filesize then
             vim.treesitter.stop(buf) -- 停止 treesitter 解析
@@ -99,7 +101,7 @@ return {
         callback = function(ev)
           local buf = ev.buf
           local move_opts =
-              vim.tbl_extend('force', keymap_opts, { buffer = buf })
+            vim.tbl_extend('force', keymap_opts, { buffer = buf })
 
           vim.keymap.set(
             { 'n', 'x', 'o' },

@@ -1,6 +1,6 @@
 -- 1. 创建全局 autocmd 组
 local global_autocmd_group =
-  vim.api.nvim_create_augroup('global_autocmd_group', { clear = true })
+    vim.api.nvim_create_augroup('global_autocmd_group', { clear = true })
 
 -- 2. 复制文本后高亮提示
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   callback = function()
     pcall(vim.lsp.buf.format, {
-      async = false, -- 同步格式化（保存前完成）
+      async = false,     -- 同步格式化（保存前完成）
       timeout_ms = 1000, -- 新增：超时1s，避免卡住
     })
   end,
@@ -30,5 +30,12 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   pattern = { '*' },
   callback = function()
     vim.api.nvim_exec2('silent! normal! g`"zv', { output = false })
+  end,
+})
+
+-- 5. 禁用新行自动延续注释格式
+vim.api.nvim_create_autocmd('BufEnter', {
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
   end,
 })

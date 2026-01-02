@@ -3,8 +3,8 @@ return {
     'mfussenegger/nvim-dap',
     branch = 'master',
     lazy = true,
-    keys = {                        -- 同之前，保持懒加载
-      { '<F9>',       mode = 'n' }, -- 切换断点（最常用）
+    keys = { -- 同之前，保持懒加载
+      { '<F9>', mode = 'n' }, -- 切换断点（最常用）
       { '<leader>db', mode = 'n' }, -- 切换断点
       { '<leader>dB', mode = 'n' }, -- 全局条件断点
       { '<leader>dl', mode = 'n' }, -- 全局日志断点
@@ -12,8 +12,8 @@ return {
       { '<leader>dL', mode = 'n' }, -- 当前行日志断点
     },
     dependencies = {
-      { 'rcarriga/nvim-dap-ui',            branch = 'master' },
-      { 'nvim-neotest/nvim-nio',           branch = 'master' },
+      { 'rcarriga/nvim-dap-ui', branch = 'master' },
+      { 'nvim-neotest/nvim-nio', branch = 'master' },
       { 'theHamsta/nvim-dap-virtual-text', branch = 'master' },
     },
     config = function()
@@ -127,8 +127,8 @@ return {
               for _, target in ipairs(pkg.targets) do
                 -- 如果 target 有 src_path，且当前文件路径包含该 src_path，则属于这个 package
                 if
-                    target.src_path
-                    and string.find(current_file, target.src_path, 1, true)
+                  target.src_path
+                  and string.find(current_file, target.src_path, 1, true)
                 then
                   -- 如果是 bin 类型（可执行），优先用它
                   if vim.tbl_contains(target.kind, 'bin') then
@@ -164,10 +164,10 @@ return {
         layouts = {
           {
             elements = {
-              { id = 'scopes',      size = 0.25 }, -- 变量作用域
+              { id = 'scopes', size = 0.25 }, -- 变量作用域
               { id = 'breakpoints', size = 0.25 }, -- 断点列表
-              { id = 'stacks',      size = 0.25 }, -- 调用栈
-              { id = 'watches',     size = 0.25 }, -- 监视表达式
+              { id = 'stacks', size = 0.25 }, -- 调用栈
+              { id = 'watches', size = 0.25 }, -- 监视表达式
             },
             size = 40,
             position = 'left',
@@ -180,7 +180,7 @@ return {
         },
         floating = {
           border = 'rounded',
-          max_width = 0.6,  -- 新增：限制浮动窗口宽度
+          max_width = 0.6, -- 新增：限制浮动窗口宽度
           max_height = 0.6, -- 新增：限制高度
         },
         controls = { enabled = true },
@@ -266,13 +266,13 @@ return {
     lazy = true, -- 强烈建议加这一行，实现懒加载
     config = function()
       require('nvim-dap-virtual-text').setup({
-        enabled = true,                     -- 启用插件
+        enabled = true, -- 启用插件
         highlight_changed_variables = true, -- 变量值变化时高亮（推荐开）
-        show_stop_reason = true,            -- 停在断点时显示原因（如 breakpoint hit）
+        show_stop_reason = true, -- 停在断点时显示原因（如 breakpoint hit）
         -- 可选美化（推荐加这些）
-        virt_text_pos = 'eol',              -- 显示在行尾（不遮代码）
-        all_frames = false,                 -- 只显示当前栈帧变量（默认就行）
-        highlight_new_as_changed = false,   -- 新变量不标记为变化
+        virt_text_pos = 'eol', -- 显示在行尾（不遮代码）
+        all_frames = false, -- 只显示当前栈帧变量（默认就行）
+        highlight_new_as_changed = false, -- 新变量不标记为变化
       })
     end,
   },

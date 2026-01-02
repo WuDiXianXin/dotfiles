@@ -17,22 +17,22 @@ return {
 
       -- 启用官方内置插件
       plugins = {
-        marks = true,       -- ' / ` 触发显示标记列表
-        registers = true,   -- " / <C-r> 触发显示寄存器列表
-        spelling = false,   -- 禁用拼写建议（非核心需求，减少干扰）
+        marks = true, -- ' / ` 触发显示标记列表
+        registers = true, -- " / <C-r> 触发显示寄存器列表
+        spelling = false, -- 禁用拼写建议（非核心需求，减少干扰）
         presets = {
           operators = true, -- d/y/c 等操作符的原生绑定提示
-          motions = true,   -- 原生移动快捷键提示
-          windows = true,   -- <C-w> 窗口操作提示
-          g = true,         -- g 前缀原生绑定提示（和你的 LSP g 前缀互补）
-          z = true,         -- z 前缀折叠/拼写提示
-          nav = true,       -- 方向键导航提示（h j k l 等）
+          motions = true, -- 原生移动快捷键提示
+          windows = true, -- <C-w> 窗口操作提示
+          g = true, -- g 前缀原生绑定提示（和你的 LSP g 前缀互补）
+          z = true, -- z 前缀折叠/拼写提示
+          nav = true, -- 方向键导航提示（h j k l 等）
         },
       },
       -- 窗口样式
       win = {
         border = 'rounded', -- 和 LazyVim 诊断窗口/终端风格一致
-        no_overlap = true,  -- 避免弹窗覆盖光标
+        no_overlap = true, -- 避免弹窗覆盖光标
         padding = { 1, 2 }, -- 官方默认内边距，视觉更舒适
         title = true,
         title_pos = 'center',
@@ -50,10 +50,10 @@ return {
         group = ' ', -- 用折叠图标表示组，更直观（需要 Nerd Font）
         ellipsis = '…',
         mappings = true,
-        rules = {},      -- 可自定义图标规则（目前无需）
+        rules = {}, -- 可自定义图标规则（目前无需）
       },
       show_help = false, -- 隐藏默认帮助提示
-      show_keys = true,  -- 显示当前按下的键
+      show_keys = true, -- 显示当前按下的键
 
       -- 禁用内置触发键日志（减少干扰）
       disable = { filetypes = { 'TelescopePrompt' } },

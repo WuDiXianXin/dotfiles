@@ -3,11 +3,12 @@ return {
     'saghen/blink.cmp',
     branch = 'main',
     build = 'cargo build --release', -- 可选：启用 Rust fuzzy（更快，但需 Rust-night）
-    event = 'InsertEnter',           -- 插入模式懒加载
+    event = 'InsertEnter', -- 插入模式懒加载
     dependencies = {
-      { 'xzbdmw/colorful-menu.nvim',    branch = 'master' },
+      { 'xzbdmw/colorful-menu.nvim', branch = 'master' },
       { 'rafamadriz/friendly-snippets', branch = 'main' },
-      { 'L3MON4D3/LuaSnip',             branch = 'master' },
+      { 'L3MON4D3/LuaSnip', branch = 'master' },
+      'Kaiser-Yang/blink-cmp-avante'
     },
     opts = {
       keymap = { preset = 'default' },
@@ -45,10 +46,14 @@ return {
       signature = { enabled = true },
 
       sources = {
-        default = { 'path', 'lsp', 'snippets', 'buffer' },
+        default = { 'path', 'lsp', 'snippets', 'buffer', 'avante' },
         providers = {
           buffer = { enabled = true, max_items = 6 },
           snippets = { score_offset = 0 },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+          },
         },
       },
 
@@ -61,7 +66,6 @@ return {
       --     cmp.register_source('crates', crates.cmp_source())
       --   end
       -- end,
-
 
       fuzzy = {
         implementation = 'prefer_rust_with_warning',
