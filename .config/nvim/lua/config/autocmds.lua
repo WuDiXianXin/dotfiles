@@ -1,6 +1,5 @@
 -- 1. 创建全局 autocmd 组
-local global_autocmd_group =
-    vim.api.nvim_create_augroup('global_autocmd_group', { clear = true })
+local global_autocmd_group = vim.api.nvim_create_augroup('global_autocmd_group', { clear = true })
 
 -- 2. 复制文本后高亮提示
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -14,13 +13,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- 3. 保存前自动格式化
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = global_autocmd_group,
-  desc = 'Auto format code with LSP before saving file',
+  desc = 'Auto format code with LSP before saving file (async, only if LSP attached)',
   pattern = '*',
   callback = function()
-    pcall(vim.lsp.buf.format, {
-      async = false,     -- 同步格式化（保存前完成）
-      timeout_ms = 1000, -- 新增：超时1s，避免卡住
-    })
+    -- 只在有 LSP 客户端时格式化
+    if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
+      vim.lsp.buf.format({ async = true, timeout_ms = 2000 }) -- 异步 + 稍长超时
+    end
   end,
 })
 

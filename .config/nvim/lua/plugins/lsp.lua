@@ -95,8 +95,7 @@ return {
         filetypes = { 'python' },
         -- pylyzer 运行环境配置：指定Erg依赖的路径
         cmd_env = {
-          ERG_PATH = vim.env.ERG_PATH
-            or vim.fs.joinpath(vim.uv.os_homedir(), '.erg'),
+          ERG_PATH = vim.env.ERG_PATH or vim.fs.joinpath(vim.uv.os_homedir(), '.erg'),
         },
         -- pylyzer 功能配置
         settings = {

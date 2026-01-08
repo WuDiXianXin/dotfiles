@@ -1,11 +1,7 @@
 -- ==================== 全局键位映射工具函数 ====================
 
 local map = function(mode, lhs, rhs, desc, extra_opts)
-  local options = vim.tbl_extend(
-    'force',
-    { noremap = true, silent = true, nowait = true },
-    extra_opts or {}
-  )
+  local options = vim.tbl_extend('force', { noremap = true, silent = true, nowait = true }, extra_opts or {})
   if desc then
     options.desc = desc
   end
@@ -62,17 +58,9 @@ map('n', '<leader>df', ':diffthis<CR>')
 -- toggle editor visuals（编辑器视觉/功能切换）
 nmap('<leader>ts', ':set spell!<CR>', '切换拼写检查（spell）', noisy)
 nmap('<leader>tw', ':set wrap!<CR>', '切换自动换行（wrap）')
-nmap(
-  '<leader>tcc',
-  ':set cursorcolumn!<CR>',
-  '切换光标列高亮（cursorcolumn）'
-)
+nmap('<leader>tcc', ':set cursorcolumn!<CR>', '切换光标列高亮（cursorcolumn）')
 nmap('<leader>th', ':set hlsearch!<CR>', '切换搜索高亮（hlsearch）')
-nmap(
-  '<leader>tr',
-  ':set relativenumber!<CR>',
-  '切换相对行号（relativenumber）'
-)
+nmap('<leader>tr', ':set relativenumber!<CR>', '切换相对行号（relativenumber）')
 
 -- ==================== 文本与文件操作 ====================
 
@@ -100,18 +88,8 @@ xmap('<', '<gv', '视觉模式减少缩进（保留选中）')
 xmap('>', '>gv', '视觉模式增加缩进（保留选中）')
 
 -- 基于你现有封装，补充expr=true参数，实现智能映射
-nvmap(
-  'j',
-  "v:count == 0 ? 'gj' : 'j'",
-  '视觉行向下移动（有计数则跳转物理行）',
-  { expr = true }
-)
-nvmap(
-  'k',
-  "v:count == 0 ? 'gk' : 'k'",
-  '视觉行向上移动（有计数则跳转物理行）',
-  { expr = true }
-)
+nvmap('j', "v:count == 0 ? 'gj' : 'j'", '视觉行向下移动（有计数则跳转物理行）', { expr = true })
+nvmap('k', "v:count == 0 ? 'gk' : 'k'", '视觉行向上移动（有计数则跳转物理行）', { expr = true })
 
 nmap('<A-k>', ':m .-2<CR>==', '当前行上移并自动缩进')
 nmap('<A-j>', ':m .+1<CR>==', '当前行下移并自动缩进')
@@ -166,12 +144,7 @@ nmap('we', '<cmd>wincmd =<CR>', '所有窗口等分大小')
 
 -- ==================== 终端映射 ====================
 
-map(
-  't',
-  '<leader><Esc>',
-  '<C-\\><C-n>',
-  '终端模式：快速退出到普通t模式'
-)
+map('t', '<leader><Esc>', '<C-\\><C-n>', '终端模式：快速退出到普通t模式')
 nmap('t', ':sp | term<CR>i', '水平分屏打开终端')
 nmap('T', ':vsp | term<CR>i', '垂直分屏打开终端')
 
@@ -204,11 +177,7 @@ nmap('<leader>D', function()
   })
 end, '查看当前行诊断（浮动窗口，可聚焦复制）')
 
-nmap(
-  '<leader>q',
-  vim.diagnostic.setloclist,
-  '所有诊断填充到位置列表'
-)
+nmap('<leader>q', vim.diagnostic.setloclist, '所有诊断填充到位置列表')
 nmap('<leader>l', function()
   local winid = vim.fn.getloclist(0, { winid = 0 }).winid
   if winid == 0 then
@@ -255,21 +224,9 @@ nmap('<leader>e', ':lua MiniFiles.open()<CR>', '打开文件管理器')
 
 -- ==================== Markview.nvim 相关 ====================
 
-nmap(
-  '<leader>M',
-  '<cmd>Markview<cr>',
-  '全局完全开关 markview 渲染（包括所有缓冲区）'
-)
-nmap(
-  '<leader>m',
-  '<cmd>Markview toggle<cr>',
-  '只切换当前 Markdown 文件的渲染'
-)
-nmap(
-  '<leader>ms',
-  '<cmd>Markview splitToggle<cr>',
-  '打开/关闭分屏实时预览'
-)
+nmap('<leader>M', '<cmd>Markview<cr>', '全局完全开关 markview 渲染（包括所有缓冲区）')
+nmap('<leader>m', '<cmd>Markview toggle<cr>', '只切换当前 Markdown 文件的渲染')
+nmap('<leader>ms', '<cmd>Markview splitToggle<cr>', '打开/关闭分屏实时预览')
 
 --
 -- -- Replace word under cursor

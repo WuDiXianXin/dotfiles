@@ -18,8 +18,7 @@ return {
 
     -- ===================== 1. 颜色配置（自动适配主题） =====================
     local function setup_colors()
-      local tokyo_colors =
-          require('tokyonight.colors').setup({ transparent = true })
+      local tokyo_colors = require('tokyonight.colors').setup({ transparent = true })
       return {
         bright_bg = tokyo_colors.bg_highlight,
         bright_fg = tokyo_colors.fg_dark,
@@ -67,12 +66,7 @@ return {
       fallback_icon = fallback_icon or DefaultFileIcon
 
       -- 参数校验
-      if
-          type(category) ~= 'string'
-          or category == ''
-          or type(target) ~= 'string'
-          or target == ''
-      then
+      if type(category) ~= 'string' or category == '' or type(target) ~= 'string' or target == '' then
         return fallback_icon, 'DevIconDefault'
       end
 
@@ -198,8 +192,7 @@ return {
     -- TabLine文件图标
     local TablineFileIcon = {
       init = function(self)
-        local buf_buftype =
-            vim.api.nvim_get_option_value('buftype', { buf = self.bufnr })
+        local buf_buftype = vim.api.nvim_get_option_value('buftype', { buf = self.bufnr })
         if buf_buftype == 'terminal' then
           self.icon = '' -- 强制设置终端图标为
           self.icon_hl = 'DevIconDefault' -- 沿用默认图标高亮样式
@@ -208,26 +201,21 @@ return {
         -- 每个Buffer的文件名（已正确绑定self.bufnr）
         self.filename = vim.api.nvim_buf_get_name(self.bufnr)
         -- 每个Buffer自身的文件类型（关键修改）
-        self.filetype =
-            vim.api.nvim_get_option_value('filetype', { buf = self.bufnr })
+        self.filetype = vim.api.nvim_get_option_value('filetype', { buf = self.bufnr })
 
         if self.filename == '' then
           self.icon, self.icon_hl = DefaultFileIcon, 'DevIconDefault'
           return
         end
         -- 基于当前Buffer的filetype/文件名获取图标
-        self.icon, self.icon_hl = get_icon(
-          self.filetype ~= '' and 'filetype' or 'file',
-          self.filetype ~= '' and self.filetype or self.filename
-        )
+        self.icon, self.icon_hl =
+          get_icon(self.filetype ~= '' and 'filetype' or 'file', self.filetype ~= '' and self.filetype or self.filename)
       end,
       provider = function(self)
         return (self.icon or DefaultFileIcon) .. ' '
       end,
       hl = function(self)
-        local parent_bg = self.is_active
-            and utils.get_highlight('TabLineSel').bg
-            or utils.get_highlight('TabLine').bg
+        local parent_bg = self.is_active and utils.get_highlight('TabLineSel').bg or utils.get_highlight('TabLine').bg
         local icon_fg = utils.get_highlight(self.icon_hl or 'DevIconDefault').fg
         return { fg = icon_fg, bg = parent_bg, bold = true, force = true }
       end,
@@ -237,8 +225,7 @@ return {
     local FileName = {
       init = function(self)
         -- :p 绝对路径，:.相对路径
-        self.lfilename = self.filename == '' and '临时文件'
-            or vim.fn.fnamemodify(self.filename, ':p')
+        self.lfilename = self.filename == '' and '临时文件' or vim.fn.fnamemodify(self.filename, ':p')
       end,
       hl = { fg = utils.get_highlight('Directory').fg },
       flexible = 3, -- 更高优先级的灵活适配
@@ -316,10 +303,7 @@ return {
       {
         condition = function(self)
           return self.status_dict
-              and (self.status_dict.added or 0)
-              + (self.status_dict.changed or 0)
-              + (self.status_dict.removed or 0)
-              > 0
+            and (self.status_dict.added or 0) + (self.status_dict.changed or 0) + (self.status_dict.removed or 0) > 0
         end,
         provider = ' · ',
         -- 内层变更项（保持原有配置，已加 force = true）
@@ -377,14 +361,10 @@ return {
           Hint = signs_text[vim.diagnostic.severity.HINT] or ' ',
         }
 
-        self.errors =
-            #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-        self.warnings =
-            #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-        self.infos =
-            #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
-        self.hints =
-            #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+        self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+        self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+        self.infos = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+        self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
       end,
       update = { 'DiagnosticChanged', 'BufEnter' },
 
@@ -468,9 +448,8 @@ return {
         return (self.icon or DefaultFileIcon) .. ' ' .. ft
       end,
       hl = function(self)
-        local status_bg = conditions.is_active()
-            and utils.get_highlight('StatusLine').bg
-            or utils.get_highlight('StatusLineNC').bg
+        local status_bg = conditions.is_active() and utils.get_highlight('StatusLine').bg
+          or utils.get_highlight('StatusLineNC').bg
         local icon_fg = utils.get_highlight(self.icon_hl or 'DevIconDefault').fg
         return { fg = icon_fg, bg = status_bg, bold = true, force = true }
       end,
@@ -570,17 +549,15 @@ return {
         return vim.bo.buftype == 'terminal'
       end,
       hl = function()
-        local status_bg = conditions.is_active()
-            and utils.get_highlight('StatusLine').bg
-            or utils.get_highlight('StatusLineNC').bg
+        local status_bg = conditions.is_active() and utils.get_highlight('StatusLine').bg
+          or utils.get_highlight('StatusLineNC').bg
         return { bg = status_bg, force = true }
       end,
       -- 仅活跃时显示ViMode
       { condition = conditions.is_active, ViMode, Space },
       {
         provider = function()
-          local shell_name = vim.env.SHELL:match('[/\\]([%w%-]+)%.?%w*$')
-              or 'Shell'
+          local shell_name = vim.env.SHELL:match('[/\\]([%w%-]+)%.?%w*$') or 'Shell'
           return ' 终端 ' .. shell_name
         end,
         hl = { fg = 'blue', bold = true },
@@ -626,10 +603,7 @@ return {
         provider = '',
       },
       -- 2. 非活跃窗口：引用公共组件，传入 gray
-      utils.insert(
-        { condition = conditions.is_not_active },
-        get_common_winbar('gray')
-      ),
+      utils.insert({ condition = conditions.is_not_active }, get_common_winbar('gray')),
       -- 3. 活跃窗口：引用公共组件，传入 nil
       get_common_winbar(nil),
     }
@@ -638,14 +612,10 @@ return {
     local TablineFileNameBlock = {
       init = function(self)
         self.filename = vim.api.nvim_buf_get_name(self.bufnr)
-        self.is_terminal = vim.api.nvim_get_option_value(
-          'buftype',
-          { buf = self.bufnr }
-        ) == 'terminal'
+        self.is_terminal = vim.api.nvim_get_option_value('buftype', { buf = self.bufnr }) == 'terminal'
       end,
       hl = function(self)
-        local base_hl = self.is_active and utils.get_highlight('TabLineSel')
-            or utils.get_highlight('TabLine')
+        local base_hl = self.is_active and utils.get_highlight('TabLineSel') or utils.get_highlight('TabLine')
         return {
           fg = base_hl.fg,
           bg = base_hl.bg,
@@ -681,8 +651,7 @@ return {
           if self.is_terminal then
             return 'Terminal'
           end
-          return self.filename == '' and '临时文件'
-              or vim.fn.fnamemodify(self.filename, ':t')
+          return self.filename == '' and '临时文件' or vim.fn.fnamemodify(self.filename, ':t')
         end,
       },
       {
@@ -696,11 +665,10 @@ return {
 
     -- 缓冲区块（滚动箭头）
     local TablineBufferBlock = utils.surround(
-    -- { ' │ ', '' }, -- 简洁分隔
+      -- { ' │ ', '' }, -- 简洁分隔
       { '  ', '' }, -- 简洁分隔
       function(self)
-        return self.is_active and utils.get_highlight('TabLineSel').bg
-            or utils.get_highlight('TabLine').bg
+        return self.is_active and utils.get_highlight('TabLineSel').bg or utils.get_highlight('TabLine').bg
       end,
       { TablineFileNameBlock }
     )

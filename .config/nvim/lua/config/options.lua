@@ -81,8 +81,7 @@ vim.opt.foldminlines = 1 -- 新增：避免空折叠
 
 function _G.custom_foldtext()
   -- 1. 获取折叠起始行文本（替换制表符）
-  local start_text =
-    vim.fn.getline(vim.v.foldstart):gsub('\t', string.rep(' ', vim.o.tabstop))
+  local start_text = vim.fn.getline(vim.v.foldstart):gsub('\t', string.rep(' ', vim.o.tabstop))
   -- 2. 计算折叠行数
   local nline = vim.v.foldend - vim.v.foldstart
   -- 3. 折叠图标（折叠显示，展开无）

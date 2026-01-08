@@ -2,21 +2,20 @@ return {
   'yetone/avante.nvim',
   event = 'VeryLazy',
   version = false,
-  build = vim.fn.has('win32') ~= 0
-      and 'powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false'
+  build = vim.fn.has('win32') ~= 0 and 'powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false'
       or 'make',
 
   opts = {
     provider = 'minimax',
     providers = {
       minimax = {
-        __inherited_from = "claude",                     -- 必须继承 claude（Anthropic 兼容）
-        endpoint = "https://api.minimaxi.com/anthropic", -- 推荐完整路径
-        model = "MiniMax-M2.1",
+        __inherited_from = 'claude',                     -- 必须继承 claude（Anthropic 兼容）
+        endpoint = 'https://api.minimaxi.com/anthropic', -- 推荐完整路径
+        model = 'MiniMax-M2.1',
         timeout = 60000,
         extra_request_body = {
           temperature = 0.1,
-          max_tokens = 16384,
+          max_tokens = 8192,
         },
       },
     },
@@ -41,11 +40,11 @@ return {
   },
 
   config = function(_, opts)
-    require("avante").setup(opts)
+    require('avante').setup(opts)
 
     -- 一键清除所有 selected files（优化版：强制清空 + 自动重新打开 sidebar）
-    vim.api.nvim_create_user_command("AvanteClearSelectedFiles", function()
-      local avante = require("avante")
+    vim.api.nvim_create_user_command('AvanteClearSelectedFiles', function()
+      local avante = require('avante')
       local sidebar = avante.get()
 
       if sidebar and sidebar.file_selector and sidebar.file_selector.selected_files then
@@ -57,18 +56,18 @@ return {
           sidebar:refresh()
         end
 
-        vim.notify("Avante: All selected files cleared!", vim.log.levels.INFO)
+        vim.notify('Avante: All selected files cleared!', vim.log.levels.INFO)
       else
         -- 如果 sidebar/file_selector 不可用，强制重新打开侧边栏（这会重建实例并清空）
-        vim.cmd("AvanteToggle") -- 先关闭（如果已开）
-        vim.cmd("AvanteToggle") -- 再打开，selected files 会自动重置为空
-        vim.notify("Avante: Sidebar reopened and selected files cleared!", vim.log.levels.INFO)
+        vim.cmd('AvanteToggle') -- 先关闭（如果已开）
+        vim.cmd('AvanteToggle') -- 再打开，selected files 会自动重置为空
+        vim.notify('Avante: Sidebar reopened and selected files cleared!', vim.log.levels.INFO)
       end
-    end, { desc = "Clear all Avante selected files" })
+    end, { desc = 'Clear all Avante selected files' })
 
     -- 快捷键（在任何模式下都可用）
-    vim.keymap.set("n", "<Leader>aC", ":AvanteClearSelectedFiles<CR>", {
-      desc = "Avante: Clear all selected files",
+    vim.keymap.set('n', '<Leader>aC', ':AvanteClearSelectedFiles<CR>', {
+      desc = 'Avante: Clear all selected files',
       silent = true,
     })
   end,

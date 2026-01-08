@@ -2,7 +2,7 @@
 syntax = "LuaJIT"
 
 # 行宽限制
-column_width = 80
+column_width = 120
 
 # 使用Unix风格换行符
 line_endings = "Unix"

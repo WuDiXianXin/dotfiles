@@ -100,133 +100,52 @@ return {
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(ev)
           local buf = ev.buf
-          local move_opts =
-            vim.tbl_extend('force', keymap_opts, { buffer = buf })
+          local move_opts = vim.tbl_extend('force', keymap_opts, { buffer = buf })
 
-          vim.keymap.set(
-            { 'n', 'x', 'o' },
-            ']f',
-            function()
-              move.goto_next_start('@function.outer', 'textobjects')
-            end,
-            vim.tbl_extend(
-              'force',
-              move_opts,
-              { desc = 'Treesitter: 下一个函数开始' }
-            )
-          )
-          vim.keymap.set(
-            { 'n', 'x', 'o' },
-            ']c',
-            function()
-              move.goto_next_start('@class.outer', 'textobjects')
-            end,
-            vim.tbl_extend(
-              'force',
-              move_opts,
-              { desc = 'Treesitter: 下一个类开始' }
-            )
-          )
-          vim.keymap.set(
-            { 'n', 'x', 'o' },
-            ']s',
-            function()
-              move.goto_next_start('@statement.outer', 'textobjects')
-            end,
-            vim.tbl_extend(
-              'force',
-              move_opts,
-              { desc = 'Treesitter: 下一个语句开始' }
-            )
-          )
+          vim.keymap.set({ 'n', 'x', 'o' }, ']f', function()
+            move.goto_next_start('@function.outer', 'textobjects')
+          end, vim.tbl_extend('force', move_opts, { desc = 'Treesitter: 下一个函数开始' }))
+          vim.keymap.set({ 'n', 'x', 'o' }, ']c', function()
+            move.goto_next_start('@class.outer', 'textobjects')
+          end, vim.tbl_extend('force', move_opts, { desc = 'Treesitter: 下一个类开始' }))
+          vim.keymap.set({ 'n', 'x', 'o' }, ']s', function()
+            move.goto_next_start('@statement.outer', 'textobjects')
+          end, vim.tbl_extend('force', move_opts, { desc = 'Treesitter: 下一个语句开始' }))
 
-          vim.keymap.set(
-            { 'n', 'x', 'o' },
-            '[f',
-            function()
-              move.goto_previous_start('@function.outer', 'textobjects')
-            end,
-            vim.tbl_extend(
-              'force',
-              move_opts,
-              { desc = 'Treesitter: 上一个函数开始' }
-            )
-          )
-          vim.keymap.set(
-            { 'n', 'x', 'o' },
-            '[c',
-            function()
-              move.goto_previous_start('@class.outer', 'textobjects')
-            end,
-            vim.tbl_extend(
-              'force',
-              move_opts,
-              { desc = 'Treesitter: 上一个类开始' }
-            )
-          )
-          vim.keymap.set(
-            { 'n', 'x', 'o' },
-            '[s',
-            function()
-              move.goto_previous_start('@statement.outer', 'textobjects')
-            end,
-            vim.tbl_extend(
-              'force',
-              move_opts,
-              { desc = 'Treesitter: 上一个语句开始' }
-            )
-          )
+          vim.keymap.set({ 'n', 'x', 'o' }, '[f', function()
+            move.goto_previous_start('@function.outer', 'textobjects')
+          end, vim.tbl_extend('force', move_opts, { desc = 'Treesitter: 上一个函数开始' }))
+          vim.keymap.set({ 'n', 'x', 'o' }, '[c', function()
+            move.goto_previous_start('@class.outer', 'textobjects')
+          end, vim.tbl_extend('force', move_opts, { desc = 'Treesitter: 上一个类开始' }))
+          vim.keymap.set({ 'n', 'x', 'o' }, '[s', function()
+            move.goto_previous_start('@statement.outer', 'textobjects')
+          end, vim.tbl_extend('force', move_opts, { desc = 'Treesitter: 上一个语句开始' }))
         end,
       })
 
       -- ===================== Swap 参数交换 =====================
-      vim.keymap.set(
-        'n',
-        '<leader>a',
-        function()
-          swap.swap_next('@parameter.inner')
-        end,
-        vim.tbl_extend(
-          'force',
-          keymap_opts,
-          { desc = 'Treesitter: 交换到下一个参数' }
-        )
-      )
+      vim.keymap.set('n', '<leader>a', function()
+        swap.swap_next('@parameter.inner')
+      end, vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 交换到下一个参数' }))
 
-      vim.keymap.set(
-        'n',
-        '<leader>A',
-        function()
-          swap.swap_previous('@parameter.inner')
-        end,
-        vim.tbl_extend(
-          'force',
-          keymap_opts,
-          { desc = 'Treesitter: 交换到上一个参数' }
-        )
-      )
+      vim.keymap.set('n', '<leader>A', function()
+        swap.swap_previous('@parameter.inner')
+      end, vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 交换到上一个参数' }))
 
       -- ===================== Repeatable Move =====================
       vim.keymap.set(
         { 'n', 'x', 'o' },
         ';',
         repeat_move.repeat_last_move_next,
-        vim.tbl_extend(
-          'force',
-          keymap_opts,
-          { desc = 'Treesitter: 重复上一次 move（向前）' }
-        )
+        vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 重复上一次 move（向前）' })
       )
 
       vim.keymap.set(
         { 'n', 'x', 'o' },
         ',',
         repeat_move.repeat_last_move_previous,
-        vim.tbl_extend(
-          'force',
-          keymap_opts,
-          { desc = 'Treesitter: 重复上一次 move（向后）' }
-        )
+        vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 重复上一次 move（向后）' })
       )
     end,
   },

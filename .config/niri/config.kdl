@@ -37,7 +37,7 @@ output "eDP-1" {
     // 多显示器：设置为主显示器；如果存在多个，则按顺序决定谁是主显示器
     focus-at-startup
     // 分辨率，可以使用 niri msg outputs 查看
-    mode "1920x1080@165.004"
+    // mode "1920x1080@165.004"
     // mode "preferred"
     // 启用 VRR，只在需要时激活，避免潜在闪烁
     variable-refresh-rate on-demand=true
