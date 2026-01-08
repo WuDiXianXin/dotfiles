@@ -25,11 +25,14 @@ return {
         ['<C-n>'] = { 'select_next', 'fallback' },
         ['<C-p>'] = { 'select_prev', 'fallback' },
 
-        -- 方式1：ESC键 - 优先隐藏补全菜单，无补全则执行默认ESC行为（推荐）
+        -- ESC键 - 优先隐藏补全菜单，无补全则执行默认ESC行为（推荐）
         ['<Esc>'] = { 'hide', 'fallback' },
 
-        -- 方式2：Ctrl+e - 彻底取消补全（回滚内容+隐藏菜单）
+        -- Ctrl+e - 彻底取消补全（回滚内容+隐藏菜单）
         ['<C-e>'] = { 'cancel' },
+
+        -- 确认候选项
+        ['<C-y>'] = { 'accept' },
       },
 
       cmdline = {
@@ -110,7 +113,7 @@ return {
 
       -- 懒加载 friendly-snippets，只加载指定语言
       require('luasnip.loaders.from_vscode').lazy_load({
-        include = { 'lua', 'rust', 'markdown', 'bash', 'fish' },
+        include = { 'lua', 'rust', 'markdown', 'bash', 'fish', 'c', 'cpp' },
       })
     end,
   },
