@@ -55,11 +55,13 @@ return {
 
         -- 快捷键按钮（最常用自定义部分）
         shortcut = {
-          { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+          { desc = '󰊳 Update', group = 'DiagnosticHint', action = 'Lazy update', key = 'u' },
 
           { desc = ' New Buffer', group = 'DiagnosticHint', action = 'enew', key = 'n' },
-          -- 你可以继续加很多，例如下面，但是我没有 Mason ，就注释
-          -- { desc = '  Mason', group = 'DiagnosticOk', action = 'Mason', key = 'm' },
+
+          { desc = '󰩈 Quit', group = 'DiagnosticHint', action = 'qa!', key = 'q' },
+
+          -- { desc = '  Mason', group = 'DiagnosticHint', action = 'Mason', key = 'm' },
         },
 
         -- ★ 这里是关键：覆盖默认的 Telescope action
