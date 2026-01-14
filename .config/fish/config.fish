@@ -1,6 +1,4 @@
 if status is-interactive
-    # ai
-    set -gx ANTHROPIC_BASE_URL "https://api.minimaxi.com/anthropic"
 
     # ========== 基础设置 ==========
     set -g fish_greeting ''

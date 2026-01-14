@@ -9,9 +9,10 @@ return {
     provider = 'minimax',
     providers = {
       minimax = {
-        __inherited_from = 'claude', -- 必须继承 claude（Anthropic 兼容）
+        __inherited_from = 'claude',
         endpoint = 'https://api.minimaxi.com/anthropic', -- 推荐完整路径
         model = 'MiniMax-M2.1',
+        api_key_name = "MINIMAX_API_KEY",
         timeout = 60000,
         extra_request_body = {
           temperature = 0.1,
