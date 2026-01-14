@@ -9,17 +9,17 @@ function proxy_manager
     read -l choice
     switch $choice
         case 1
-            # 1. 交互式输入 IP 最后两段（默认 5.243），增加示例提示
-            printf "\n请输入代理 IP 最后两段（格式如 5.243，留空使用默认值 5.243）：\n"
+            # 1. 交互式输入 IP 最后两段（默认 2.185），增加示例提示
+            printf "\n请输入代理 IP 最后两段（格式如 2.185，留空使用默认值 2.185）：\n"
             read -l ip_segments
             # 处理空输入，使用默认值
             if test -z "$ip_segments"
-                set ip_segments "5.243"
+                set ip_segments "2.185"
             end
 
             # 校验 IP 最后两段的合法性（仅允许 数字.数字 格式）
             if not string match -r '^[0-9]+\.[0-9]+$' "$ip_segments"
-                printf "\n❌ 输入格式错误！请按 数字.数字 格式输入（如 5.243）\n"
+                printf "\n❌ 输入格式错误！请按 数字.数字 格式输入（如 2.185）\n"
                 return 1 # 退出当前操作，避免无效配置
             end
 

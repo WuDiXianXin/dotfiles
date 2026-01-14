@@ -3,13 +3,13 @@ return {
   event = 'VeryLazy',
   version = false,
   build = vim.fn.has('win32') ~= 0 and 'powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false'
-      or 'make',
+    or 'make',
 
   opts = {
     provider = 'minimax',
     providers = {
       minimax = {
-        __inherited_from = 'claude',                     -- 必须继承 claude（Anthropic 兼容）
+        __inherited_from = 'claude', -- 必须继承 claude（Anthropic 兼容）
         endpoint = 'https://api.minimaxi.com/anthropic', -- 推荐完整路径
         model = 'MiniMax-M2.1',
         timeout = 60000,

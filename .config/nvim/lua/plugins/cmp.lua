@@ -3,11 +3,11 @@ return {
     'saghen/blink.cmp',
     branch = 'main',
     build = 'cargo build --release', -- 可选：启用 Rust fuzzy（更快，但需 Rust-night）
-    event = 'InsertEnter',           -- 插入模式懒加载
+    event = 'InsertEnter', -- 插入模式懒加载
     dependencies = {
-      { 'xzbdmw/colorful-menu.nvim',    branch = 'master' },
+      { 'xzbdmw/colorful-menu.nvim', branch = 'master' },
       { 'rafamadriz/friendly-snippets', branch = 'main' },
-      { 'L3MON4D3/LuaSnip',             branch = 'master' },
+      { 'L3MON4D3/LuaSnip', branch = 'master' },
       'Kaiser-Yang/blink-cmp-avante',
     },
     opts = {
@@ -19,7 +19,11 @@ return {
         ['<Down>'] = { 'select_next', 'fallback' },
 
         -- Ctrl+空格：只显示代码片段补全
-        ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+        ['<C-space>'] = {
+          function(cmp)
+            cmp.show({ providers = { 'snippets' } })
+          end,
+        },
 
         -- Ctrl+n/Ctrl+p：选择下/上一个补全项（符合通用习惯）
         ['<C-n>'] = { 'select_next', 'fallback' },

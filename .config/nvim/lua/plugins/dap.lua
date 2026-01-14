@@ -3,8 +3,8 @@ return {
     'mfussenegger/nvim-dap',
     branch = 'master',
     lazy = true,
-    keys = {                        -- 同之前，保持懒加载
-      { '<F9>',       mode = 'n' }, -- 切换断点（最常用）
+    keys = { -- 同之前，保持懒加载
+      { '<F9>', mode = 'n' }, -- 切换断点（最常用）
       { '<leader>db', mode = 'n' }, -- 切换断点
       { '<leader>dB', mode = 'n' }, -- 全局条件断点
       { '<leader>dl', mode = 'n' }, -- 全局日志断点
@@ -12,8 +12,8 @@ return {
       { '<leader>dL', mode = 'n' }, -- 当前行日志断点
     },
     dependencies = {
-      { 'rcarriga/nvim-dap-ui',            branch = 'master' },
-      { 'nvim-neotest/nvim-nio',           branch = 'master' },
+      { 'rcarriga/nvim-dap-ui', branch = 'master' },
+      { 'nvim-neotest/nvim-nio', branch = 'master' },
       { 'theHamsta/nvim-dap-virtual-text', branch = 'master' },
     },
     config = function()
@@ -55,22 +55,10 @@ return {
         fg = colors.red,
         bold = true,
       })
-      vim.api.nvim_set_hl(
-        0,
-        'DapBreakpointCondition',
-        { fg = colors.orange, bold = true }
-      )
-      vim.api.nvim_set_hl(
-        0,
-        'DapStopped',
-        { fg = colors.green, bg = colors.bg_highlight, bold = true }
-      )
+      vim.api.nvim_set_hl(0, 'DapBreakpointCondition', { fg = colors.orange, bold = true })
+      vim.api.nvim_set_hl(0, 'DapStopped', { fg = colors.green, bg = colors.bg_highlight, bold = true })
       vim.api.nvim_set_hl(0, 'DapLogPoint', { fg = colors.blue, bold = true })
-      vim.api.nvim_set_hl(
-        0,
-        'DapBreakpointRejected',
-        { fg = colors.dark5, bold = true }
-      )
+      vim.api.nvim_set_hl(0, 'DapBreakpointRejected', { fg = colors.dark5, bold = true })
       -- ==================== LLDB (codelldb) 适配器 ====================
       dap.adapters.lldb = {
         type = 'executable',
@@ -83,11 +71,7 @@ return {
         type = 'lldb',
         request = 'launch',
         program = function()
-          return vim.fn.input(
-            '可执行文件路径: ',
-            vim.fn.getcwd() .. '/',
-            'file'
-          )
+          return vim.fn.input('可执行文件路径: ', vim.fn.getcwd() .. '/', 'file')
         end,
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
@@ -105,12 +89,8 @@ return {
             -- 后台自动构建
             vim.fn.jobstart({ 'cargo', 'build' }, { detach = true })
             -- 获取 cargo metadata
-            local metadata_json = vim.json.decode(
-              table.concat(
-                vim.fn.systemlist('cargo metadata --format-version=1 --no-deps'),
-                ''
-              )
-            )
+            local metadata_json =
+              vim.json.decode(table.concat(vim.fn.systemlist('cargo metadata --format-version=1 --no-deps'), ''))
             local target_dir = metadata_json.target_directory
             -- 关键：找到当前缓冲区文件所属的 package
             local current_file = vim.fn.expand('%:p') -- 当前文件绝对路径
@@ -118,10 +98,7 @@ return {
             for _, pkg in ipairs(metadata_json.packages) do
               for _, target in ipairs(pkg.targets) do
                 -- 如果 target 有 src_path，且当前文件路径包含该 src_path，则属于这个 package
-                if
-                    target.src_path
-                    and string.find(current_file, target.src_path, 1, true)
-                then
+                if target.src_path and string.find(current_file, target.src_path, 1, true) then
                   -- 如果是 bin 类型（可执行），优先用它
                   if vim.tbl_contains(target.kind, 'bin') then
                     current_package_name = pkg.name
@@ -154,10 +131,10 @@ return {
         layouts = {
           {
             elements = {
-              { id = 'scopes',      size = 0.25 }, -- 变量作用域
+              { id = 'scopes', size = 0.25 }, -- 变量作用域
               { id = 'breakpoints', size = 0.25 }, -- 断点列表
-              { id = 'stacks',      size = 0.25 }, -- 调用栈
-              { id = 'watches',     size = 0.25 }, -- 监视表达式
+              { id = 'stacks', size = 0.25 }, -- 调用栈
+              { id = 'watches', size = 0.25 }, -- 监视表达式
             },
             size = 40,
             position = 'left',
@@ -170,7 +147,7 @@ return {
         },
         floating = {
           border = 'rounded',
-          max_width = 0.6,  -- 新增：限制浮动窗口宽度
+          max_width = 0.6, -- 新增：限制浮动窗口宽度
           max_height = 0.6, -- 新增：限制高度
         },
         controls = { enabled = true },
@@ -197,11 +174,7 @@ return {
         })
       end
       -- 鼠标支持
-      nmap(
-        '<2-LeftMouse>',
-        "<Cmd>lua require('dapui').eval()<CR>",
-        '双击变量弹出值'
-      )
+      nmap('<2-LeftMouse>', "<Cmd>lua require('dapui').eval()<CR>", '双击变量弹出值')
       -- F 键系列（标准调试快捷键）
       nmap('<F5>', dap.continue, 'DAP: 继续 / 开始调试')
       nmap('<F9>', dap.toggle_breakpoint, 'DAP: 切换断点')
@@ -226,11 +199,7 @@ return {
       end, 'DAP: 当前行条件断点')
       -- 快速日志断点（不暂停，打印变量）
       nmap('<leader>dL', function()
-        dap.set_breakpoint(
-          nil,
-          nil,
-          vim.fn.input('日志信息 (用 {var} 占位): ')
-        )
+        dap.set_breakpoint(nil, nil, vim.fn.input('日志信息 (用 {var} 占位): '))
       end, 'DAP: 当前行日志断点')
       -- 清空所有断点
       nmap('<leader>dX', dap.clear_breakpoints, 'DAP: 清空所有断点')
@@ -248,13 +217,13 @@ return {
     lazy = true, -- 强烈建议加这一行，实现懒加载
     config = function()
       require('nvim-dap-virtual-text').setup({
-        enabled = true,                     -- 启用插件
+        enabled = true, -- 启用插件
         highlight_changed_variables = true, -- 变量值变化时高亮（推荐开）
-        show_stop_reason = true,            -- 停在断点时显示原因（如 breakpoint hit）
+        show_stop_reason = true, -- 停在断点时显示原因（如 breakpoint hit）
         -- 可选美化（推荐加这些）
-        virt_text_pos = 'eol',              -- 显示在行尾（不遮代码）
-        all_frames = false,                 -- 只显示当前栈帧变量（默认就行）
-        highlight_new_as_changed = false,   -- 新变量不标记为变化
+        virt_text_pos = 'eol', -- 显示在行尾（不遮代码）
+        all_frames = false, -- 只显示当前栈帧变量（默认就行）
+        highlight_new_as_changed = false, -- 新变量不标记为变化
       })
     end,
   },

@@ -133,7 +133,7 @@ return {
     opts = {
       highlight = true,
       separator = ' > ',
-      depth_limit = 5,
+      depth_limit = 3,
       icons = {},
       lazy_update_context = true,
       safe_output = true,

@@ -1,4 +1,7 @@
 if status is-interactive
+    # ai
+    set -gx ANTHROPIC_BASE_URL "https://api.minimaxi.com/anthropic"
+
     # ========== 基础设置 ==========
     set -g fish_greeting ''
     # ========== Vi 模式 ==========
@@ -42,14 +45,12 @@ if status is-interactive
     alias sv="sudo nvim"
     alias vf="v ~/.config/fish/config.fish"
     alias sf="s ~/.config/fish/config.fish"
-    alias MG="sudo mount /dev/nvme0n1p3 ~/dev/local/"
     alias MG1="sudo mount /dev/nvme0n1p5 ~/dev/windows/"
     alias cls="clear"
     alias mkd="mkdir -p"
     alias backup-dir-contents="~/bash/backup-dir-contents.bash"
     # 替换 rm 为回收站删除，避免误删
     alias rm='trash-put'
-    alias rmy='trash-put -f -v'
     # 恢复回收站文件（rm restore）
     alias rmre='trash-restore'
     # 从回收站彻底删除某文件（rm remove）

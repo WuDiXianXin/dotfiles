@@ -17,7 +17,7 @@ input {
         // dwt(键盘输入时，禁用触摸板) + 防止手掌误碰
         dwtp
         // 自然滚动
-        natural-scroll
+        // natural-scroll
         // 移动速度
         accel-speed 0.4
         // 根据你移动触摸板的速度动态调整指针加速
@@ -26,7 +26,7 @@ input {
 
     // 鼠标
     mouse {
-      natural-scroll        // 和触摸板保持一致的自然滚动方向
+      // natural-scroll        // 和触摸板保持一致的自然滚动方向
       accel-speed 0.4       // 和触摸板一样的指针速度
       accel-profile "adaptive"  // 动态加速，更自然（推荐）
       // tap                  // 如果你的鼠标支持点击触摸（极少数轨迹球支持），否则别加
