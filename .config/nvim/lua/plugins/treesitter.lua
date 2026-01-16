@@ -43,10 +43,6 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     branch = 'main',
-    init = function()
-      -- 禁用内置 ftplugin 映射，避免冲突
-      vim.g.no_plugin_maps = true
-    end,
     opts = {
       select = {
         enable = true,
@@ -67,25 +63,25 @@ return {
       local select = require('nvim-treesitter-textobjects.select')
       local move = require('nvim-treesitter-textobjects.move')
       local swap = require('nvim-treesitter-textobjects.swap')
-      local repeat_move = require('nvim-treesitter-textobjects.repeatable_move')
+      -- local repeat_move = require('nvim-treesitter-textobjects.repeatable_move')
 
       -- 统一的键映射选项
       local keymap_opts = { noremap = true, silent = true, nowait = true }
 
       -- ===================== Select 文本对象 =====================
       local select_maps = {
-        af = { query = '@function.outer', desc = '函数（外层）' },
-        ['if'] = { query = '@function.inner', desc = '函数（内层）' },
+        aF = { query = '@function.outer', desc = '函数（外层）' },
+        ['iF'] = { query = '@function.inner', desc = '函数（内层）' },
         ac = { query = '@class.outer', desc = '类（外层）' },
         ic = { query = '@class.inner', desc = '类（内层）' },
         al = { query = '@loop.outer', desc = '循环（外层）' },
         il = { query = '@loop.inner', desc = '循环（内层）' },
-        ai = { query = '@conditional.outer', desc = '条件语句（外层）' },
-        ii = { query = '@conditional.inner', desc = '条件语句（内层）' },
+        ao = { query = '@conditional.outer', desc = '条件语句（外层）' },
+        io = { query = '@conditional.inner', desc = '条件语句（内层）' },
         as = { query = '@statement.outer', desc = '语句（外层）' },
         ['is'] = { query = '@statement.inner', desc = '语句（内层）' },
-        aC = { query = '@comment.outer', desc = '注释（外层）' }, -- 用大写 C 避免与 class 冲突
-        iC = { query = '@comment.inner', desc = '注释（内层）' },
+        ['a/'] = { query = '@comment.outer', desc = '注释（外层）' },
+        ['i/'] = { query = '@comment.inner', desc = '注释（内层）' },
       }
 
       for lhs, info in pairs(select_maps) do
@@ -134,19 +130,19 @@ return {
       end, vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 交换到上一个参数' }))
 
       -- ===================== Repeatable Move =====================
-      vim.keymap.set(
-        { 'n', 'x', 'o' },
-        ';',
-        repeat_move.repeat_last_move_next,
-        vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 重复上一次 move（向前）' })
-      )
-
-      vim.keymap.set(
-        { 'n', 'x', 'o' },
-        ',',
-        repeat_move.repeat_last_move_previous,
-        vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 重复上一次 move（向后）' })
-      )
+      -- vim.keymap.set(
+      --   { 'n', 'x', 'o' },
+      --   ';',
+      --   repeat_move.repeat_last_move_next,
+      --   vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 重复上一次 move（向前）' })
+      -- )
+      --
+      -- vim.keymap.set(
+      --   { 'x', 'o', 'n' },
+      --   ',',
+      --   repeat_move.repeat_last_move_previous,
+      --   vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 重复上一次 move（向后）' })
+      -- )
     end,
   },
 }

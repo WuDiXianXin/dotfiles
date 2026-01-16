@@ -3,11 +3,11 @@ return {
     'saghen/blink.cmp',
     branch = 'main',
     build = 'cargo build --release', -- 可选：启用 Rust fuzzy（更快，但需 Rust-night）
-    event = 'InsertEnter', -- 插入模式懒加载
+    event = 'InsertEnter',           -- 插入模式懒加载
     dependencies = {
-      { 'xzbdmw/colorful-menu.nvim', branch = 'master' },
+      { 'xzbdmw/colorful-menu.nvim',    branch = 'master' },
       { 'rafamadriz/friendly-snippets', branch = 'main' },
-      { 'L3MON4D3/LuaSnip', branch = 'master' },
+      { 'L3MON4D3/LuaSnip',             branch = 'master' },
       'Kaiser-Yang/blink-cmp-avante',
     },
     opts = {
@@ -132,6 +132,6 @@ return {
     'xzbdmw/colorful-menu.nvim',
     branch = 'master',
     lazy = true,
-    opts = {}, -- 可选：这里配置 colorful-menu 的自定义选项（如 lsp 特定高亮）
+    opts = {},
   },
 }

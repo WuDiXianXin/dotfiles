@@ -72,7 +72,7 @@ return {
         cmd = {
           'clangd',
           '--background-index',
-          '--clang-tidy', -- 可选：启用 clang-tidy 检查
+          '--clang-tidy',            -- 可选：启用 clang-tidy 检查
           '--header-insertion=iwyu', -- 智能头文件插入
           '--completion-style=detailed',
           '--function-arg-placeholders',
@@ -100,10 +100,10 @@ return {
         -- pylyzer 功能配置
         settings = {
           python = {
-            diagnostics = true, -- 启用代码诊断（语法/逻辑错误检测）
-            inlayHints = true, -- 启用内嵌提示（如类型提示、参数名提示）
+            diagnostics = true,     -- 启用代码诊断（语法/逻辑错误检测）
+            inlayHints = true,      -- 启用内嵌提示（如类型提示、参数名提示）
             smartCompletion = true, -- 启用智能补全
-            checkOnType = false, -- 关闭输入时实时检查（可根据需求改为true，注意性能消耗）
+            checkOnType = false,    -- 关闭输入时实时检查（可根据需求改为true，注意性能消耗）
             -- 保留原pyright中实用的分析配置（pylyzer兼容部分类似配置）
             analysis = {
               autoSearchPaths = true,
@@ -113,6 +113,7 @@ return {
           },
         },
       })
+
 
       -- ==================== 启用所有 LSP ====================
       vim.lsp.enable({
