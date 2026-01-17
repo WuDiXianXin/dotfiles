@@ -143,6 +143,8 @@ return {
         map('n', '<leader>ghh', gs.select_hunk, { desc = 'Git: 选中当前变更块' })
         -- 刷新gitsigns状态（解决部分场景不更新问题）
         map('n', '<leader>ghf', gs.refresh, { desc = 'Git: 刷新变更状态' })
+
+        require('mini.clue').ensure_buf_triggers()
       end,
     })
   end,

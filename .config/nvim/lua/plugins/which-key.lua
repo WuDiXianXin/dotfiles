@@ -5,15 +5,15 @@ return {
     event = 'VeryLazy',
     opts = {
       preset = 'modern',
-      -- 智能延迟：插件相关键立即显示，其他延迟 200ms（防误触）
-      delay = function(ctx)
-        return ctx.plugin and 0 or 200
-      end,
-
-      -- 只显示有 desc 的映射（保持干净）
-      filter = function(mapping)
-        return mapping.desc and mapping.desc ~= ''
-      end,
+      -- -- 智能延迟：插件相关键立即显示，其他延迟 200ms（防误触）
+      -- delay = function(ctx)
+      --   return ctx.plugin and 0 or 200
+      -- end,
+      --
+      -- -- 只显示有 desc 的映射（保持干净）
+      -- filter = function(mapping)
+      --   return mapping.desc and mapping.desc ~= ''
+      -- end,
 
       -- 启用官方内置插件
       plugins = {
@@ -66,26 +66,24 @@ return {
       -- ==================== 分组注册（推荐新写法：wk.add） ====================
       wk.add({
         -- Leader 顶级分组
-        { '<leader>', group = 'Leader 主菜单' },
+        { '<leader>', group = 'Leader' },
 
         -- 功能大类
+        { '<leader>a', group = 'AI / Avante' },
         { '<leader>b', group = '缓冲区管理' },
-        { '<leader>t', group = '标签页操作' },
-        { '<leader>w', group = '窗口操作' },
-        { '<leader>e', group = '文件/探索器' },
-        { '<leader>c', group = '内容/代码操作/ Crates / Cargo' },
-        { '<leader>f', group = '查找/模糊搜索' },
-        { '<leader>l', group = '诊断/位置列表' },
-        { '<leader>d', group = '调试 (DAP)' },
+        { '<leader>c', group = ' Crates' },
+        { '<leader>d', group = '诊断 / Debug / DAP' },
+        { '<leader>f', group = 'Pick' },
+        { '<leader>g', group = '󰊢  Git' },
+        { '<leader>l', group = 'fmt / 位置列表' },
+        { '<leader>l', group = 'Markdown 渲染' },
+        { '<leader>t', group = '切换 / Tabs' },
+
         -- 非 Leader 前缀
         { 'g', group = '跳转 / Goto' },
         { 'gr', group = 'LSP 符号操作' },
         { '[', group = '上一个' },
         { ']', group = '下一个' },
-
-        -- v 模式
-        { '<leader>', group = 'Leader 主菜单', mode = 'v' },
-        { '<leader>c', group = '内容/代码操作', mode = 'v' },
       })
 
       -- 全局快捷键查看（? 键）

@@ -203,6 +203,7 @@ return {
       end, 'DAP: 当前行日志断点')
       -- 清空所有断点
       nmap('<leader>dX', dap.clear_breakpoints, 'DAP: 清空所有断点')
+      require('mini.clue').ensure_buf_triggers()
     end,
   },
   -- dap-ui 保持懒加载，由 nvim-dap 自动触发

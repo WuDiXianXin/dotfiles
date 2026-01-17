@@ -143,6 +143,8 @@ return {
       --   repeat_move.repeat_last_move_previous,
       --   vim.tbl_extend('force', keymap_opts, { desc = 'Treesitter: 重复上一次 move（向后）' })
       -- )
+
+      require('mini.clue').ensure_buf_triggers()
     end,
   },
 }

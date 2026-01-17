@@ -25,5 +25,6 @@ return {
     vim.keymap.set('n', '<leader>cf', crates.show_features_popup, { desc = 'Crates: 显示特性弹窗' })
     vim.keymap.set('n', '<leader>cd', crates.open_documentation, { desc = 'Crates: 打开文档' })
     vim.keymap.set('n', '<leader>cr', crates.reload, { desc = 'Crates: 重新加载缓存' })
+    require('mini.clue').ensure_buf_triggers()
   end,
 }

@@ -399,7 +399,6 @@ return {
       condition = conditions.lsp_attached,
       update = { 'LspAttach', 'LspDetach' },
       provider = function()
-        local lsp_icon = get_icon('lsp', 'Module', '')
         local names = vim.tbl_map(function(s)
           return s.name
         end, vim.lsp.get_clients({ bufnr = 0 }))
@@ -408,7 +407,7 @@ return {
         if #name_str > 20 then
           name_str = vim.fn.strcharpart(name_str, 0, 17) .. '...'
         end
-        return #names > 0 and (lsp_icon .. ' [' .. name_str .. ']')
+        return #names > 0 and ('[' .. name_str .. ']')
       end,
       hl = { fg = 'green', bold = true },
       on_click = {

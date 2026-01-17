@@ -56,3 +56,4 @@ nmap('<leader>X', function()
     vim.notify('Lua 运行错误: ' .. run_err, vim.log.levels.ERROR)
   end
 end, '执行整个 buffer 的 Lua 代码（不 source）')
+require('mini.clue').ensure_buf_triggers()

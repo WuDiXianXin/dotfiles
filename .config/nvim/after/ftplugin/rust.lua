@@ -73,3 +73,5 @@ end, 'Rust: 跳转到父模块')
 -- nmap('<leader>vh', function() vim.cmd.RustLsp({ 'view', 'hir' }) end, 'Rust: 查看 HIR')
 -- nmap('<leader>vm', function() vim.cmd.RustLsp({ 'view', 'mir' }) end, 'Rust: 查看 MIR')
 -- nmap('<leader>st', function() vim.cmd.RustLsp('syntaxTree') end, 'Rust: 查看语法树')
+
+require('mini.clue').ensure_buf_triggers()
