@@ -75,8 +75,6 @@ end, '纯净保存文件（支持普通/插入模式）')
 imap('kj', '<Esc>', '快速退出插入模式')
 imap('jk', '<Esc>', '快速退出插入模式')
 
-nmap('<leader>cp', ':normal! ggVG"_dP<CR>', '替换全文为剪贴板内容')
-
 nvmap('<leader>y', '"+y', '复制到系统剪贴板')
 nmap('<leader>Y', '"+Y', '整行复制到系统剪贴板')
 
