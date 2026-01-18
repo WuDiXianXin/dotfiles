@@ -58,8 +58,6 @@ if status is-interactive
     alias rmall='trash-empty'
     alias fdf="fd -H -t f"
     alias fdd="fd -H -t d"
-    alias GP="git push"
-    alias GU="git pull"
     alias GS="git status"
     alias GA="git add ."
     alias GC="git commit"
