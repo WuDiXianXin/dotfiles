@@ -1,5 +1,4 @@
 if status is-interactive
-
     # ========== 基础设置 ==========
     set -g fish_greeting ''
     # ========== Vi 模式 ==========
@@ -64,6 +63,7 @@ if status is-interactive
     alias GS="git status"
     alias GA="git add ."
     alias GC="git commit"
+    alias GR="git restore"
     alias show="fastfetch"
     # ========== 工具管理 ==========
     starship init fish | source
