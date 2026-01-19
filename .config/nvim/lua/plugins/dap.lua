@@ -174,7 +174,7 @@ return {
         })
       end
       -- 鼠标支持
-      nmap('<2-LeftMouse>', "<Cmd>lua require('dapui').eval()<CR>", '双击变量弹出值')
+      nmap('<2-LeftMouse>', "<cmd>lua require('dapui').eval()<CR>", '双击变量弹出值')
       -- F 键系列（标准调试快捷键）
       nmap('<F5>', dap.continue, 'DAP: 继续 / 开始调试')
       nmap('<F9>', dap.toggle_breakpoint, 'DAP: 切换断点')

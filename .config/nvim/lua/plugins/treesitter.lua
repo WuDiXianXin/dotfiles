@@ -5,7 +5,7 @@ return {
     build = ':TSUpdate',
     lazy = false,
     dependencies = {
-      { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' }
+      { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
     },
     config = function()
       -- 手动安装所需 parsers（异步）

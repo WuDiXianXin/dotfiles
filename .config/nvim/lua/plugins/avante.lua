@@ -67,7 +67,7 @@ return {
     end, { desc = 'Clear all Avante selected files' })
 
     -- 快捷键（在任何模式下都可用）
-    vim.keymap.set('n', '<Leader>aC', ':AvanteClearSelectedFiles<CR>', {
+    vim.keymap.set('n', '<Leader>aC', '<cmd>AvanteClearSelectedFiles<CR>', {
       desc = 'Avante: Clear all selected files',
       silent = true,
     })

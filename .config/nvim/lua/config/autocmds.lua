@@ -10,18 +10,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- 3. 保存前自动格式化
-vim.api.nvim_create_autocmd('BufWritePre', {
-  group = global_autocmd_group,
-  desc = 'Auto format code with LSP before saving file (async, only if LSP attached)',
-  pattern = '*',
-  callback = function()
-    -- 只在有 LSP 客户端时格式化
-    if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
-      vim.lsp.buf.format({ async = true, timeout_ms = 2000 }) -- 异步 + 稍长超时
-    end
-  end,
-})
+-- -- 3. 保存前自动格式化
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   group = global_autocmd_group,
+--   desc = 'Auto format code with LSP before saving file (async, only if LSP attached)',
+--   pattern = '*',
+--   callback = function()
+--     -- 只在有 LSP 客户端时格式化
+--     if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
+--       vim.lsp.buf.format({ async = true, timeout_ms = 2000 }) -- 异步 + 稍长超时
+--     end
+--   end,
+-- })
 
 -- 4. 打开文件自动恢复上次光标位置 + 展开折叠
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
