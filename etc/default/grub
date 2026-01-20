@@ -3,9 +3,8 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=15
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nowatchdog ibt=off nvidia.NVreg_EnableS0ixPowerManagement=0 nvidia.NVreg_RegistryDwords=PowerMizerEnable=0x1 nvidia.NVreg_PreserveVideoMemoryAllocations=1 modprobe.blacklist=snd_hda_codec_hdmi nvidia-drm.modeset=1 nvidia_drm.fbdev=1"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 nowatchdog nvidia-drm.modeset=1 nvidia_drm.fbdev=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1 nvidia.NVreg_EnableS0ixPowerManagement=0 nvidia.NVreg_EnableGpuFirmware=0"
 GRUB_CMDLINE_LINUX=""
-
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 
