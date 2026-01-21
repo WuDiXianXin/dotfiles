@@ -21,7 +21,7 @@ check_dependencies() {
 
 check_dependencies
 
-EXCLUDE_DIRS=('.git' '.github' 'node_modules' '__pycache__' 'target' '.godot')
+EXCLUDE_DIRS=('.git' 'assets' '.github' 'node_modules' '__pycache__' 'target' '.godot')
 
 msg_info() { echo "ℹ️  $1"; }
 msg_warn() { echo "⚠️  $1"; }
@@ -100,7 +100,7 @@ write_tree() {
     echo "目录结构：" >> "$output_file"
     echo "----------------------------------------" >> "$output_file"
 
-    eza -T -a --color=never -I '.git|.github|node_modules|__pycache__|target|.godot' "$base_dir" >> "$output_file" 2>/dev/null || true
+    eza -T -a --color=never -I '.git|assets|.github|node_modules|__pycache__|target|.godot' "$base_dir" >> "$output_file" 2>/dev/null || true
 
     echo "" >> "$output_file"
     echo "========================================" >> "$output_file"
@@ -117,7 +117,7 @@ write_file_contents() {
     while IFS= read -r -d '' file; do
         files+=("$file")
     done < <(fd --type f --hidden \
-        --exclude=.git --exclude=.github --exclude=node_modules --exclude=__pycache__ \
+        --exclude=.git --exclude=assets --exclude=.github --exclude=node_modules --exclude=__pycache__ \
         --exclude=target --exclude=.godot \
         --exclude='.env' --exclude='.DS_Store' --exclude='Thumbs.db' \
         -0 . "$base_dir" 2>/dev/null)
@@ -205,7 +205,7 @@ msg_info "目标目录: $base_dir"
 
 msg_info "正在统计文件数量..."
 file_count=$(fd --type f --hidden \
-    --exclude=.git --exclude=.github --exclude=node_modules --exclude=__pycache__ \
+    --exclude=.git --exclude=assets --exclude=.github --exclude=node_modules --exclude=__pycache__ \
     --exclude=target --exclude=.godot \
     --exclude='.env' --exclude='.DS_Store' --exclude='Thumbs.db' \
     . "$base_dir" 2>/dev/null | echo $(( $(wc -l < /dev/stdin) + 0 )))
