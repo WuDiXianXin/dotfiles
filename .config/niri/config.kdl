@@ -114,10 +114,10 @@ gestures {
 }
 
 environment {
-    http_proxy "http://192.168.2.185:17890"
-    https_proxy "http://192.168.2.185:17890"
-    all_proxy "socks5://192.168.2.185:17891"
-    no_proxy "localhost,127.0.0.1,::1,192.168.0.0/16"
+    // http_proxy "http://192.168.2.185:17890"
+    // https_proxy "http://192.168.2.185:17890"
+    // all_proxy "socks5://192.168.2.185:17891"
+    // no_proxy "localhost,127.0.0.1,::1,192.168.0.0/16"
 
     // 渲染环境优化
     // GTK应用在XWayland下保持1倍缩放
