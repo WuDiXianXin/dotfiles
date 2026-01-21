@@ -5,13 +5,12 @@ CONFIG_DIRS=(
   "niri"
   "fish"
   "foot"
-  "fnott"
-  "waybar"
-  "fuzzel"
-  "swaylock"
   "nvim"
+  "obs-studio"
   "environment.d"
   "wechat-universal"
+  "dgop"
+  "DankMaterialShell"
   "qq-bwrap-flags.conf"
 )
 
