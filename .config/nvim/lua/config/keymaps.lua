@@ -14,9 +14,6 @@ end
 local vmap = function(lhs, rhs, desc, opts)
   map('v', lhs, rhs, desc, opts)
 end
-local imap = function(lhs, rhs, desc, opts)
-  map('i', lhs, rhs, desc, opts)
-end
 local xmap = function(lhs, rhs, desc, opts)
   map('x', lhs, rhs, desc, opts)
 end
@@ -69,8 +66,8 @@ nxmap('<C-s>', function()
   end
 end, '纯净保存文件（支持普通/插入模式）')
 
-imap('kj', '<Esc>', '快速退出插入模式')
-imap('jk', '<Esc>', '快速退出插入模式')
+map({ 'i', 't' }, 'kj', '<Esc>', '快速退出插入模式')
+map({ 'i', 't' }, 'jk', '<Esc>', '快速退出插入模式')
 
 nmap('<leader>y', '"+y', '复制到系统剪贴板')
 xmap('y', '"+y', '复制到系统剪贴板')
@@ -119,6 +116,7 @@ nmap('we', '<cmd>wincmd =<CR>', '所有窗口等分大小')
 -- ==================== 终端映射 ====================
 
 map('t', '<leader><Esc>', '<C-\\><C-n>', '终端模式：快速退出到普通t模式')
+nmap('t', '<cmd>term<CR>i', '进入终端模式')
 
 -- ==================== 缓冲区管理 ====================
 
