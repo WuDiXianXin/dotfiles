@@ -172,9 +172,6 @@ hotkey-overlay { skip-at-startup; }
 // 告诉客户端平铺样式，省略窗口栏
 prefer-no-csd
 
-// 截图保存路径及其格式
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 
@@ -376,12 +373,20 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
-    // 全屏选区截图（支持多显示器）
-    Print { screenshot; }
-    // 截取当前屏幕
-    Ctrl+Print { screenshot-screen; }
-    // 截取当前窗口
-    Alt+Print { screenshot-window; }
+
+    // 全屏截图
+    Mod+S {
+      spawn "~/bash/screenshot.bash" "-f"
+    }
+    // 区域截图
+    Mod+Shift+S {
+      spawn "~/bash/screenshot.bash" "-r"
+    }
+
+    // 窗口截图
+    Mod+Alt+S {
+      spawn "~/bash/screenshot.bash" "-w"
+    }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
