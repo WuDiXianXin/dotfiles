@@ -5,7 +5,6 @@ CONFIG_DIRS=(
   "niri"
   "fish"
   "foot"
-  "nvim"
   "obs-studio"
   "environment.d"
   "wechat-universal"
