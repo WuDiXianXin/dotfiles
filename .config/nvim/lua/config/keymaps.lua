@@ -24,8 +24,8 @@ end
 -- ==================== 基础设置 ====================
 
 -- 默认 1000
--- vim.opt.timeoutlen = 500
--- vim.opt.ttimeoutlen = 500
+vim.opt.timeoutlen = 300
+vim.opt.ttimeoutlen = 300
 
 nmap(' ', '<Nop>', '禁用空格默认功能（用作 Leader）')
 nmap('<CR>', '<Nop>', '禁用回车默认功能')
@@ -34,11 +34,15 @@ nmap('<leader>!', ':!', '快速进入 :!')
 nmap('<leader>;', ':!', '快速进入 :!')
 
 nmap('<leader>j', '*``cgn', '替换光标所在单词（按 . 继续下一个）')
+nmap('<leader>r', ':%s/', '快速提供替换命令')
 
 -- ==================== 搜索与预览 ====================
 
 nmap('<C-d>', '<C-d>zz', '向下半屏并居中')
 nmap('<C-u>', '<C-u>zz', '向上半屏并居中')
+
+nmap('<C-f>', '<C-f>zz', '向下全屏并居中')
+nmap('<C-b>', '<C-b>zz', '向下全屏并居中')
 
 nmap('n', 'nzzzv', '下一个搜索结果并居中展开')
 nmap('N', 'Nzzzv', '上一个搜索结果并居中展开')

@@ -93,26 +93,26 @@ return {
       require('mini.pick').setup()
       require('mini.extra').setup()
 
-      local starter = require('mini.starter')
-      starter.setup({
-        evaluate_single = true,
-        header = '',
-        footer = '',
-        items = {
-          -- 当前目录: true ; 所有目录: false
-          starter.sections.recent_files(8, true),
-          { name = 'New file', action = 'ene | startinsert', section = 'Actions' },
-          { name = 'Config', action = 'cd ~/.config/nvim | Pick files', section = 'Actions' },
-          { name = 'Dotfiles', action = 'cd ~/git/dotfiles | Pick files', section = 'Actions' },
-          { name = 'Lazy', action = 'Lazy', section = 'Actions' },
-          { name = 'Quit', action = 'qa!', section = 'Actions' },
-        },
-
-        content_hooks = {
-          starter.gen_hook.adding_bullet('│ '),
-          starter.gen_hook.aligning('center', 'center'),
-        },
-      })
+      -- local starter = require('mini.starter')
+      -- starter.setup({
+      --   evaluate_single = true,
+      --   header = '',
+      --   footer = '',
+      --   items = {
+      --     -- 当前目录: true ; 所有目录: false
+      --     starter.sections.recent_files(8, true),
+      --     { name = 'New file', action = 'ene | startinsert', section = 'Actions' },
+      --     { name = 'Config', action = 'cd ~/.config/nvim | Pick files', section = 'Actions' },
+      --     { name = 'Dotfiles', action = 'cd ~/git/dotfiles | Pick files', section = 'Actions' },
+      --     { name = 'Lazy', action = 'Lazy', section = 'Actions' },
+      --     { name = 'Quit', action = 'qa!', section = 'Actions' },
+      --   },
+      --
+      --   content_hooks = {
+      --     starter.gen_hook.adding_bullet('│ '),
+      --     starter.gen_hook.aligning('center', 'center'),
+      --   },
+      -- })
 
       -- ==================== 美观 & 辅助 ====================
       require('mini.hipatterns').setup({

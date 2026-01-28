@@ -107,4 +107,4 @@ vim.opt.splitbelow = true -- 新窗口默认下方分割
 
 -- ===================== 底部栏 =====================
 
-vim.opt.showmode = false
+-- vim.opt.showmode = false

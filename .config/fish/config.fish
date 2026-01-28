@@ -23,6 +23,12 @@ if status is-interactive
     set -gx PATH $JAVA_HOME/bin $PATH
 
     set -gx WASM_OPT /usr/bin/wasm-opt
+
+    # 配置 CUDA 的可执行文件路径
+    set -x PATH /opt/cuda/bin $PATH
+    # 配置 CUDA 的共享库路径（无则创建）
+    set -x LD_LIBRARY_PATH /opt/cuda/lib64
+
     # ========== Rust ==========
     set -x RUSTC_WRAPPER sccache
     set -x SCCACHE_DIR "$HOME/.cache/sccache"

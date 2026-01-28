@@ -12,6 +12,7 @@ input {
 
     // 触摸板
     touchpad {
+        off
         // 点击
         tap
         // dwt(键盘输入时，禁用触摸板) + 防止手掌误碰
@@ -403,7 +404,7 @@ binds {
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     // 退出 niri 窗口管理器
-    Mod+Shift+E { quit skip-confirmation=true; }       // 退出 niri
+    // Mod+Shift+E { quit skip-confirmation=true; }       // 退出 niri
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.

@@ -295,7 +295,7 @@
             "versioned_id": "scene",
             "settings": {
                 "custom_size": false,
-                "id_counter": 1,
+                "id_counter": 2,
                 "items": [
                     {
                         "name": "屏幕采集(PipeWire)",
