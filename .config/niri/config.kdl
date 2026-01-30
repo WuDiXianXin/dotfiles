@@ -12,7 +12,7 @@ input {
 
     // 触摸板
     touchpad {
-        off
+        // off
         // 点击
         tap
         // dwt(键盘输入时，禁用触摸板) + 防止手掌误碰

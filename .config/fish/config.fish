@@ -40,6 +40,8 @@ if status is-interactive
     set -x RUSTUP_UPDATE_ROOT https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
     set -x RUSTUP_DIST_SERVER https://mirrors.tuna.tsinghua.edu.cn/rustup
     # ========== 别名管理 ==========
+    alias j="bash ~/bash/j.bash"
+    alias o="bash ~/bash/o.bash"
     alias e="eza --icons --group-directories-first --git"
     alias et="e --git-ignore -T -L" # 后面跟数字代表显示层级
     alias eal="e -a -l"
