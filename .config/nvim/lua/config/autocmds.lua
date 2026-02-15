@@ -26,6 +26,8 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
     map({ 'i', 't' }, 'kj', '<Esc>', '快速退出插入模式')
     map({ 'i', 't' }, 'jk', '<Esc>', '快速退出插入模式')
+
+    nmap('<leader>lf', vim.lsp.buf.format, '格式化当前文件')
   end,
 })
 

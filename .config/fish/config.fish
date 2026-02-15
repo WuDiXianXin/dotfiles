@@ -69,6 +69,7 @@ if status is-interactive
     alias GA="git add ."
     alias GC="git commit"
     alias GR="git restore"
+    alias GP="git push"
     alias show="fastfetch"
     # ========== 工具管理 ==========
     starship init fish | source

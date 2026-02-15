@@ -141,9 +141,9 @@ binds {
     // 切换窗口为浮动 / 平铺模式
     Mod+V       { toggle-window-floating; }
     // 在浮动窗口和平铺窗口间切换焦点
-    // 切换列的标签式显示（垂直标签而非堆叠）
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
+    // 切换列的标签式显示（垂直标签而非堆叠）
     Mod+W { toggle-column-tabbed-display; }
 
     // 全屏截图
