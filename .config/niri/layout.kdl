@@ -1,0 +1,52 @@
+layout {
+    // 窗口间距离
+    gaps 6
+
+    // 窗口位置居中
+    center-focused-column "never"
+    // center-focused-column "always"
+    // always-center-single-column
+
+    // 窗口列宽预设, mod + r
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    // 窗口行高预设, mod + shift + r
+    preset-window-heights {
+        proportion 0.5
+        proportion 1.0
+    }
+
+    // 默认窗口宽度
+    // default-column-width { proportion 1.0; }
+    default-column-width { proportion 0.5; }
+
+    // 窗口聚焦
+    focus-ring {
+        off  // 注释掉或删除这行来开启
+        width 4                  // 环宽度（逻辑像素，推荐 3~6）
+        // active-color "#89b4fa"   // 活跃窗口颜色（蓝紫，Arch 默认风）
+        // inactive-color "#45475a" // 非活跃（灰）
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        // active-color "#74c7ec"   // Catppuccin Peach，柔和橙
+        active-color "#a6e3a1"   // Catppuccin Green，清新绿
+        inactive-color "#585b70"
+        // 你可以加 gradient 等高级，但简单颜色就够
+    }
+
+    // 窗口边框
+    border { off; }
+
+    // 预留全屏边框距离
+    struts {
+      top 10
+      bottom 10
+      left 10
+      right 10
+    }
+
+    // 窗口阴影，不支持
+    shadow { }
+}

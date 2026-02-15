@@ -1,0 +1,59 @@
+environment {
+    // http_proxy "http://192.168.2.185:17890"
+    // https_proxy "http://192.168.2.185:17890"
+    // all_proxy "socks5://192.168.2.185:17891"
+    // no_proxy "localhost,127.0.0.1,::1,192.168.0.0/16"
+
+    LANG "zh_CN.UTF-8"
+
+    // 输入法配置
+    INPUT_METHOD "fcitx"
+    QT_IM_MODULE "fcitx"
+    SDL_IM_MODULE "fcitx"
+    XMODIFIERS "@im=fcitx"
+    GLFW_IM_MODULE "fcitx"
+
+    // 渲染环境优化
+    // GTK应用在XWayland下保持1倍缩放
+    GDK_SCALE "1"
+
+    GSK_RENDERER "vulkan"
+
+    WGPU_BACKEND "vulkan"
+
+    // 禁用NVIDIA硬件光标加速
+    // WLR_NO_HARDWARE_CURSORS "1"
+
+    // NVIDIA渲染后端配置
+    WLR_RENDERER "vulkan"
+    WLR_RENDERER_ALLOW_SOFTWARE "1"
+    GBM_BACKEND "nvidia-drm"
+    __NV_PRIME_RENDER_OFFLOAD "1"
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"
+    NVIDIA_DRIVER_CAPABILITIES "graphics,compute,video"
+
+    // 确保Vulkan应用强制使用NVIDIA
+    __VK_LAYER_NV_optimus "NVIDIA_only"
+    VK_ICD_FILENAMES "/usr/share/vulkan/icd.d/nvidia_icd.json"
+
+    // NVIDIA游戏性能优化
+    __GL_MaxFramesAllowed "1"
+    // 关闭垂直同步，可能导致画面撕裂
+    __GL_SYNC_TO_VBLANK "0"
+
+    // Qt应用Wayland适配
+    // 优先Wayland，失败回退XWayland
+    QT_QPA_PLATFORM "wayland"
+    // 自动适配屏幕缩放（避免手动设置DPI）
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    //  禁用QT窗口装饰
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_PLUGIN_PATH "/usr/lib/qt/plugins"
+    QT_QPA_PLATFORM_PLUGIN_PATH "/usr/lib/qt/plugins/platforms"
+
+    // GTK应用Wayland适配
+    // 优先Wayland后端
+    GDK_BACKEND "wayland,x11"
+    CLUTTER_BACKEND "wayland,x11"
+
+}

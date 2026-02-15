@@ -1,0 +1,59 @@
+input {
+    // 键盘
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        // 小键盘
+        // numlock
+    }
+
+    // 触摸板
+    touchpad {
+        // off
+        // 点击
+        tap
+        // dwt(键盘输入时，禁用触摸板) + 防止手掌误碰
+        dwtp
+        // 自然滚动
+        natural-scroll
+        // 移动速度
+        accel-speed 0.4
+        // 根据你移动触摸板的速度动态调整指针加速
+        accel-profile "adaptive"
+    }
+
+    // 鼠标
+    mouse {
+      // natural-scroll        // 和触摸板保持一致的自然滚动方向
+      accel-speed 0.4       // 和触摸板一样的指针速度
+      accel-profile "adaptive"  // 动态加速，更自然（推荐）
+      // tap                  // 如果你的鼠标支持点击触摸（极少数轨迹球支持），否则别加
+    }
+}
+
+output "eDP-1" {
+    // 多显示器：设置为主显示器；如果存在多个，则按顺序决定谁是主显示器
+    focus-at-startup
+    // 分辨率，可以使用 niri msg outputs 查看
+    // mode "1920x1080@165.004"
+    // mode "preferred"
+    // 启用 VRR，只在需要时激活，避免潜在闪烁
+    variable-refresh-rate on-demand=true
+    // 缩放
+    // scale 1
+    // 旋转
+    // transform "normal"
+    // 位置
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@165.000"
+    position x=1920 y=0
+}
+
+/-layer-rule{
+    match namespace="swww-daemonoverview"
+     place-within-backdrop true
+}

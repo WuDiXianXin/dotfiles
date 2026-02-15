@@ -1,0 +1,178 @@
+// 快捷键操作
+binds {
+    // 打开帮助菜单
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // 关闭当前窗口
+    Mod+Q repeat=false { close-window; }
+
+    Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+B hotkey-overlay-title="Run an Application: firefox" { spawn "firefox"; }
+    Mod+E hotkey-overlay-title="Run an Application: nautilus" { spawn "nautilus"; }
+    Mod+D hotkey-overlay-title="Toggle Spotlight" { spawn "dms" "ipc" "call" "spotlight" "toggle"; } // 打开 spotlight
+    Ctrl+Shift+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; } // 锁屏
+
+    // win - 减小列宽
+    Mod+Minus { set-column-width "-10%"; }
+    // win = 增大列宽
+    Mod+Equal { set-column-width "+10%"; }
+    // win shift - 减小窗口高度
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    // win shift = 增大窗口高度
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // 聚焦到 左下上右 列or窗口or工作区，上下为niri的工作区
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-right; }
+    // 移动当前列窗口到指定方向
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+L     { move-column-right; }
+    // 聚焦到对应方向的显示器
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+    // 将当前列移动到对应方向的显示器
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+WheelScrollDown      { focus-column-right; }
+    Mod+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+WheelScrollUp   { move-column-left; }
+
+    // 打开/关闭概览（工作区和窗口的缩放视图）
+    // 触摸板四指上滑/下滑也可触发
+    Mod+O repeat=false { toggle-overview; }
+
+    // 聚焦到下方工作区，触摸板三指下滑
+    Mod+U     { focus-workspace-down; }
+    // 聚焦到上方工作区，触摸板三指上滑
+    Mod+I     { focus-workspace-up; }
+    // 将当前列移动到下方工作区
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    // 将当前列移动到上方工作区
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+    // 移动当前工作区到下方
+    Mod+Shift+U         { move-workspace-down; }
+    // 移动当前工作区到上方
+    Mod+Shift+I         { move-workspace-up; }
+
+    // 聚焦到第一列
+    Mod+Left { focus-column-first; }
+    // 聚焦到最后一列
+    Mod+Right  { focus-column-last; }
+    // 将当前列移动到第一列
+    Mod+Ctrl+Left { move-column-to-first; }
+    // 将当前列移动到最后一列
+    Mod+Ctrl+Right  { move-column-to-last; }
+
+    // 聚焦到对应索引的工作区
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    // 将当前列移动到对应索引的工作区
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+    // Mod-[（左中括号），将当前窗口移到左列最下方，处在多行窗口中会移动到左列单独作为一列
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    // Mod-]（右中括号），将当前窗口移到右列最下方，处在多行窗口中会移动到右列单独作为一列
+    Mod+BracketRight { consume-or-expel-window-right; }
+    // Mod-,（逗号），将右列窗口进当前列最下方
+    Mod+Comma  { consume-window-into-column; }
+    // Mod-.（句号），将当前列最下方窗口移到右列
+    Mod+Period { expel-window-from-column; }
+
+    // 按 niri 内置的「预设列宽方案」循环切换当前聚焦列的宽度。
+    // 默认是 “窄→中→宽”，反向就是 “宽→中→窄”
+    Mod+R { switch-preset-column-width; }
+    // 循环切换预设窗口高度
+    Mod+Shift+R { switch-preset-window-height; }
+    // 重置窗口高度到默认值
+    Mod+Ctrl+R { reset-window-height; }
+    // 最大化当前列（列独占屏幕）
+    Mod+F { maximize-column; }
+    // 单个窗口全屏（窗口独占屏幕）
+    Mod+Shift+F { fullscreen-window; }
+    // 扩展列到 “可用空间”（非全屏）
+    // Mod+Ctrl+F { expand-column-to-available-width; }
+    // 阅读模式，告诉浏览器等其他软件，动态隐藏标签栏
+    Mod+Shift+W { toggle-windowed-fullscreen; }
+
+    // 居中当前聚焦列
+    Mod+C { center-column; }
+    // 居中所有 “完全可见列”
+    Mod+Ctrl+C { center-visible-columns; }
+
+    // 切换窗口为浮动 / 平铺模式
+    Mod+V       { toggle-window-floating; }
+    // 在浮动窗口和平铺窗口间切换焦点
+    // 切换列的标签式显示（垂直标签而非堆叠）
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Mod+W { toggle-column-tabbed-display; }
+
+    // 全屏截图
+    Mod+S {
+      spawn "~/bash/screenshot.bash" "-f"
+    }
+    // 区域截图
+    Mod+Shift+S {
+      spawn "~/bash/screenshot.bash" "-r"
+    }
+
+    // 窗口截图
+    Mod+Alt+S {
+      spawn "~/bash/screenshot.bash" "-w"
+    }
+
+    // 开启 / 关闭 niri 对所有快捷键的处理（即 “抑制快捷键”）
+    // 用于远程连接客户端和虚拟机时，控制niri快捷键相应
+    // 也可以防止应用占用快捷键
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    // 退出 niri 窗口管理器
+    // Mod+Shift+E { quit skip-confirmation=true; }       // 退出 niri
+
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    // 关闭显示器电源
+    // 任意输入操作（移动鼠标、按键盘任意键）即可唤醒显示器，恢复显示。
+    Mod+Shift+P { power-off-monitors; }
+
+}
