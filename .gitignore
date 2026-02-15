@@ -1,0 +1,6 @@
+.git/
+**/lazy-lock.json
+**/logs
+**/profiler_data
+**/dms
+**/conf.d

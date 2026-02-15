@@ -1,0 +1,429 @@
+// https://yalter.github.io/niri
+
+input {
+    // 键盘
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        // 小键盘
+        // numlock
+    }
+
+    // 触摸板
+    touchpad {
+        // off
+        // 点击
+        tap
+        // dwt(键盘输入时，禁用触摸板) + 防止手掌误碰
+        dwtp
+        // 自然滚动
+        natural-scroll
+        // 移动速度
+        accel-speed 0.4
+        // 根据你移动触摸板的速度动态调整指针加速
+        accel-profile "adaptive"
+    }
+
+    // 鼠标
+    mouse {
+      // natural-scroll        // 和触摸板保持一致的自然滚动方向
+      accel-speed 0.4       // 和触摸板一样的指针速度
+      accel-profile "adaptive"  // 动态加速，更自然（推荐）
+      // tap                  // 如果你的鼠标支持点击触摸（极少数轨迹球支持），否则别加
+    }
+}
+
+output "eDP-1" {
+    // 多显示器：设置为主显示器；如果存在多个，则按顺序决定谁是主显示器
+    focus-at-startup
+    // 分辨率，可以使用 niri msg outputs 查看
+    // mode "1920x1080@165.004"
+    // mode "preferred"
+    // 启用 VRR，只在需要时激活，避免潜在闪烁
+    variable-refresh-rate on-demand=true
+    // 缩放
+    // scale 1
+    // 旋转
+    // transform "normal"
+    // 位置
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@165.000"
+    position x=1920 y=0
+}
+
+layout {
+    // 窗口间距离
+    gaps 6
+
+    // 窗口居中
+    center-focused-column "always"
+    always-center-single-column
+
+    // 窗口列宽预设, Mod + R
+    preset-column-widths {
+        proportion 0.33
+        proportion 0.66
+        proportion 1.0
+    }
+
+    // 窗口行高预设, Mod + Shift + R
+    preset-window-heights {
+        proportion 0.33
+        proportion 0.66
+        proportion 1.0
+    }
+
+    // 默认宽度全屏
+    // default-column-width { proportion 1.0; }
+    // default-column-width { }
+
+    // 窗口聚焦
+    focus-ring {
+        off  // 注释掉或删除这行来开启
+        width 1                  // 环宽度（逻辑像素，推荐 3~6）
+        // active-color "#89b4fa"   // 活跃窗口颜色（蓝紫，Arch 默认风）
+        // inactive-color "#45475a" // 非活跃（灰）
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        // active-color "#74c7ec"   // Catppuccin Peach，柔和橙
+        active-color "#a6e3a1"   // Catppuccin Green，清新绿
+        inactive-color "#585b70"
+        // 你可以加 gradient 等高级，但简单颜色就够
+    }
+
+    // 窗口边框
+    border { off; }
+
+    // 预留全屏边框距离
+    struts {
+      top 10
+      bottom 10
+      left 10
+      right 10
+    }
+
+    // 窗口阴影，不支持
+    shadow { }
+}
+
+// 关闭热脚
+gestures {
+    hot-corners { off; }
+}
+
+environment {
+    // http_proxy "http://192.168.2.185:17890"
+    // https_proxy "http://192.168.2.185:17890"
+    // all_proxy "socks5://192.168.2.185:17891"
+    // no_proxy "localhost,127.0.0.1,::1,192.168.0.0/16"
+
+    LANG "zh_CN.UTF-8"
+
+    // 输入法配置
+    INPUT_METHOD "fcitx"
+    QT_IM_MODULE "fcitx"
+    SDL_IM_MODULE "fcitx"
+    XMODIFIERS "@im=fcitx"
+    GLFW_IM_MODULE "fcitx"
+
+    // 渲染环境优化
+    // GTK应用在XWayland下保持1倍缩放
+    GDK_SCALE "1"
+
+    GSK_RENDERER "vulkan"
+
+    WGPU_BACKEND "vulkan"
+
+    // 禁用NVIDIA硬件光标加速
+    WLR_NO_HARDWARE_CURSORS "1"
+
+    // NVIDIA渲染后端配置
+    WLR_RENDERER "vulkan"
+    WLR_RENDERER_ALLOW_SOFTWARE "1"
+    GBM_BACKEND "nvidia-drm"
+    __NV_PRIME_RENDER_OFFLOAD "1"
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"
+    NVIDIA_DRIVER_CAPABILITIES "graphics,compute"
+
+    // 确保Vulkan应用强制使用NVIDIA
+    __VK_LAYER_NV_optimus "NVIDIA_only"
+    VK_ICD_FILENAMES "/usr/share/vulkan/icd.d/nvidia_icd.json"
+
+    // NVIDIA游戏性能优化
+    __GL_MaxFramesAllowed "1"
+    // 关闭垂直同步，可能导致画面撕裂
+    __GL_SYNC_TO_VBLANK "0"
+
+    // Qt应用Wayland适配
+    // 优先Wayland，失败回退XWayland
+    QT_QPA_PLATFORM "wayland"
+    // 自动适配屏幕缩放（避免手动设置DPI）
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    //  禁用QT窗口装饰
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_PLUGIN_PATH "/usr/lib/qt/plugins"
+    QT_QPA_PLATFORM_PLUGIN_PATH "/usr/lib/qt/plugins/platforms"
+
+    // GTK应用Wayland适配
+    // 优先Wayland后端
+    GDK_BACKEND "wayland,x11"
+    CLUTTER_BACKEND "wayland,x11"
+
+}
+
+// 关闭进入桌面环境的命令提示
+hotkey-overlay { skip-at-startup; }
+
+// 自启动
+spawn-at-startup "dms" "run"
+spawn-at-startup "fcitx5"
+// 自启动shell命令
+// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+// spawn-sh-at-startup "swaybg -i ~/Pictures/wallpapers/海梦_夜景.jpg &"
+
+// 告诉客户端平铺样式，省略窗口栏
+prefer-no-csd
+
+// You can also set this to null to disable saving screenshots to disk.
+// screenshot-path null
+
+// 窗口动画
+animations {
+    // 原来的1/2速度
+    slowdown 2.0
+}
+
+window-rule {
+    match app-id="QQ"
+    open-maximized true
+    variable-refresh-rate true
+}
+
+window-rule {
+    match app-id=r#"^mpv$"#  // mpv 播放器
+    open-fullscreen true                // 默认全屏
+    variable-refresh-rate true
+}
+window-rule {
+    match app-id=r#"^steam_app_"#  // Steam 游戏
+    variable-refresh-rate true
+}
+
+window-rule {
+    match app-id=r#"^(firefox|org\.mozilla\.firefox)$"#
+    match title=r#"(Picture-in-Picture|画中画)"#
+    // open-floating true
+    variable-refresh-rate true
+}
+
+// 保护密码管理器窗口不被屏幕捕获，增强安全性
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+// 全局窗口圆角设置
+window-rule {
+    // 设置窗口圆角的半径
+    geometry-corner-radius 12
+    // 确保窗口内容（如文本、图片）会被裁剪到圆角范围内，
+    // 避免内容超出圆角边界影响美观
+    clip-to-geometry true
+}
+
+// 快捷键操作
+binds {
+    // 打开帮助菜单
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+B hotkey-overlay-title="Run an Application: firefox" { spawn "firefox"; }
+    Mod+E hotkey-overlay-title="Run an Application: nautilus" { spawn "nautilus"; }
+    Mod+D hotkey-overlay-title="Toggle Spotlight" { spawn "dms" "ipc" "call" "spotlight" "toggle"; } // 打开 spotlight
+    Ctrl+Shift+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; } // 锁屏
+
+    // 关闭当前窗口
+    Mod+Q repeat=false { close-window; }
+
+    // 聚焦到 左下上右 列or窗口or工作区，上下为niri的工作区
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-right; }
+    // 移动当前列窗口到指定方向
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+L     { move-column-right; }
+    // 聚焦到对应方向的显示器
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+    // 将当前列移动到对应方向的显示器
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    // And you can also move a whole workspace to another monitor:
+    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+
+    Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+WheelScrollDown      { focus-column-right; }
+    Mod+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+WheelScrollUp   { move-column-left; }
+
+    // 打开/关闭概览（工作区和窗口的缩放视图）
+    // 触摸板四指上滑/下滑也可触发
+    Mod+O repeat=false { toggle-overview; }
+
+    // 聚焦到下方工作区，触摸板三指下滑
+    Mod+U     { focus-workspace-down; }
+    // 聚焦到上方工作区，触摸板三指上滑
+    Mod+I     { focus-workspace-up; }
+    // 将当前列移动到下方工作区
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    // 将当前列移动到上方工作区
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+    // 移动当前工作区到下方
+    Mod+Shift+U         { move-workspace-down; }
+    // 移动当前工作区到上方
+    Mod+Shift+I         { move-workspace-up; }
+
+    // 聚焦到第一列
+    Mod+Left { focus-column-first; }
+    // 聚焦到最后一列
+    Mod+Right  { focus-column-last; }
+    // 将当前列移动到第一列
+    Mod+Ctrl+Left { move-column-to-first; }
+    // 将当前列移动到最后一列
+    Mod+Ctrl+Right  { move-column-to-last; }
+
+    // 聚焦到对应索引的工作区
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    // 将当前列移动到对应索引的工作区
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+    // Mod-[（左中括号），将当前窗口移到左列最下方，处在多行窗口中会移动到左列单独作为一列
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    // Mod-]（右中括号），将当前窗口移到右列最下方，处在多行窗口中会移动到右列单独作为一列
+    Mod+BracketRight { consume-or-expel-window-right; }
+    // Mod-,（逗号），将右列窗口进当前列最下方
+    Mod+Comma  { consume-window-into-column; }
+    // Mod-.（句号），将当前列最下方窗口移到右列
+    Mod+Period { expel-window-from-column; }
+
+    // 按 niri 内置的「预设列宽方案」循环切换当前聚焦列的宽度。
+    // 默认是 “窄→中→宽”，反向就是 “宽→中→窄”
+    Mod+R { switch-preset-column-width; }
+    // 循环切换预设窗口高度
+    Mod+Shift+R { switch-preset-window-height; }
+    // 重置窗口高度到默认值
+    Mod+Ctrl+R { reset-window-height; }
+    // 最大化当前列（列独占屏幕）
+    Mod+F { maximize-column; }
+    // 单个窗口全屏（窗口独占屏幕）
+    Mod+Shift+F { fullscreen-window; }
+    // 扩展列到 “可用空间”（非全屏）
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    // 阅读模式，告诉浏览器等其他软件，动态隐藏标签栏
+    Mod+Shift+W { toggle-windowed-fullscreen; }
+
+    // 居中当前聚焦列
+    Mod+C { center-column; }
+    // 居中所有 “完全可见列”
+    Mod+Ctrl+C { center-visible-columns; }
+
+    // 切换窗口为浮动 / 平铺模式
+    // Mod+V       { toggle-window-floating; }
+    // 在浮动窗口和平铺窗口间切换焦点
+    // 切换列的标签式显示（垂直标签而非堆叠）
+    // Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    // Mod+W { toggle-column-tabbed-display; }
+
+    // Actions to switch layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // Mod+Space       { switch-layout "next"; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    // 全屏截图
+    Mod+S {
+      spawn "~/bash/screenshot.bash" "-f"
+    }
+    // 区域截图
+    Mod+Shift+S {
+      spawn "~/bash/screenshot.bash" "-r"
+    }
+
+    // 窗口截图
+    Mod+Alt+S {
+      spawn "~/bash/screenshot.bash" "-w"
+    }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    // 开启 / 关闭 niri 对所有快捷键的处理（即 “抑制快捷键”）
+    // 用于远程连接客户端和虚拟机时，控制niri快捷键相应
+    // 也可以防止应用占用快捷键
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    // 退出 niri 窗口管理器
+    // Mod+Shift+E { quit skip-confirmation=true; }       // 退出 niri
+
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    // 关闭显示器电源
+    // 任意输入操作（移动鼠标、按键盘任意键）即可唤醒显示器，恢复显示。
+    Mod+Shift+P { power-off-monitors; }
+
+}
