@@ -59,20 +59,6 @@ function proxy_manager
             set -gx all_proxy "socks5://$proxy_ip:$socks_port"
             set -gx no_proxy "localhost,127.0.0.1,::1,192.168.0.0/16" # 补充局域网免代理
 
-            # 5. 验证代理是否生效
-            printf "\n🔍 正在测试代理连接...\n"
-            if curl -m 3 -x $http_proxy https://example.com >/dev/null 2>&1 || curl -m 3 --socks5 $all_proxy https://example.com >/dev/null 2>&1
-                printf "✅ 代理已生效，配置如下：\n"
-                printf "  HTTP/HTTPS: %s\n" $http_proxy
-                printf "  SOCKS5:     %s\n" $all_proxy
-            else
-                printf "❌ 代理配置完成，但连接测试失败！\n"
-                printf "  排查建议：\n"
-                printf "  1. 检查代理服务是否在 %s 上运行\n" $proxy_ip
-                printf "  2. 确认端口 %s/%s 未被占用\n" $http_port $socks_port
-                printf "  3. 验证代理服务是否允许你的 IP 访问\n"
-            end
-
         case 2
             # 统一提示风格，增加换行
             if set -q http_proxy
@@ -89,7 +75,7 @@ function proxy_manager
             # 打印美观的表格式配置
             printf "\n📋 当前代理配置：\n"
             printf "+--------+----------------+----------------------------------------+\n"
-            printf "| %-6s | %-14s | %-38s |\n" "作用域" "变量名" "值"
+            printf "| %-6s | %-14s | %-38s |\n" 作用域 变量名 值
             printf "+--------+----------------+----------------------------------------+\n"
 
             # 遍历代理变量，格式化输出
@@ -121,4 +107,3 @@ function proxy_manager
             printf "  3 - 查看当前代理配置\n"
     end
 end
-
