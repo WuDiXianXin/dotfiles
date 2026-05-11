@@ -1,0 +1,63 @@
+# 敏感 / 证书
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+*.pfx
+
+# 编辑器和系统残留
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VCS 辅助文件
+.gitignore
+.gitattributes
+.gitkeep
+
+# 编译中间文件
+*.pyc
+*.pyo
+*.class
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+
+# 压缩 / 二进制
+*.zip
+*.7z
+*.tar
+*.gz
+*.rar
+
+# 备份 / 临时
+*~
+*.swp
+*.swo
+*.bak
+*.orig
+*.tmp
+*.log
+
+# IDE 文件
+*.iml
+*.ipr
+*.iws
+
+# 证书 / 密钥
+*.crt
+*.csr
+*.jks
+
+# 锁文件 (可恢复，体积大)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+Cargo.lock
+
+# Godot 相关
+*.uid
+*.import

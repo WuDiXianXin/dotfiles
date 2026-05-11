@@ -1,0 +1,31 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p3
+UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/         	btrfs     	rw,noatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@	0 0
+
+# /dev/nvme0n1p3
+UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/home     	btrfs     	rw,noatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@home	0 0
+
+# /dev/nvme0n1p3
+UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/var/log  	btrfs     	rw,noatime,nodatacow,noexec,nodev,nosuid,commit=90,space_cache=v2,subvol=/@log	0 0
+
+# /dev/nvme0n1p3
+UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/var/cache	btrfs     	rw,noatime,nodatacow,noexec,nodev,nosuid,commit=120,space_cache=v2,subvol=/@cache	0 0
+
+# /dev/nvme0n1p3
+UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/var/tmp  	btrfs     	rw,noatime,nodatacow,noexec,nodev,nosuid,commit=120,space_cache=v2,subvol=/@tmp	0 0
+
+# /dev/nvme0n1p3
+UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/.snapshots	btrfs     	rw,noatime,noexec,nodev,nosuid,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@snapshots	0 0
+
+# /dev/nvme0n1p3
+UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/kvm      	btrfs     	rw,noatime,nodatacow,noexec,nodev,nosuid,commit=60,space_cache=v2,subvol=/@kvm	0 0
+
+# /dev/nvme0n1p1
+UUID=009B-78CA      	/efi      	vfat      	rw,noatime,nodev,nosuid,noexec,fmask=0022,dmask=0022,iocharset=utf8,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p2
+UUID=66043d54-db9e-42b2-811e-45dea6b74bf7	none      	swap      	defaults  	0 0
+

@@ -1,0 +1,49 @@
+// 关闭进入桌面环境的命令提示
+hotkey-overlay { skip-at-startup; }
+
+// 告诉客户端平铺样式，省略窗口栏
+prefer-no-csd
+
+// 关闭热脚
+gestures {
+	hot-corners { off; }
+}
+
+// 关闭工作区阴影
+overview {
+	workspace-shadow { off; }
+}
+
+debug {
+    // 允许无效序列号的 XDG 激活（解决部分应用窗口激活问题）
+	// honor-xdg-activation-with-invalid-serial
+    // 不使用 N 卡
+    ignore-drm-device "/dev/dri/renderD129"
+}
+
+layer-rule {
+	match namespace="^quickshell$"
+	place-within-backdrop true
+}
+
+// Include dms files
+include "dms/colors.kdl"
+include "dms/binds.kdl"
+include "dms/layout.kdl"
+include "dms/alttab.kdl"
+include "dms/cursor.kdl"
+include "dms/wpblur.kdl"
+include "dms/outputs.kdl"
+include "dms/windowrules.kdl"
+
+// mine
+include "wudixianxin/animations.kdl"
+include "wudixianxin/environment.kdl"
+include "wudixianxin/layout.kdl"
+include "wudixianxin/put.kdl"
+include "wudixianxin/windowrule.kdl"
+
+// 自启动
+spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "dms" "run"
+screenshot-path "~/Pictures/Screenshots/shot_%Y-%m-%d_%H-%M-%S.png"
