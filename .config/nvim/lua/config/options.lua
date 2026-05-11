@@ -50,6 +50,7 @@ vim.opt.inccommand = 'split' -- 预览替换效果
 
 -- ===================== 文本与缩进 =====================
 
+vim.opt.clipboard = 'unnamedplus'
 -- vim.opt.cc = '80'
 vim.opt.encoding = 'utf-8'
 vim.opt.whichwrap = 'bs<>[]hl' -- 光标跨行移动控制
