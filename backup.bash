@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-MODE="${1:-backup}"
 BACKUP_ROOT="${BACKUP_ROOT:-.}"
 
 # 获取真实用户的家目录（如果通过 sudo 运行，则还原为原始用户）
@@ -24,13 +23,13 @@ CONFIG_DIRS=(
   "nvim"
   "dgop"
   # "fastfetch"
-  "obs-studio"
+  # "obs-studio"
   "DankMaterialShell"
 )
 
 HOME_FILES=(
-  ".bashrc"
-  ".inputrc"
+  # ".bashrc"
+  # ".inputrc"
 )
 
 HOME_SUBDIRS=(
@@ -72,20 +71,11 @@ do_rsync() {
   fi
 }
 
-# ---------- 根据模式确定用户文件路径 ----------
-if [[ "$MODE" == "backup" ]]; then
-  SRC_PREFIX="$REAL_HOME"
-  DST_PREFIX="$BACKUP_ROOT"
-elif [[ "$MODE" == "restore" ]]; then
-  SRC_PREFIX="$BACKUP_ROOT"
-  DST_PREFIX="$REAL_HOME"
-else
-  echo "用法: $0 [backup|restore]" >&2
-  exit 1
-fi
+# 固定为备份方向
+SRC_PREFIX="$REAL_HOME"
+DST_PREFIX="$BACKUP_ROOT"
 
-echo "模式: $MODE"
-echo "用户文件: $SRC_PREFIX ↔ $DST_PREFIX"
+echo "备份用户文件：$SRC_PREFIX → $DST_PREFIX"
 
 # 1. 用户配置目录
 for dir in "${CONFIG_DIRS[@]}"; do
@@ -108,15 +98,8 @@ if [[ ${#ETC_FILES[@]} -gt 0 ]]; then
   sudo -v
 
   for rel_path in "${ETC_FILES[@]}"; do
-    if [[ "$MODE" == "backup" ]]; then
-      src="/etc/$rel_path"
-      dst="$BACKUP_ROOT/etc/$rel_path"
-    else
-      src="$BACKUP_ROOT/etc/$rel_path"
-      dst="/etc/$rel_path"
-    fi
-    do_rsync "$src" "$dst" true
+    do_rsync "/etc/$rel_path" "$BACKUP_ROOT/etc/$rel_path" true
   done
 fi
 
-echo "完成。"
+echo "备份完成。"

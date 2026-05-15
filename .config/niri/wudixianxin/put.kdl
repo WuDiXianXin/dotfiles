@@ -49,6 +49,7 @@ output "eDP-1" {
     focus-at-startup
     // 分辨率，可以使用 niri msg outputs 查看
     // mode "1920x1080@165.004"
+    mode "1920x1080@60.012"
     // mode "preferred"
     // 启用 VRR，只在需要时激活，避免潜在闪烁
     variable-refresh-rate on-demand=true

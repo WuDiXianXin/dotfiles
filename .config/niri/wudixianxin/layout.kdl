@@ -9,13 +9,17 @@ layout {
 
     // 窗口列宽预设, mod + r
     preset-column-widths {
+        proportion 0.25
         proportion 0.5
+        proportion 0.75
         proportion 1.0
     }
 
     // 窗口行高预设, mod + shift + r
     preset-window-heights {
+        proportion 0.25
         proportion 0.5
+        proportion 0.75
         proportion 1.0
     }
 

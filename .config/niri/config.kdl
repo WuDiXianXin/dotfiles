@@ -19,6 +19,7 @@ debug {
 	// honor-xdg-activation-with-invalid-serial
     // 不使用 N 卡
     ignore-drm-device "/dev/dri/renderD129"
+    ignore-drm-device "/dev/dri/card0"
 }
 
 layer-rule {

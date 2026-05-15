@@ -19,6 +19,7 @@ check_dependencies
 
 # ------------------------- 常量 -------------------------
 EXCLUDE_DIRS=(
+  'tools'
   # VCS 与依赖
   '.git' '.svn' '.hg'
   # 包管理器 / 构建产物
@@ -39,6 +40,7 @@ EXCLUDE_DIRS=(
 )
 
 EXCLUDE_FILES=(
+  'nvim-pack-lock.json'
   # 敏感信息
   '.env' '.env.*' '*.pem' '*.key' 'id_rsa*' '*.pfx'
   # 编辑器 / 系统残留

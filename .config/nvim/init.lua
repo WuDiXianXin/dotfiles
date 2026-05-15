@@ -11,7 +11,6 @@ require('plugins.colortheme')
 require('plugins.mini')
 require('plugins.lualine')
 require('plugins.gitsigns')
-require('plugins.image')
 
 -- dap 调试
 require('plugins.dap')
@@ -19,17 +18,17 @@ require('plugins.dap')
 -- 语言
 require('plugins.rust')
 
--- cmp
-require('plugins.cmp')
-
 -- Markveiw
 require('plugins.markview')
 
--- ai
--- require('plugins.fittencode')
-
 -- 大纲
 require('plugins.outline')
+
+-- ai
+require('plugins.neocodeium')
+
+-- cmp
+require('plugins.cmp')
 
 -- 按键提示
 require('plugins.which-key')
