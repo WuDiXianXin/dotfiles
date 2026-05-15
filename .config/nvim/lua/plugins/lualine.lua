@@ -6,8 +6,6 @@ vim.pack.add({
 })
 
 local custom_theme = require('lualine.themes.auto')
--- custom_theme.normal.a.bg   = 'NONE'
--- custom_theme.normal.b.bg   = 'NONE'
 custom_theme.normal.c.bg = 'NONE'
 
 -- inactive（非活动窗口）
@@ -18,8 +16,6 @@ custom_theme.inactive.b.bg = 'NONE'
 require('lualine').setup({
     options = {
         theme = custom_theme,
-        -- section_separators = { left = '', right = '' },
-        -- component_separators = { left = '', right = '' },
         globalstatus = false, -- 设为 true 则全窗口共用一个 statusline
     },
 

@@ -27,7 +27,7 @@ end
 -- vim.opt.timeoutlen = 500
 -- vim.opt.ttimeoutlen = 500
 
-nmap(' ', '<Nop>', '禁用空格默认功能（用作 Leader）')
+nmap(' ', '<Nop>', 'Leader')
 nmap('<CR>', '<Nop>', '禁用回车默认功能')
 
 nmap('<leader>;', ':!', '快速进入 :!')

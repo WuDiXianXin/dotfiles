@@ -53,30 +53,6 @@ wk.setup({
     debug = false,
 })
 
--- ==================== 分组注册（推荐新写法：wk.add） ====================
-wk.add({
-    -- Leader 顶级分组
-    { '<leader>', group = 'Leader' },
-
-    -- 功能大类
-    -- { '<leader>a', group = 'AI / Avante' },
-    { '<leader>b', group = '缓冲区管理' },
-    { '<leader>c', group = ' Crates' },
-    { '<leader>d', group = '诊断 / Debug / DAP' },
-    { '<leader>f', group = 'Pick' },
-    -- { '<leader>g', group = '󰊢  Git' },
-    { '<leader>r', group = 'Run' },
-    { '<leader>l', group = 'fmt / 位置列表' },
-    { '<leader>m', group = 'Markdown 渲染' },
-    { '<leader>t', group = '测试' },
-
-    -- 非 Leader 前缀
-    { 'g', group = '跳转' },
-    { 'gr', group = 'LSP' },
-    { '[', group = '上一个' },
-    { ']', group = '下一个' },
-})
-
 -- 全局快捷键查看（? 键）
 vim.keymap.set('n', '?', function()
     wk.show({ global = true })

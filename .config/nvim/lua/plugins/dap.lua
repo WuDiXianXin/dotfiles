@@ -133,12 +133,12 @@ dapui.setup({
                 { id = 'stacks', size = 0.25 }, -- 调用栈
                 { id = 'watches', size = 0.25 }, -- 监视表达式
             },
-            size = 40,
+            size = 0.4,
             position = 'left',
         },
         {
             elements = { 'repl', 'console' },
-            size = 0.25,
+            size = 0.4,
             position = 'bottom',
         },
     },
