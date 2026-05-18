@@ -74,14 +74,14 @@ nmap('<leader>tc', '<cmd>tabclose<CR>', '关闭当前标签页')
 
 -- ==================== 窗口 ====================
 
-nmap('wk', '<cmd>resize +2<CR>', '增加窗口高度')
-nmap('wj', '<cmd>resize -2<CR>', '减少窗口高度')
-nmap('wh', '<cmd>vertical resize -2<CR>', '减少窗口宽度')
-nmap('wl', '<cmd>vertical resize +2<CR>', '增加窗口宽度')
+nmap('<leader>wk', '<cmd>resize +2<CR>', '增加窗口高度')
+nmap('<leader>wj', '<cmd>resize -2<CR>', '减少窗口高度')
+nmap('<leader>wh', '<cmd>vertical resize -2<CR>', '减少窗口宽度')
+nmap('<leader>wl', '<cmd>vertical resize +2<CR>', '增加窗口宽度')
 
-nmap('wv', '<C-w>v', '垂直分屏（右侧）')
-nmap('ws', '<C-w>s', '水平分屏（下方）')
-nmap('wd', '<C-w>c', '关闭当前窗口')
+nmap('<leader>wv', '<C-w>v', '垂直分屏（右侧）')
+nmap('<leader>ws', '<C-w>s', '水平分屏（下方）')
+nmap('<leader>wd', '<C-w>c', '关闭当前窗口')
 
 nmap('gh', '<C-w>h', '切换到左侧窗口')
 nmap('gl', '<C-w>l', '切换到右侧窗口')
@@ -93,7 +93,7 @@ nmap('gwl', '<C-w>L', '移动窗口（到最右侧）')
 nmap('gwk', '<C-w>K', '移动窗口（到最上侧）')
 nmap('gwj', '<C-w>J', '移动窗口（到最下侧）')
 
-nmap('we', '<cmd>wincmd =<CR>', '所有窗口等分大小')
+nmap('<leader>we', '<cmd>wincmd =<CR>', '所有窗口等分大小')
 
 -- ==================== 缓冲区管理 ====================
 
