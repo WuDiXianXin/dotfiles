@@ -140,7 +140,7 @@ nmap('<leader>e', '<cmd>lua MiniFiles.open()<CR>', '打开文件管理器')
 
 -- ==================== Markview.nvim 相关 ====================
 
-nmap('<leader>M', '<cmd>Markview<CR>', '全局完全开关 Markview 渲染（包括所有缓冲区）')
+nmap('<leader>M', '<cmd>Markview<CR>', '全局完全开关 Markview 渲染')
 nmap('<leader>m', '<cmd>Markview toggle<CR>', '只切换当前 Markdown 文件的渲染')
 nmap('<leader>ms', '<cmd>Markview splitToggle<CR>', '打开/关闭分屏实时预览')
 
