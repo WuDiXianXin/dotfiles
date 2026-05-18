@@ -183,6 +183,7 @@ local nmap = function(lhs, rhs, desc)
         desc = desc,
     })
 end
+
 -- 鼠标支持
 nmap('<2-LeftMouse>', "<cmd>lua require('dapui').eval()<CR>", '双击变量弹出值')
 -- F 键系列（标准调试快捷键）

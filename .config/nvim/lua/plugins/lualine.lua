@@ -5,17 +5,17 @@ vim.pack.add({
     },
 })
 
-local custom_theme = require('lualine.themes.auto')
-custom_theme.normal.c.bg = 'NONE'
-
--- inactive（非活动窗口）
-custom_theme.inactive.c.bg = 'NONE'
-custom_theme.inactive.a.bg = 'NONE'
-custom_theme.inactive.b.bg = 'NONE'
+-- local custom_theme = require('lualine.themes.auto')
+-- custom_theme.normal.c.bg = 'NONE'
+--
+-- -- inactive（非活动窗口）
+-- custom_theme.inactive.c.bg = 'NONE'
+-- custom_theme.inactive.a.bg = 'NONE'
+-- custom_theme.inactive.b.bg = 'NONE'
 
 require('lualine').setup({
     options = {
-        theme = custom_theme,
+        -- theme = custom_theme,
         globalstatus = false, -- 设为 true 则全窗口共用一个 statusline
     },
 

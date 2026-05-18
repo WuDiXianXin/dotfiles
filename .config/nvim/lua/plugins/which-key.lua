@@ -8,7 +8,6 @@ vim.pack.add({
 local wk = require('which-key')
 wk.setup({
     preset = 'modern',
-
     -- 启用官方内置插件
     plugins = {
         marks = true, -- ' / ` 触发显示标记列表

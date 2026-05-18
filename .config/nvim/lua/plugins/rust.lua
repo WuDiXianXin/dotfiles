@@ -14,7 +14,6 @@ vim.pack.add({
 })
 
 require('crates').setup({
-
     autoload = true,
     autoupdate = true,
     loading_indicator = true,

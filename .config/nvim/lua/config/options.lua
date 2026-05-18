@@ -17,6 +17,8 @@ vim.g.loaded_python3_provider = 0
 
 vim.opt.termguicolors = true -- 开启真彩色，保证颜色/透明正常
 vim.opt.background = 'dark' -- 适配深色终端
+vim.opt.lazyredraw = true -- 延迟重绘，减少渲染压力
+vim.opt.synmaxcol = 500 -- 限制语法高亮列数，提高性能
 
 -- ===================== 行号与光标 =====================
 
@@ -24,7 +26,7 @@ vim.opt.number = true -- 显示绝对行号
 vim.opt.relativenumber = true -- 显示相对行号
 vim.opt.signcolumn = 'yes' -- 始终显示符号列
 vim.opt.cursorline = true -- 高亮光标行
--- vim.opt.cursorcolumn = true
+vim.opt.cursorcolumn = true -- 高亮光标列
 vim.opt.scrolloff = 8 -- 垂直保留 8 行缓冲
 
 -- ===================== 空白字符显示 =====================
@@ -50,11 +52,16 @@ vim.opt.inccommand = 'split' -- 预览替换效果
 
 -- ===================== 文本与缩进 =====================
 
-vim.opt.clipboard = 'unnamedplus'
 -- vim.opt.cc = '80'
-vim.opt.encoding = 'utf-8'
+-- vim.opt.colorcolumn = '120'
+-- vim.opt.backup = false
+-- vim.opt.writebackup = false
+vim.opt.clipboard = 'unnamedplus'
+vim.scriptencoding = 'utf-8' -- 脚本编码为 UTF-8
+vim.opt.encoding = 'utf-8' -- 内部编码为 UTF-8
+vim.opt.fileencoding = 'utf-8' -- 文件编码为 UTF-8
 vim.opt.whichwrap = 'bs<>[]hl' -- 光标跨行移动控制
--- vim.opt.wrap = true            -- 开启文本换行
+-- vim.opt.wrap = false            -- 关闭文本换行，默认开启
 vim.opt.linebreak = true -- 按照「单词边界」换行
 vim.opt.breakat = ' \t;:,!?.' -- 长行折行分隔点控制
 vim.opt.breakindent = true -- 折行保持缩进

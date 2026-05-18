@@ -24,11 +24,11 @@ require('plugins.markview')
 -- 大纲
 require('plugins.outline')
 
--- ai
-require('plugins.neocodeium')
-
 -- cmp
 require('plugins.cmp')
+
+-- ai
+-- require('plugins.neocodeium')
 
 -- 按键提示
 require('plugins.which-key')
