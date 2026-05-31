@@ -1,0 +1,30 @@
+# 编辑模式：vi 或 emacs（默认）
+set editing-mode vi
+set keymap vi-insert
+# 插入模式下 Ctrl+e 编辑
+"\C-e": edit-and-execute-command
+# 插入模式下 Ctrl+L 清屏
+"\C-l": clear-screen
+
+# 在提示符中显示当前模式（insert/command），需要配合 keymap 变更触发
+set show-mode-in-prompt on
+
+# 自定义模式指示符（可以配合 bash 的 PS1）
+# 插入模式光标形状（终端依赖）
+set vi-ins-mode-string \1\e[6 q\2
+# 命令模式光标形状
+set vi-cmd-mode-string \1\e[2 q\2
+
+# 补全行为优化
+# 忽略大小写（类似 Fish）
+set completion-ignore-case on
+
+# 补全时立即将可能匹配项插入，若有多个则显示列表（而不是 ding）
+set show-all-if-ambiguous on
+
+# 同上，但仅针对 Tab 键（macOS 常用）
+set show-all-if-unmodified on
+
+# 补全时自动添加斜杠（用于目录）
+set mark-directories on
+set mark-symlinked-directories on

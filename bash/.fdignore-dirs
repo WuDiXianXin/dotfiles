@@ -1,0 +1,42 @@
+# ── VCS 与依赖 ──
+.git/
+.svn/
+.hg/
+
+# ── 包管理器 / 构建产物 ──
+node_modules/
+__pycache__/
+target/
+vendor/
+bower_components/
+.gradle/
+.build/
+build/
+dist/
+out/
+output/
+
+# ── IDE 与编辑器配置 (目录) ──
+.idea/
+.vscode/
+.vs/
+.settings/
+
+# ── 系统 / 临时 / 缓存 ──
+.Trash/
+.Trashes/
+logs/
+tmp/
+temp/
+.cache/
+.cargo/
+.npm/
+.yarn/
+
+# ── 打包目录 ──
+*.egg-info/
+
+# ── Godot / 自定义 ──
+.godot/
+assets/
+.github/

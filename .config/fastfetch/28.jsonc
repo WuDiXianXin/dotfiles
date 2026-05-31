@@ -1,0 +1,133 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "none"
+    },
+    "display": {
+        "separator": " ",
+        "key": {
+            "type": "both"
+        },
+        "bar": {
+            "border": {
+                "left": "\uee00",
+                "leftElapsed": "\uee03",
+                "right": "\uee02",
+                "rightElapsed": "\uee05"
+            },
+            "char": {
+                "total": "\uee01",
+                "elapsed": "\uee04"
+            },
+            "color": {
+                "total": null
+            }
+        },
+        "percent": {
+            "type": [
+                "bar",
+                "bar-monochrome"
+            ]
+        }
+    },
+    "modules": [
+        {
+            "type": "host",
+            "key": " Host\t\t",
+            "keyColor": "green"
+        },
+        // {
+        //     "type": "memory",
+        //     "key": " Memory\t",
+        //     "keyColor": "green"
+        // },
+        {
+            "type": "disk",
+            "key": " Disk\t\t",
+            "keyColor": "green"
+        },
+        {
+            "type": "swap",
+            "key": " Swap\t\t",
+            "keyColor": "green"
+        },
+
+        "break",
+
+        {
+            "type": "de",
+            "key": " DE\t\t",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "wm",
+            "key": " WM\t\t",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "display",
+            "key": " Display\t",
+            "keyColor": "yellow",
+            "compactType": "original-with-refresh-rate"
+        },
+        {
+            "type": "shell",
+            "key": " Shell\t",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "terminal",
+            "key": " Term\t\t",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "terminalfont",
+            "key": " Font\t\t",
+            "keyColor": "yellow"
+        },
+
+        "break",
+
+        {
+            "type": "title",
+            "key": " User\t\t",
+            "color": {
+                "user": "green",
+                "at": "red",
+                "host": "blue"
+            },
+            "keyColor": "blue"
+        },
+        {
+            "type": "os",
+            "key": " OS\t\t",
+            "keyColor": "blue"
+        },
+        {
+            "type": "kernel",
+            "key": " Kernel\t",
+            "keyColor": "blue"
+        },
+        {
+            "type": "packages",
+            "key": " Packages\t",
+            "keyColor": "blue"
+        },
+        {
+            "type": "uptime",
+            "key": " Uptime\t",
+            "keyColor": "blue"
+        },
+        {
+            "type": "localip",
+            "compact": true,
+            "key": " IP\t\t",
+            "keyColor": "blue"
+        },
+        {
+            "type": "locale",
+            "key": " Locale\t",
+            "keyColor": "blue"
+        }
+    ]
+}
