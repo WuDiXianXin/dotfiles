@@ -1,5 +1,5 @@
 {
-  "currentThemeName": "purple",
+  "currentThemeName": "monochrome",
   "currentThemeCategory": "generic",
   "customThemeFile": "",
   "registryThemeVariants": {},
@@ -9,7 +9,7 @@
   "popupTransparency": 0.38,
   "dockTransparency": 1,
   "widgetBackgroundColor": "sch",
-  "widgetColorMode": "default",
+  "widgetColorMode": "colorful",
   "controlCenterTileColorMode": "primary",
   "buttonColorMode": "primary",
   "cornerRadius": 12,
