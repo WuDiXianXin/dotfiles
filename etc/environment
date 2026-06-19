@@ -33,8 +33,8 @@ SCCACHE_IDLE_TIMEOUT="3600"
 
 # Android
 ANDROID_SDK_ROOT="/home/xx/Android/Sdk"
-ANDROID_NDK_HOME="/home/xx/Android/Sdk/ndk/29.0.14206865"
-ANDROID_NDK_ROOT="/home/xx/Android/Sdk/ndk/29.0.14206865"
+ANDROID_NDK_HOME="/home/xx/Android/Sdk/ndk/30.0.14904198"
+ANDROID_NDK_ROOT="/home/xx/Android/Sdk/ndk/30.0.14904198"
 
 # Java
 JAVA_HOME="/usr/lib/jvm/java-17-openjdk"

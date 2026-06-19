@@ -58,7 +58,7 @@ unset MANPATH
 # Android
 PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH"
 PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
-PATH="$ANDROID_SDK_ROOT/build-tools/36.1.0:$PATH"
+PATH="$ANDROID_SDK_ROOT/build-tools/37.0.0:$PATH"
 
 # Java
 PATH="$JAVA_HOME/bin:$PATH"
