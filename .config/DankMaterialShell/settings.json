@@ -167,7 +167,7 @@
   "runningAppsGroupByApp": false,
   "runningAppsCurrentMonitor": false,
   "appIdSubstitutions": [],
-  "centeringMode": "index",
+  "centeringMode": "geometric",
   "clockDateFormat": "",
   "lockDateFormat": "",
   "greeterRememberLastSession": true,
@@ -446,15 +446,27 @@
           "enabled": true
         },
         {
+          "id": "gpuTemp",
+          "enabled": true,
+          "selectedGpuIndex": 0,
+          "pciId": "10de:2560",
+          "minimumWidth": true
+        },
+        {
+          "id": "cpuTemp",
+          "enabled": true,
+          "minimumWidth": true
+        },
+        {
           "id": "cpuUsage",
           "enabled": true,
-          "minimumWidth": false
+          "minimumWidth": true
         },
         {
           "id": "memUsage",
           "enabled": true,
-          "minimumWidth": false,
-          "showSwap": false
+          "minimumWidth": true,
+          "showSwap": true
         },
         {
           "id": "battery",
@@ -462,7 +474,11 @@
         },
         {
           "id": "controlCenterButton",
-          "enabled": true
+          "enabled": true,
+          "showMicIcon": true,
+          "showMicPercent": false,
+          "showScreenSharingIcon": false,
+          "showVpnIcon": false
         }
       ],
       "spacing": 4,
