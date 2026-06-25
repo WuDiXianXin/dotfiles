@@ -19,6 +19,7 @@ if status is-interactive
 
     # ========== 别名管理 ==========
     alias cp="rsync -a"
+    alias y="yazi"
     alias lg="lazygit"
     alias e="eza --icons --group-directories-first --git"
     alias et="eza --git-ignore -T -L" # 后面跟数字代表显示层级
