@@ -167,7 +167,7 @@
   "runningAppsGroupByApp": false,
   "runningAppsCurrentMonitor": false,
   "appIdSubstitutions": [],
-  "centeringMode": "geometric",
+  "centeringMode": "index",
   "clockDateFormat": "",
   "lockDateFormat": "",
   "greeterRememberLastSession": true,
@@ -425,24 +425,35 @@
         }
       ],
       "centerWidgets": [
-        "music",
+        {
+          "id": "notificationButton",
+          "enabled": true
+        },
+        {
+          "id": "colorPicker",
+          "enabled": true
+        },
+        {
+          "id": "music",
+          "enabled": true
+        },
         {
           "id": "clock",
           "enabled": true,
           "clockCompactMode": false
         },
         {
-          "id": "notificationButton",
+          "id": "notepadButton",
+          "enabled": true
+        },
+        {
+          "id": "clipboard",
           "enabled": true
         }
       ],
       "rightWidgets": [
         {
           "id": "systemTray",
-          "enabled": true
-        },
-        {
-          "id": "clipboard",
           "enabled": true
         },
         {
@@ -466,7 +477,7 @@
           "id": "memUsage",
           "enabled": true,
           "minimumWidth": true,
-          "showSwap": true
+          "showSwap": false
         },
         {
           "id": "battery",
