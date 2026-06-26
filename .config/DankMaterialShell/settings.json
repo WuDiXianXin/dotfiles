@@ -168,7 +168,7 @@
   "runningAppsCurrentMonitor": false,
   "appIdSubstitutions": [],
   "centeringMode": "index",
-  "clockDateFormat": "",
+  "clockDateFormat": "dddd, MMMM d",
   "lockDateFormat": "",
   "greeterRememberLastSession": true,
   "greeterRememberLastUser": true,
