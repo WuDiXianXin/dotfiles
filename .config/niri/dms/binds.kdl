@@ -21,7 +21,8 @@ binds {
 	// 显示快捷键帮助面板
 	// Mod+Shift+Slash { show-hotkey-overlay; }
 	// 阅读模式（隐藏应用标签栏）
-	Mod+Shift+W { toggle-windowed-fullscreen; }
+    // 请使用 F11 （无 Fn 热键）
+	// Mod+Shift+W { toggle-windowed-fullscreen; }
 
 
 	// === Application Launchers ===
