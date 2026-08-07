@@ -21,7 +21,7 @@ UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/var/tmp  	btrfs     	rw,noatime,nodat
 UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/.snapshots	btrfs     	rw,noatime,noexec,nodev,nosuid,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@snapshots	0 0
 
 # /dev/nvme0n1p3
-UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/kvm      	btrfs     	rw,noatime,nodatacow,noexec,nodev,nosuid,commit=60,space_cache=v2,subvol=/@kvm	0 0
+# UUID=73f82c34-fd2b-4ec2-a433-f9d6a194a3a3	/kvm      	btrfs     	rw,noatime,nodatacow,noexec,nodev,nosuid,commit=60,space_cache=v2,subvol=/@kvm	0 0
 
 # /dev/nvme0n1p1
 UUID=009B-78CA      	/efi      	vfat      	rw,noatime,nodev,nosuid,noexec,fmask=0022,dmask=0022,iocharset=utf8,shortname=mixed,utf8,errors=remount-ro	0 2
