@@ -672,7 +672,7 @@
       "autoHide": false,
       "autoHideDelay": 250,
       "showOnWindowsOpen": false,
-      "openOnOverview": false,
+      "openOnOverview": true,
       "visible": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
