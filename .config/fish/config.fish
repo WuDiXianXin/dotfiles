@@ -19,18 +19,17 @@ if status is-interactive
 
     # ========== 别名管理 ==========
     alias cp="rsync -a"
+    alias p="bat -pp"
     alias y="yazi"
     alias lg="lazygit"
     alias ls="eza"
-    alias e="eza --icons --group-directories-first --git"
-    alias et="eza --git-ignore -T -L" # 后面跟数字代表显示层级
-    alias el="eza -l"
-    alias eal="eza -a -l"
+    alias l="eza -aF -s type"
+    alias ll="eza -alF -s type"
+    # alias e="eza --icons --group-directories-first --git"
+    alias lt="eza -T -L" # 后面跟数字代表显示层级
     alias v="nvim"
     alias s="source"
     alias sv="sudo nvim"
-    alias vb="v ~/.bashrc"
-    alias ve="v ~/.config/niri/wudixianxin/environment.kdl"
     alias vf="v ~/.config/fish/config.fish"
     alias sf="s ~/.config/fish/config.fish"
     alias cls="clear"
@@ -50,6 +49,7 @@ if status is-interactive
 
     # Git 快捷命令
     alias GS="git status"
+    alias GD="git diff"
     alias GA="git add ."
     alias GC="git commit"
     alias GR="git restore"
