@@ -1,8 +1,8 @@
 # 编辑模式：vi 或 emacs（默认）
 set editing-mode vi
 set keymap vi-insert
-# 插入模式下 Ctrl+e 编辑
-"\C-e": edit-and-execute-command
+# 插入模式下 Ctrl+v 编辑
+"\C-v": edit-and-execute-command
 # 插入模式下 Ctrl+L 清屏
 "\C-l": clear-screen
 

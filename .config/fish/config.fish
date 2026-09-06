@@ -5,7 +5,7 @@ if status is-interactive
     # ========== Vi 模式 ==========
     fish_vi_key_bindings
     set -g fish_cursor_insert line
-    bind --mode insert \ce fish_edit_commandline
+    bind --mode insert \cv fish_edit_commandline
     bind --mode default v fish_edit_commandline
 
     #========== 路径管理 ==========
@@ -28,10 +28,8 @@ if status is-interactive
     # alias e="eza --icons --group-directories-first --git"
     alias lt="eza -T -L" # 后面跟数字代表显示层级
     alias v="nvim"
-    alias s="source"
-    alias sv="sudo nvim"
     alias vf="v ~/.config/fish/config.fish"
-    alias sf="s ~/.config/fish/config.fish"
+    alias sf="source ~/.config/fish/config.fish"
     alias cls="clear"
     alias mkd="mkdir -p"
     alias backup-dir-contents="~/bash/backup-dir-contents.bash"
