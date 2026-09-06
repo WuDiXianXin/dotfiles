@@ -99,7 +99,8 @@
   "notificationHistoryMaxCount": 200,
   "osdAlwaysShowValue": true,
   "osdPowerProfileEnabled": true,
-  "updaterIntervalSeconds": 86400,
+  "updaterIntervalSeconds": 60000000,
+  "updaterAllowAUR": false,
   "barConfigs": [
     {
       "id": "default",
