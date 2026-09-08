@@ -1,8 +1,6 @@
 {
-  "currentThemeName": "custom",
-  "currentThemeCategory": "custom",
-  "popupTransparency": 0.38,
   "dockTransparency": 0.5,
+  "floatingWindowSyncGlobal": false,
   "widgetBackgroundColor": "s",
   "cornerRadius": 12,
   "firstDayOfWeek": 1,
