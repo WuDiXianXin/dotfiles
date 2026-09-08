@@ -92,7 +92,6 @@
   "dockSpacing": 8,
   "dockMargin": 6,
   "dockIconSize": 48,
-  "dockLauncherEnabled": true,
   "dockTrashFileManager": "nautilus",
   "modalDarkenBackground": false,
   "notificationPopupPosition": 2,
