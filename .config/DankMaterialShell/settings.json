@@ -141,9 +141,8 @@
           "showInGb": false
         },
         {
-          "id": "music",
-          "enabled": true,
-          "mediaSize": 0
+          "id": "network_speed_monitor",
+          "enabled": true
         }
       ],
       "centerWidgets": [
@@ -155,6 +154,11 @@
         }
       ],
       "rightWidgets": [
+        {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 0
+        },
         {
           "id": "systemTray",
           "enabled": true,
