@@ -1,10 +1,10 @@
 if status is-interactive
     # ========== 基础设置 ==========
     # 设置欢迎信息
-    # set -g fish_greeting ''
-    function fish_greeting
-        fastfetch
-    end
+    set -g fish_greeting ''
+    # function fish_greeting
+    #     fastfetch
+    # end
 
     # 美化 man 手册
     set -x MANROFFOPT "-c"
@@ -40,7 +40,7 @@ if status is-interactive
     alias sf="source ~/.config/fish/config.fish"
     alias cls="clear"
     alias mkd="mkdir -p"
-    alias backup="chezmoi"
+    alias B="chezmoi"
     alias backup-dir-contents="~/bash/backup-dir-contents.bash"
 
     # 回收站操作（基于 trash-cli）

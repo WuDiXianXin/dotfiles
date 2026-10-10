@@ -1,0 +1,28 @@
+[user]
+    name = WuDiXianXin
+    email = 192204056+WuDiXianXin@users.noreply.github.com
+
+[includeIf "hasconfig:remote.*.url:git@gitee.com:**"]
+    path = ~/.gitconfig-gitee
+
+[init]
+    defaultBranch = main
+[core]
+    autocrlf = input
+    quotepath = false
+    editor = nvim
+    pager = delta
+[delta]
+    ; side-by-side = true
+    ; line-numbers = true
+    syntax-theme = Dracula
+[pull]
+    rebase = false
+[fetch]
+    prune = true
+[push]
+    autoSetupRemote = true
+[color]
+    ui = auto
+[merge]
+    ff = true
