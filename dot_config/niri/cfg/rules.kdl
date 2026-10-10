@@ -1,0 +1,50 @@
+// 全局窗口规则
+window-rule {
+    // 圆角
+    geometry-corner-radius 20 // Set every window radius to 20
+    // 去掉超出圆角的窗口内容
+    clip-to-geometry true
+    // 禁止边框画到背景里
+    draw-border-with-background false
+}
+
+window-rule {
+    background-effect {
+      // blur true
+      xray false
+    }
+}
+
+// Floating Noctalia settings window.
+window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
+}
+
+// if you use steam you will probably like these
+window-rule {
+    match app-id="steam"
+    exclude title=r#"^[Ss]team$"#
+    open-floating true
+}
+
+window-rule {
+   match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+   default-floating-position x=10 y=10 relative-to="bottom-right"
+   open-focused false
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+    background-effect {
+      xray false
+      blur false
+    }
+}

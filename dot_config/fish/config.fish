@@ -1,0 +1,73 @@
+if status is-interactive
+    # ========== 基础设置 ==========
+    # 设置欢迎信息
+    # set -g fish_greeting ''
+    function fish_greeting
+        fastfetch
+    end
+
+    # 美化 man 手册
+    set -x MANROFFOPT "-c"
+    set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
+    # ========== Vi 模式 ==========
+    fish_vi_key_bindings
+    set -g fish_cursor_insert line
+    bind --mode insert \cv fish_edit_commandline
+    bind --mode default v fish_edit_commandline
+
+    #========== 路径管理 ==========
+    # Rust
+    source "$HOME/.cargo/env.fish"
+    # set -gx WASM_OPT /usr/bin/wasm-opt
+    # set -x PYENV_ROOT "$HOME/.pyenv"
+    # set -x PATH "$PYENV_ROOT/bin" $PATH
+    # status --is-interactive; and source (pyenv init - | psub)
+    # status --is-interactive; and source (pyenv virtualenv-init - | psub)
+
+    # ========== 别名管理 ==========
+    alias cp="rsync -a"
+    alias p="bat -pp"
+    alias y="yazi"
+    alias lg="lazygit"
+    alias ls="eza"
+    alias l="eza -aF -s type"
+    alias ll="eza -alF -s type"
+    # alias e="eza --icons --group-directories-first --git"
+    alias lt="eza -T -L" # 后面跟数字代表显示层级
+    alias v="nvim"
+    alias vf="v ~/.config/fish/config.fish"
+    alias sf="source ~/.config/fish/config.fish"
+    alias cls="clear"
+    alias mkd="mkdir -p"
+    alias backup="chezmoi"
+    alias backup-dir-contents="~/bash/backup-dir-contents.bash"
+
+    # 回收站操作（基于 trash-cli）
+    alias rm='trash-put' # 替换 rm 为回收站删除
+    alias rmre='trash-restore' # 恢复回收站文件
+    alias rmrm='trash-rm' # 从回收站彻底删除某文件
+    alias rmlist='trash-list' # 查看回收站文件列表
+    alias rmall='trash-empty' # 清空回收站
+
+    # 文件查找
+    alias fdf="fd -E /.snapshots -H -t f"
+    alias fdd="fd -E /.snapshots -H -t d"
+
+    # Git 快捷命令
+    alias GS="git status"
+    alias GD="git diff"
+    alias GA="git add ."
+    alias GC="git commit"
+    alias GR="git restore"
+    alias GP="git push"
+
+    alias show="fastfetch"
+
+    # ========== 工具管理 ==========
+    starship init fish | source
+    fzf --fish | source
+    set -gx _ZO_MAXAGE 5000
+    zoxide init fish | source
+
+end

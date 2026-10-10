@@ -1,0 +1,101 @@
+// screenshot-path null
+screenshot-path "~/Pictures/Screenshots/shot_%Y-%m-%d_%H-%M-%S.png"
+
+// 关闭进入桌面环境的命令提示
+hotkey-overlay { skip-at-startup; }
+
+// 告诉客户端平铺样式，省略窗口栏
+prefer-no-csd
+
+// 关闭热脚
+gestures {
+	hot-corners { off; }
+}
+
+// 关闭工作区阴影
+overview {
+	workspace-shadow { off; }
+}
+
+debug {
+    // 允许无效序列号的 XDG 激活（解决部分应用窗口激活问题）
+	honor-xdg-activation-with-invalid-serial
+    // 不使用 N 卡
+    // ignore-drm-device "/dev/dri/renderD129"
+    // ignore-drm-device "/dev/dri/card0"
+}
+
+cursor {
+    xcursor-theme                               "capitaine-cursors"
+    xcursor-size                                24
+}
+
+/-blur {
+    passes                                      2        // more passes = stronger blur (default: 3)
+    offset                                      3.0      // sample distance per pass (default: 3.0)
+    noise                                       0.03      // grain overlay (default: 0.02)
+    saturation                                  1.0  // color saturation boost (default: 1.5)
+}
+
+environment {
+
+    // ===================== 系统环境配置 =====================
+    LANG                                        "zh_CN.UTF-8"
+    XDG_CURRENT_DESKTOP                         "niri"
+    XDG_SESSION_TYPE                            "wayland"
+
+    // ===================== 渲染后端优化 =====================
+    // GTK 应用在 XWayland 下强制 1 倍缩放（避免缩放异常）
+    // GDK_SCALE                                "1"
+
+    // GTK4 渲染器（优先 Vulkan 提升性能）
+    GSK_RENDERER                                "vulkan"
+
+    // WGPU 图形库后端（Vulkan 适配）
+    WGPU_BACKEND                                "vulkan"
+
+    // 让 Electron 应用程序自动选择图形后端（X11 或 Wayland） 的环境变量设置
+    ELECTRON_OZONE_PLATFORM_HINT                "auto"
+
+    // ===================== NVIDIA 显卡专属配置 =====================
+    // GBM 后端指定（NVIDIA DRM 驱动）
+    GBM_BACKEND                                 "nvidia-drm"
+    // 启用 NVIDIA 独显渲染卸载
+    __NV_PRIME_RENDER_OFFLOAD                   "1"
+    // 指定 GLX 供应商为 NVIDIA
+    __GLX_VENDOR_LIBRARY_NAME                   "nvidia"
+    // 启用 NVIDIA 驱动能力（图形/计算/视频）
+    // NVIDIA_DRIVER_CAPABILITIES   "graphics,compute,video"
+    NVIDIA_DRIVER_CAPABILITIES                  "all"
+
+    // Vulkan 强制使用 NVIDIA 显卡
+    __VK_LAYER_NV_optimus                       "NVIDIA_only"
+    // 指定 Vulkan ICD 配置文件路径
+    // VK_ICD_FILENAMES                         "/usr/share/vulkan/icd.d/nvidia_icd.json"
+
+    // NVIDIA 游戏性能优化
+    // 限制最大帧延迟（降低输入延迟）
+    // __GL_MaxFramesAllowed                    "1"
+
+    // 关闭垂直同步（提升帧率，可能画面撕裂）
+    // 不要设置成1，不然打不开firefox
+    // __GL_SYNC_TO_VBLANK                      "0"
+
+
+    // ===================== Qt 应用 Wayland 适配 =====================
+    // 优先使用 Wayland 后端，失败自动回退 XWayland
+    QT_QPA_PLATFORM                             "wayland"
+    // 自动适配屏幕缩放（无需手动设置 DPI）
+    // QT_AUTO_SCREEN_SCALE_FACTOR              "1"
+    // 禁用 Qt 自带窗口装饰（使用 niri 窗口装饰）
+    QT_WAYLAND_DISABLE_WINDOWDECORATION         "1"
+    // 让 Qt 程序的外观跟随 GTK3 主题的环境变量设置
+    QT_QPA_PLATFORMTHEME                        "gtk3"
+
+
+    // ===================== GTK 应用 Wayland 适配 =====================
+    // 优先使用 Wayland 后端，失败回退 X11
+    GDK_BACKEND                                 "wayland,x11"
+    // Clutter 图形库（GNOME 相关）Wayland 适配
+    CLUTTER_BACKEND                             "wayland,x11"
+}
