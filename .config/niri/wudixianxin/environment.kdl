@@ -1,0 +1,77 @@
+// niri 窗口管理器 环境变量配置
+// 整理后按功能模块分类，便于维护和查阅
+environment {
+    // ===================== 网络代理 =====================
+    // http_proxy      "http://192.168.2.5:17890"
+    // https_proxy     "http://192.168.2.5:17890"
+    // all_proxy       "socks5://192.168.2.5:17891"
+
+    // http_proxy      "http://192.168.5.243:17890"
+    // https_proxy     "http://192.168.5.243:17890"
+    // all_proxy       "socks5://192.168.5.243:17891"
+
+    // no_proxy        "localhost,127.0.0.1,::1,192.168.0.0/16"
+
+    // ===================== 系统环境配置 =====================
+    LANG		"zh_CN.UTF-8"
+    XDG_CURRENT_DESKTOP "niri"
+
+    // ===================== 渲染后端优化 =====================
+    // GTK 应用在 XWayland 下强制 1 倍缩放（避免缩放异常）
+    GDK_SCALE        "1"
+
+    // GTK4 渲染器（优先 Vulkan 提升性能）
+    GSK_RENDERER     "vulkan"
+
+    // WGPU 图形库后端（Vulkan 适配）
+    WGPU_BACKEND     "vulkan"
+
+    // 禁用 NVIDIA 硬件光标加速（默认注释，按需启用）
+    WLR_NO_HARDWARE_CURSORS "1"
+
+
+    // ===================== NVIDIA 显卡专属配置 =====================
+    // WLR 渲染器（Vulkan 后端）
+    WLR_RENDERER                 "vulkan"
+    // 允许软件渲染兜底（防止硬件渲染失败）
+    WLR_RENDERER_ALLOW_SOFTWARE  "1"
+    // GBM 后端指定（NVIDIA DRM 驱动）
+    GBM_BACKEND                  "nvidia-drm"
+    // 启用 NVIDIA 独显渲染卸载
+    __NV_PRIME_RENDER_OFFLOAD    "1"
+    // 指定 GLX 供应商为 NVIDIA
+    __GLX_VENDOR_LIBRARY_NAME    "nvidia"
+    // 启用 NVIDIA 驱动能力（图形/计算/视频）
+    // NVIDIA_DRIVER_CAPABILITIES   "graphics,compute,video"
+    NVIDIA_DRIVER_CAPABILITIES   "all"
+
+    // Vulkan 强制使用 NVIDIA 显卡
+    __VK_LAYER_NV_optimus        "NVIDIA_only"
+    // 指定 Vulkan ICD 配置文件路径
+    VK_ICD_FILENAMES             "/usr/share/vulkan/icd.d/nvidia_icd.json"
+
+    // NVIDIA 游戏性能优化
+    __GL_MaxFramesAllowed        "1"    // 限制最大帧延迟（降低输入延迟）
+    // 不要设置成1，不然打不开firefox
+    // __GL_SYNC_TO_VBLANK       "0"    // 关闭垂直同步（提升帧率，可能画面撕裂）
+
+
+    // ===================== Qt 应用 Wayland 适配 =====================
+    // 优先使用 Wayland 后端，失败自动回退 XWayland
+    QT_QPA_PLATFORM              "wayland"
+    // 自动适配屏幕缩放（无需手动设置 DPI）
+    QT_AUTO_SCREEN_SCALE_FACTOR  "1"
+    // 禁用 Qt 自带窗口装饰（使用 niri 窗口装饰）
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    // Qt 插件路径（确保插件加载正常）
+    QT_PLUGIN_PATH               "/usr/lib/qt/plugins"
+    // Qt 平台插件路径（Wayland/X11 插件）
+    QT_QPA_PLATFORM_PLUGIN_PATH  "/usr/lib/qt/plugins/platforms"
+
+
+    // ===================== GTK 应用 Wayland 适配 =====================
+    // 优先使用 Wayland 后端，失败回退 X11
+    GDK_BACKEND      "wayland,x11"
+    // Clutter 图形库（GNOME 相关）Wayland 适配
+    CLUTTER_BACKEND  "wayland,x11"
+}

@@ -1,0 +1,297 @@
+{
+  "dockTransparency": 0.5,
+  "floatingWindowSyncGlobal": false,
+  "widgetBackgroundColor": "s",
+  "cornerRadius": 12,
+  "firstDayOfWeek": 1,
+  "calendarBackend": "khal",
+  "clockFormat": "24h",
+  "enableRippleEffects": false,
+  "animationVariant": 1,
+  "m3ElevationEnabled": false,
+  "barElevationEnabled": false,
+  "blurBorderColor": "surfaceText",
+  "wallpaperBackgroundColorMode": "primary",
+  "controlCenterShowMicPercent": true,
+  "workspaceDragReorder": false,
+  "showOccupiedWorkspacesOnly": true,
+  "workspaceFocusedBorderColor": "secondaryContainer",
+  "appIdSubstitutions": [],
+  "centeringMode": "geometric",
+  "clockDateFormat": "MMMd日 ddd",
+  "closeNiriOverviewOnWindowFocus": false,
+  "rememberLastMode": false,
+  "appDrawerSectionViewModes": {
+    "apps": "list"
+  },
+  "niriOverviewLauncherStyle": "spotlight",
+  "dankLauncherV2UnloadOnClose": true,
+  "weatherEnabled": false,
+  "dashTabs": [
+    {
+      "id": "overview",
+      "enabled": true
+    },
+    {
+      "id": "media",
+      "enabled": true
+    },
+    {
+      "id": "wallpaper",
+      "enabled": true
+    },
+    {
+      "id": "weather",
+      "enabled": false
+    },
+    {
+      "id": "settings",
+      "enabled": true
+    }
+  ],
+  "networkPreference": "wifi",
+  "cursorSettings": {
+    "theme": "System Default",
+    "size": 24,
+    "niri": {
+      "hideWhenTyping": false,
+      "hideAfterInactiveMs": 0
+    },
+    "hyprland": {
+      "hideOnKeyPress": false,
+      "hideOnTouch": false,
+      "inactiveTimeout": 0
+    },
+    "dwl": {
+      "cursorHideTimeout": 0
+    }
+  },
+  "fontFamily": "Maple Mono NF CN",
+  "monoFontFamily": "Maple Mono NF CN",
+  "textRenderType": 1,
+  "textRenderQuality": 2,
+  "batteryNotifyCritical": false,
+  "batteryLowNotificationType": 1,
+  "lockBeforeSuspend": true,
+  "syncModeWithPortal": false,
+  "muxType": "zellij",
+  "matugenTemplateHyprland": false,
+  "matugenTemplateGhostty": false,
+  "matugenTemplateFoot": false,
+  "matugenTemplateAlacritty": false,
+  "matugenTemplateWezterm": false,
+  "matugenTemplateVscode": false,
+  "matugenTemplateEmacs": false,
+  "matugenTemplateZed": false,
+  "showDock": true,
+  "dockSmartAutoHide": true,
+  "dockOpenOnOverview": true,
+  "dockPosition": 2,
+  "dockSpacing": 8,
+  "dockMargin": 6,
+  "dockIconSize": 48,
+  "dockTrashFileManager": "nautilus",
+  "modalDarkenBackground": false,
+  "notificationPopupPosition": 2,
+  "notificationHistoryMaxCount": 200,
+  "osdAlwaysShowValue": true,
+  "osdPowerProfileEnabled": true,
+  "updaterIntervalSeconds": 60000000,
+  "updaterAllowAUR": false,
+  "barConfigs": [
+    {
+      "id": "default",
+      "name": "Main Bar",
+      "enabled": true,
+      "position": 0,
+      "screenPreferences": [
+        {
+          "name": "eDP-1",
+          "model": "0x06E2"
+        }
+      ],
+      "showOnLastDisplay": false,
+      "leftWidgets": [
+        {
+          "id": "battery",
+          "enabled": true
+        },
+        {
+          "id": "gpuTemp",
+          "enabled": true,
+          "selectedGpuIndex": 0,
+          "pciId": "10de:2560",
+          "minimumWidth": false
+        },
+        {
+          "id": "cpuTemp",
+          "enabled": true,
+          "minimumWidth": false
+        },
+        {
+          "id": "cpuUsage",
+          "enabled": true,
+          "minimumWidth": false
+        },
+        {
+          "id": "memUsage",
+          "enabled": true,
+          "minimumWidth": false,
+          "showSwap": false,
+          "showInGb": false
+        },
+        {
+          "id": "network_speed_monitor",
+          "enabled": true
+        }
+      ],
+      "centerWidgets": [
+        {
+          "id": "clock",
+          "enabled": true,
+          "clockCompactMode": false,
+          "clockDateOrder": "dateFirst"
+        }
+      ],
+      "rightWidgets": [
+        {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 0
+        },
+        {
+          "id": "systemTray",
+          "enabled": true,
+          "trayAutoOverflow": false,
+          "trayUseInlineExpansion": false
+        },
+        {
+          "id": "notificationButton",
+          "enabled": true
+        },
+        {
+          "id": "clipboard",
+          "enabled": true
+        },
+        {
+          "id": "colorPicker",
+          "enabled": true
+        },
+        {
+          "id": "notepadButton",
+          "enabled": true
+        },
+        {
+          "id": "controlCenterButton",
+          "enabled": true,
+          "showMicIcon": true,
+          "showMicPercent": false,
+          "showScreenSharingIcon": false,
+          "showVpnIcon": false,
+          "showNetworkIcon": false,
+          "showBluetoothIcon": true,
+          "showAudioPercent": false,
+          "showAudioIcon": true,
+          "showBrightnessIcon": false,
+          "showBrightnessPercent": false,
+          "showBatteryIcon": false,
+          "showPrinterIcon": false,
+          "showDoNotDisturbIcon": false
+        }
+      ],
+      "spacing": 4,
+      "innerPadding": 10,
+      "bottomGap": 0,
+      "transparency": 0,
+      "widgetTransparency": 0.5,
+      "squareCorners": false,
+      "noBackground": false,
+      "maximizeWidgetIcons": true,
+      "maximizeWidgetText": true,
+      "removeWidgetPadding": false,
+      "widgetPadding": 8,
+      "gothCornersEnabled": false,
+      "gothCornerRadiusOverride": false,
+      "gothCornerRadiusValue": 12,
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "widgetOutlineEnabled": false,
+      "widgetOutlineColor": "primary",
+      "widgetOutlineOpacity": 1,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1,
+      "iconScale": 1,
+      "autoHide": false,
+      "autoHideDelay": 250,
+      "showOnWindowsOpen": false,
+      "openOnOverview": true,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
+      "maximizeDetection": true,
+      "scrollEnabled": false,
+      "scrollXBehavior": "column",
+      "scrollYBehavior": "workspace",
+      "shadowIntensity": 0,
+      "shadowOpacity": 60,
+      "shadowColorMode": "text",
+      "shadowCustomColor": "#000000",
+      "clickThrough": false,
+      "attachToScreenEdge": true,
+      "hoverPopouts": false,
+      "hoverPopoutDelay": 300,
+      "useOverlayLayer": false,
+      "batteryColorMode": "theme",
+      "barInsetPadding": 4,
+      "barLengthPadding": 0
+    }
+  ],
+  "desktopClockCustomColor": {
+    "r": 1,
+    "g": 1,
+    "b": 1,
+    "a": 1,
+    "hsvHue": -1,
+    "hsvSaturation": 0,
+    "hsvValue": 1,
+    "hslHue": -1,
+    "hslSaturation": 0,
+    "hslLightness": 1,
+    "valid": true
+  },
+  "systemMonitorCustomColor": {
+    "r": 1,
+    "g": 1,
+    "b": 1,
+    "a": 1,
+    "hsvHue": -1,
+    "hsvSaturation": 0,
+    "hsvValue": 1,
+    "hslHue": -1,
+    "hslSaturation": 0,
+    "hslLightness": 1,
+    "valid": true
+  },
+  "builtInPluginSettings": {
+    "dms_settings_search": {
+      "trigger": "?"
+    },
+    "dms_clipboard_search": {
+      "trigger": "cb"
+    },
+    "dms_power": {
+      "trigger": "pw"
+    },
+    "dms_qr_generator": {
+      "trigger": "qrg"
+    }
+  },
+  "clipboardVisibleEntryActions": [
+    "edit",
+    "delete",
+    "pin"
+  ],
+  "configVersion": 18
+}
