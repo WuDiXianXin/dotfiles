@@ -36,7 +36,7 @@ if status is-interactive
     # alias e="eza --icons --group-directories-first --git"
     alias lt="eza -T -L" # 后面跟数字代表显示层级
     alias v="nvim"
-    alias vf="v ~/.config/fish/config.fish"
+    alias vf="chezmoi edit ~/.config/fish/config.fish"
     alias sf="source ~/.config/fish/config.fish"
     alias cls="clear"
     alias mkd="mkdir -p"
