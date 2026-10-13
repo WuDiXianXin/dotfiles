@@ -9,6 +9,8 @@ paths=(
   /etc/pacman.d/archlinuxcn
   /etc/default/limine
   /etc/modprobe.d/nvidia.conf
+  /etc/greetd/config.toml
+  /etc/greetd/regreet.toml
 )
 
 # -a 归档模式
