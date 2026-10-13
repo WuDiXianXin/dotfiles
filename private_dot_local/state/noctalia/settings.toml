@@ -236,7 +236,7 @@ fill_mode = "fit"
     path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
 
     [wallpaper.monitors.eDP-2]
-    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-3.png"
+    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
 
 [weather]
 enabled = false
