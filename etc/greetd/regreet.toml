@@ -30,7 +30,7 @@ fit = "Cover"
 application_prefer_dark_theme = true
 
 # Cursor theme name
-cursor_theme_name = "catppuccin-mocha-mauve-cursors"
+# cursor_theme_name = "catppuccin-mocha-mauve-cursors"
 
 # Whether to blink the cursor
 cursor_blink = true
@@ -53,7 +53,7 @@ poweroff = ["systemctl", "poweroff"]
 
 [appearance]
 # The message that initially displays on startup
-greeting_msg = "欢迎回来，主人！"
+greeting_msg = "欢迎回来！"
 
 
 [widget.clock]

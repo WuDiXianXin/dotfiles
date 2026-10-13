@@ -11,6 +11,8 @@ paths=(
   /etc/modprobe.d/nvidia.conf
   /etc/greetd/config.toml
   /etc/greetd/regreet.toml
+  /etc/pam.d/greetd
+  /etc/pam.d/passwd
 )
 
 # -a 归档模式
