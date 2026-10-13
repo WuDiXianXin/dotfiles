@@ -26,7 +26,7 @@ debug {
 }
 
 cursor {
-    xcursor-theme                               "capitaine-cursors"
+    xcursor-theme                               "catppuccin-mocha-mauve-cursors"
     xcursor-size                                24
 }
 
