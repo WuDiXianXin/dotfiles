@@ -80,6 +80,7 @@ opt.swapfile = false -- 保存前临时复制一份
 opt.backup = false
 opt.writebackup = false
 opt.updatetime = 250 -- 自动触发时间频率
+opt.fixendofline = false -- 让 Neovim 保存文件时自动给末尾补换行符
 
 -- ===================== 文件对比 =====================
 
