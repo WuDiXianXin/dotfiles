@@ -227,13 +227,16 @@ directory = "~/Pictures/wallpapers"
 fill_mode = "fit"
 
     [wallpaper.default]
-    path = "/home/xx/Pictures/wallpapers/1790674114852.png"
+    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
 
     [wallpaper.last]
-    path = "/home/xx/Pictures/wallpapers/1790674114852.png"
+    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
 
     [wallpaper.monitors.eDP-2]
-    path = "/home/xx/Pictures/wallpapers/1790674114852.png"
+    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-3.png"
 
 [weather]
 enabled = false
