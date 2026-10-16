@@ -62,6 +62,3 @@ PATH="$ANDROID_SDK_ROOT/build-tools/37.0.0:$PATH"
 
 # Java
 PATH="$JAVA_HOME/bin:$PATH"
-
-# CUDA
-PATH="/opt/cuda/bin:$PATH"
