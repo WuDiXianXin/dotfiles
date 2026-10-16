@@ -17,6 +17,9 @@ if status is-interactive
     bind --mode default v fish_edit_commandline
 
     #========== 路径管理 ==========
+    # woys / 用户本地二进制目录
+    fish_add_path $HOME/.local/bin
+
     # Rust
     source "$HOME/.cargo/env.fish"
     # set -gx WASM_OPT /usr/bin/wasm-opt
