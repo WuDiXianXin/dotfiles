@@ -65,4 +65,3 @@ PATH="$JAVA_HOME/bin:$PATH"
 
 # CUDA
 PATH="/opt/cuda/bin:$PATH"
-LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
