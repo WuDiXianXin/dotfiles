@@ -30,6 +30,10 @@ return {
                         input = { '“().-()”' },
                         output = { left = '“', right = '”' },
                     },
+                    ['（'] = {
+                        input = { '（().-()）' },
+                        output = { left = '（', right = '）' },
+                    },
                 },
             })
         end,

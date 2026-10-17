@@ -17,6 +17,7 @@ return {
                     ['【'] = ai.gen_spec.pair('【', '】'),
                     ['‘'] = ai.gen_spec.pair('‘', '’'),
                     ['“'] = ai.gen_spec.pair('“', '”'),
+                    ['（'] = ai.gen_spec.pair('（', '）'),
                 },
             })
         end,
