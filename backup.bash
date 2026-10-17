@@ -13,6 +13,7 @@ paths=(
   /etc/greetd/regreet.toml
   /etc/pam.d/greetd
   /etc/pam.d/passwd
+  /etc/libvirt/network.conf
 )
 
 # -a 归档模式
