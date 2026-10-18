@@ -43,8 +43,8 @@ if status is-interactive
     alias sf="source ~/.config/fish/config.fish"
     alias cls="clear"
     alias mkd="mkdir -p"
-    alias B="chezmoi"
-    alias backup-dir-contents="~/bash/backup-dir-contents.bash"
+    alias b="chezmoi"
+    alias B="~/bash/backup-dir-contents.bash"
 
     # 回收站操作（基于 trash-cli）
     alias rm='trash-put' # 替换 rm 为回收站删除
