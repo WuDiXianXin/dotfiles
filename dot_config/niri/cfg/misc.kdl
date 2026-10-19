@@ -21,7 +21,8 @@ debug {
     // 允许无效序列号的 XDG 激活（解决部分应用窗口激活问题）
 	honor-xdg-activation-with-invalid-serial
     // 不使用 N 卡
-    ignore-drm-device "/dev/dri/renderD128"
+    ignore-drm-device "/dev/dri/by-path/pci-0000:01:00.0-card"
+    ignore-drm-device "/dev/dri/by-path/pci-0000:01:00.0-render"
 }
 
 cursor {

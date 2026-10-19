@@ -32,7 +32,7 @@ width_text = "24"
 sort = "updated_at_desc"
 
 [screenshot]
-last_region = "7,283,934,715"
+last_region = "82,88,613,89"
 
 [security_migrations]
 calendar_credentials_v1 = true
