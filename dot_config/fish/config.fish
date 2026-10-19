@@ -46,8 +46,9 @@ if status is-interactive
     alias mkd="mkdir -p"
     alias b="chezmoi"
     alias B="~/bash/backup-dir-contents.bash"
-    alias enable-passthrough = "~/bash/enable-passthrough.bash"
-    alias disable-passthrough = "~/bash/disable-passthrough.bash"
+
+    alias enable-passthrough='sudo ~/bash/enable-passthrough.bash'
+    alias disable-passthrough='sudo ~/bash/disable-passthrough.bash'
 
     # 回收站操作（基于 trash-cli）
     alias rm='trash-put' # 替换 rm 为回收站删除
