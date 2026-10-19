@@ -14,6 +14,11 @@ paths=(
   /etc/pam.d/greetd
   /etc/pam.d/passwd
   /etc/libvirt/network.conf
+  /etc/libvirt/qemu.conf
+  /etc/udev/rules.d/70-kvmfr.rules
+  /etc/modprobe.d/kvmfr.conf
+  /etc/modules-load.d/kvmfr.conf
+
 )
 
 # -a 归档模式
