@@ -55,27 +55,27 @@ return {
 
                 -- ==================== Winbar ====================
 
-                winbar = {
-                    lualine_c = {
-                        {
-                            'filename',
-                            file_status = true, -- [关键设置] 启用文件状态显示
-                            path = 1, -- 可选: 0 = 仅文件名, 1 = 相对路径, 2 = 绝对路径
-                            symbols = { modified = '●', readonly = '', unnamed = 'No Name' },
-                        },
-                    },
-                },
-
-                inactive_winbar = {
-                    lualine_c = {
-                        {
-                            'filename',
-                            file_status = true,
-                            path = 1,
-                            symbols = { modified = '●', readonly = '', unnamed = 'No Name' },
-                        },
-                    },
-                },
+                -- winbar = {
+                --     lualine_c = {
+                --         {
+                --             'filename',
+                --             file_status = true, -- [关键设置] 启用文件状态显示
+                --             path = 1, -- 可选: 0 = 仅文件名, 1 = 相对路径, 2 = 绝对路径
+                --             symbols = { modified = '●', readonly = '', unnamed = 'No Name' },
+                --         },
+                --     },
+                -- },
+                --
+                -- inactive_winbar = {
+                --     lualine_c = {
+                --         {
+                --             'filename',
+                --             file_status = true,
+                --             path = 1,
+                --             symbols = { modified = '●', readonly = '', unnamed = 'No Name' },
+                --         },
+                --     },
+                -- },
 
                 -- ==================== Tabline ====================
 
