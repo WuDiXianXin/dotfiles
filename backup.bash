@@ -30,4 +30,8 @@ sudo rsync -aRv --ignore-missing-args \
   --chown="$(id -u):$(id -g)" \
   "${paths[@]}" ./
 
+sudo rsync -aRv --ignore-missing-args \
+  --chown="$(id -u):$(id -g)" \
+  /var/lib/noctalia-greeter/greeter.toml ./
+
 echo "备份完成。"
