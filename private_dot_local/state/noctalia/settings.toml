@@ -1,10 +1,12 @@
 config_version = 15
 
 [bar.default]
-background_opacity = 0.79999998211860657
+background_opacity = 0.0
 capsule = true
+capsule_foreground = "primary"
 compositor_blur = false
 end = [ "media", "tray", "group:g3", "group:g4", "session" ]
+shadow = false
 start = [ "workspaces", "group:g5", "group:g1", "group:g2" ]
 
     [[bar.default.capsule_group]]
@@ -80,7 +82,7 @@ widget_order = []
     [desktop_widgets.widget]
 
 [dock]
-enabled = true
+background_opacity = 0.29999999329447746
 launcher_icon = "zoom-scan"
 launcher_position = "start"
 position = "left"
@@ -95,20 +97,21 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     [idle.behavior.lock]
     action = "lock"
     enabled = true
-    timeout = 600.0
+    timeout = 1200.0
 
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
     enabled = true
-    timeout = 900.0
+    timeout = 1360.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = true
-    timeout = 660.0
+    timeout = 1230.0
 
 [lockscreen]
 fingerprint = false
+transition = [ "disc", "honeycomb", "stripes" ]
 
 [lockscreen_widgets]
 enabled = false
@@ -178,13 +181,23 @@ widget_order = [ "lockscreen-login-box@eDP-2", "lockscreen-login-box@eDP-1" ]
 enabled = true
 
 [notification]
+background_opacity = 0.29999999329447746
 position = "top_left"
+
+[osd]
+background_opacity = 0.29999999329447746
 
 [shell]
 avatar_path = "/home/xx/Pictures/Image_1788934343277_480.jpg"
 clipboard_image_action_command = "satty -f -"
 font_family = "Maple Mono NF CN"
 lang = "zh-Hans"
+popup_shadows = false
+settings_window_translucent = true
+
+    [shell.launcher]
+    auto_paste = "off"
+    fetch_exchange_rates = false
 
     [shell.panel]
     clipboard_position = "auto"
@@ -192,6 +205,7 @@ lang = "zh-Hans"
     list_item_background = true
     polkit_position = "auto"
     session_placement = "floating"
+    shadow = false
     transparency_mode = "glass"
     wallpaper_placement = "floating"
 
@@ -204,6 +218,9 @@ lang = "zh-Hans"
 
     [shell.session]
     show_shortcuts = false
+
+    [shell.shadow]
+    alpha = 0.0
 
     [shell.window_switcher]
     style = "compact"
@@ -224,16 +241,16 @@ wallpaper_scheme = "m3-tonal-spot"
 
 [wallpaper]
 directory = "~/Pictures/wallpapers"
-fill_mode = "fit"
+transition = [ "disc", "honeycomb", "stripes" ]
 
     [wallpaper.default]
-    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
+    path = "/home/xx/Pictures/wallpapers/Anime-Girl-Night-Sky.jpg"
 
     [wallpaper.last]
-    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
+    path = "/home/xx/Pictures/wallpapers/Anime-Girl-Night-Sky.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
+    path = "/home/xx/Pictures/wallpapers/Anime-Girl-Night-Sky.jpg"
 
     [wallpaper.monitors.eDP-2]
     path = "/home/xx/Pictures/wallpapers/妄想天使-三小只-2.png"
