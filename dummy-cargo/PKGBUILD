@@ -1,0 +1,10 @@
+pkgname=dummy-cargo
+pkgver=1.0
+pkgrel=1
+pkgdesc="Dummy package to satisfy cargo dependency (Rust installed via rustup)"
+arch=('any')
+url="https://rustup.rs"
+license=('MIT')
+# 关键：声明提供 cargo（以及可选的 rust/rustc），这样 paru 就不会再去仓库拉真正的包
+provides=('cargo' 'rust' 'rustc')
+conflicts=('rust' 'rustup' 'cargo')
