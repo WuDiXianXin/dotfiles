@@ -101,7 +101,9 @@ autocmd({ 'BufRead', 'BufNewFile' }, {
     },
     callback = function()
         vim.opt_local.undofile = false -- 不写入持久化撤销历史
+        vim.opt_local.swapfile = false -- 关闭保存前临时复制一份
+        vim.opt_local.backup = false -- 关闭永久备份
         vim.opt_local.writebackup = false -- 不保留写入失败时的临时备份
-        vim.notify('不保留该文件任何信息：关闭撤销记录和临时备份', vim.log.levels.INFO)
+        vim.notify('不保留该文件任何信息：关闭撤销记录和文件备份', vim.log.levels.INFO)
     end,
 })
