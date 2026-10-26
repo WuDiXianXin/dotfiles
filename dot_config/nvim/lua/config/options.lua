@@ -75,12 +75,16 @@ opt.expandtab = true -- 将 tab 转为空格
 opt.tabstop = 4 -- 一个 tab 对应 4 个空格
 opt.softtabstop = 4 -- 编辑模式下 tab 键的空格数
 opt.shiftwidth = 4 -- 缩进/取消缩进的空格数
-opt.undofile = false -- 持久化撤销历史
-opt.swapfile = false -- 保存前临时复制一份
-opt.backup = false
-opt.writebackup = false
 opt.updatetime = 250 -- 自动触发时间频率
 opt.fixendofline = false -- 让 Neovim 保存文件时自动给末尾补换行符
+
+opt.undofile = true -- 持久化撤销历史
+-- 将撤销文件集中存放，避免污染项目目录
+-- stdpath("data") 通常指向 ~/.local/share/nvim 或类似路径
+opt.undodir = vim.fn.stdpath('data') .. '/undo'
+opt.swapfile = false -- 保存前临时复制一份
+opt.backup = false -- 永久备份：每次覆盖原文件之前，都会创建一个永久的备份文件
+opt.writebackup = true -- 写入时临时备份：一旦文件成功写入，这个临时备份就会被自动删除
 
 -- ===================== 文件对比 =====================
 
