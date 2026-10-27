@@ -1,4 +1,4 @@
-config_version = 15
+config_version = 16
 
 [bar.default]
 background_opacity = 0.0
@@ -14,7 +14,7 @@ start = [ "workspaces", "group:g5", "group:g1", "group:g2" ]
     accordion_direction = "end"
     border_width = 1.0
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g2"
     members = [ "network_tx", "network_rx" ]
     opacity = 1.0
@@ -25,7 +25,7 @@ start = [ "workspaces", "group:g5", "group:g1", "group:g2" ]
     accordion_direction = "end"
     border_width = 1.0
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g1"
     members = [ "cpu", "temp", "ram", "sysmon" ]
     opacity = 1.0
@@ -36,7 +36,7 @@ start = [ "workspaces", "group:g5", "group:g1", "group:g2" ]
     accordion_direction = "end"
     border_width = 1.0
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g3"
     members = [ "notifications", "wallpaper", "clipboard" ]
     opacity = 1.0
@@ -47,7 +47,7 @@ start = [ "workspaces", "group:g5", "group:g1", "group:g2" ]
     accordion_direction = "end"
     border_width = 1.0
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g4"
     members = [ "volume", "bluetooth", "brightness" ]
     opacity = 1.0
@@ -58,7 +58,7 @@ start = [ "workspaces", "group:g5", "group:g1", "group:g2" ]
     accordion_direction = "end"
     border_width = 1.0
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g5"
     members = [ "battery", "power_profile" ]
     opacity = 1.0
@@ -135,7 +135,7 @@ widget_order = [ "lockscreen-login-box@eDP-2", "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -162,7 +162,7 @@ widget_order = [ "lockscreen-login-box@eDP-2", "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-2".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
