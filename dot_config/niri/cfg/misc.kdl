@@ -55,7 +55,7 @@ environment {
     // WGPU_BACKEND                                "vulkan"
 
     // 让 Electron 应用程序自动选择图形后端（X11 或 Wayland） 的环境变量设置
-    ELECTRON_OZONE_PLATFORM_HINT                "auto"
+    // ELECTRON_OZONE_PLATFORM_HINT                "auto"
 
     // ===================== NVIDIA 显卡专属配置 =====================
     // GBM 后端指定（NVIDIA DRM 驱动）

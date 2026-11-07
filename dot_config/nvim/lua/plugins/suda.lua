@@ -11,8 +11,8 @@ return {
         -- Load at startup so :SudaRead / :SudaWrite are available immediately
         lazy = false,
 
-        -- config = function()
-        -- require('suda').setup({
+        config = function()
+        require('suda').setup({
         -- =====================================================================
         -- 提权命令
         -- Privilege escalation command
@@ -105,8 +105,8 @@ return {
         -- Log the full command at vim.notify() DEBUG level for troubleshooting
         -- 不会打印密码
         -- Passwords are never printed
-        -- debug = true,
-        -- })
-        -- end,
+        debug = true,
+        })
+        end,
     },
 }
