@@ -25,7 +25,7 @@ if status is-interactive
 
     # ========== 路径管理 ==========
     # 把用户级可执行目录加入 PATH
-    fish_add_path ~/.local/bin ~/.cargo/bin
+    fish_add_path ~/.local/bin/woys ~/.local/bin/berrycode ~/.cargo/bin
 
     # pyenv 相关（如使用请取消注释）
     # set -gx WASM_OPT /usr/bin/wasm-opt
