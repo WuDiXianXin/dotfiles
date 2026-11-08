@@ -27,12 +27,9 @@ RUSTUP_DIST_SERVER="https://rsproxy.cn"
 RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 # sccache 编译缓存
-RUSTC_WRAPPER="sccache"
 SCCACHE_DIR="/home/xx/.cache/sccache"
 SCCACHE_CACHE_SIZE="20G"
 SCCACHE_COMPRESSION="zstd"
-SCCACHE_MAX_STORES="100"
-SCCACHE_NO_DISTRIBUTED="1"
 SCCACHE_IDLE_TIMEOUT="3600"
 
 # Android
