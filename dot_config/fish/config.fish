@@ -61,6 +61,16 @@ if status is-interactive
         end
     end
 
+    # 在退出 Yazi 时更改当前工作目录
+    function y
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        command yazi $argv --cwd-file="$tmp"
+        if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+            builtin cd -- "$cwd"
+        end
+        command rm -f -- "$tmp"
+    end
+
     # ========== 别名 ==========
     # --- 编辑器 ---
     alias v='nvim'
@@ -79,7 +89,6 @@ if status is-interactive
     alias cls='clear'
     alias mkd='mkdir -p'
     alias p='bat -pp'
-    alias y='yazi'
     alias lg='lazygit'
     alias show='fastfetch'
 
