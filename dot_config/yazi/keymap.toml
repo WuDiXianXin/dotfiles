@@ -102,8 +102,12 @@ keymap = [
   { on = "<Tab>", run = "spot", desc = "聚焦悬停文件" },
 
   # Operation
-  { on = "o", run = "open", desc = "打开选中文件" },
+  { on = [ "o", "o" ], run = "open", desc = "打开选中文件" },
   { on = "O", run = "open --interactive", desc = "交互式打开选中文件" },
+
+  { on = [ "o", "t" ], run = "plugin open-with-cmd -- block", desc = "Open with command in the terminal" },
+  { on = [ "o", "T" ], run = "plugin open-with-cmd", desc = "Open with command" },
+
   { on = "<Enter>", run = "open", desc = "打开选中文件" },
   { on = "<S-Enter>", run = "open --interactive", desc = "交互式打开选中文件" },
   { on = "y", run = "yank", desc = "复制选中文件（复制操作）" },
