@@ -1,0 +1,6 @@
+[formatting]
+# 禁止超过宽度时自动展开数组
+array_auto_expand = false
+# 同时确保能单行的数组会被折叠回去（默认已是 true）
+array_auto_collapse = true
+compact_arrays = true
