@@ -1,0 +1,14 @@
+# .taplo.toml
+include = ["**/*.toml"] # 要格式化的文件范围
+exclude = ["target/**"] # 排除的目录
+
+[formatting]
+align_entries        = true  # 垂直对齐连续的键值对
+align_comments       = true  # 对齐行尾注释
+array_trailing_comma = true  # 多行数组添加末尾逗号
+array_auto_expand    = true  # 超宽时自动展开数组为多行
+array_auto_collapse  = true  # 短数组自动折叠为单行
+compact_arrays       = true  # 紧凑模式排列数组元素
+column_width         = 120   # 最大列宽
+indent_string        = "  "  # 使用两个空格作为缩进
+reorder_keys         = false # 不重新排序键名

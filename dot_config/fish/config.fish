@@ -27,6 +27,9 @@ if status is-interactive
     # 把用户级可执行目录加入 PATH
     fish_add_path ~/.local/bin/woys ~/.local/bin/berrycode ~/.cargo/bin
 
+    # taplo fmt toml
+    set -gx TAPLO_CONFIG "$HOME/.config/.taplo.toml"
+
     # pyenv 相关（如使用请取消注释）
     # set -gx WASM_OPT /usr/bin/wasm-opt
     # set -x PYENV_ROOT "$HOME/.pyenv"
