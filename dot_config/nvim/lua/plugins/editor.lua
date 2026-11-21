@@ -5,7 +5,7 @@ return {
         cmd = { 'ConformInfo' },
         opts = {
             formatters_by_ft = {
-                rust = { 'rustfmt' },
+                -- rust = { 'rustfmt' },
                 lua = { 'stylua' },
                 toml = { 'taplo' },
             },
