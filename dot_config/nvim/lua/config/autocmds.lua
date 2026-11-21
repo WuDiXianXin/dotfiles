@@ -44,6 +44,16 @@ autocmd('BufReadPost', {
     group = 'General',
     desc = '打开文件自动恢复上次光标位置 + 展开折叠',
     callback = function()
+        local ft = vim.bo.filetype
+        local bt = vim.bo.buftype
+        -- 跳过这些类型
+        local skip = {
+            buftype = { 'nofile', 'quickfix', 'terminal' },
+            filetype = { 'gitcommit', 'gitrebase', 'help' },
+        }
+        if vim.tbl_contains(skip.buftype, bt) or vim.tbl_contains(skip.filetype, ft) then
+            return
+        end
         -- g`" 跳转到上次编辑位置；zv 展开折叠；
         -- silent! 避免文件没有上次光标 mark 时报错
         api.nvim_exec2('silent! normal! g`"zv', { output = false })
@@ -58,6 +68,20 @@ autocmd('BufReadPost', {
 --         vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
 --     end,
 -- })
+
+-- 大文件关掉相对行号，减轻卡顿
+autocmd('BufReadPre', {
+    group = 'General',
+    callback = function(event)
+        local ok, stats = pcall(vim.uv.fs_stat, api.nvim_buf_get_name(event.buf))
+        if ok and stats and stats.size > 1024 * 1024 then
+            vim.b[event.buf].large_file = true
+            vim.opt_local.relativenumber = false
+            vim.opt_local.spell = false
+            vim.opt_local.undofile = false
+        end
+    end,
+})
 
 -- ============================================================================
 -- SensitiveFiles 组：敏感文件保护

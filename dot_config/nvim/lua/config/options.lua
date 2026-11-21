@@ -32,15 +32,16 @@ opt.synmaxcol = 500 -- 限制语法高亮列数，提高性能
 opt.number = true -- 显示绝对行号
 opt.relativenumber = true -- 显示相对行号
 opt.signcolumn = 'yes' -- 始终显示符号列
-opt.cursorline = true -- 高亮光标行
+opt.cursorline = false -- 高亮光标行
 -- opt.cursorcolumn = true -- 高亮光标列
 opt.scrolloff = 8 -- 垂直保留 8 行缓冲
+-- opt.sidescrolloff = 8 -- 水平方向，光标左右保留 8 列缓冲
 
 -- ===================== 空白字符显示 =====================
 
 opt.list = true
 opt.listchars = {
-    tab = '» ', -- Tab 显示为 » + 空格
+    tab = '»+', -- Tab 显示为 » + 空格
     trail = '·', -- 行尾空格显示为 ·
     nbsp = '␣', -- 非断行空格（比如全角空格、&nbsp;）
     -- multispace = '·', -- 突出连续空格（代替space）
@@ -56,6 +57,12 @@ opt.smartcase = true -- 输入大写时精准匹配
 opt.hlsearch = true -- 搜索结果高亮
 opt.incsearch = true -- 增量搜索（实时匹配）
 opt.inccommand = 'split' -- 预览替换效果
+
+-- 在保存、退出、修改文件这类有未保存变更的危险操作时，弹出确认提示，而不是直接报错阻止
+opt.confirm = true
+-- 把 Neovim 内置 grep 换成 ripgrep (rg)
+opt.grepprg = 'rg --vimgrep'
+opt.grepformat = '%f:%l:%c:%m'
 
 -- ===================== 文本与缩进 =====================
 
@@ -75,6 +82,7 @@ opt.expandtab = true -- 将 tab 转为空格
 opt.tabstop = 4 -- 一个 tab 对应 4 个空格
 opt.softtabstop = 4 -- 编辑模式下 tab 键的空格数
 opt.shiftwidth = 4 -- 缩进/取消缩进的空格数
+opt.shiftround = true -- 缩进操作自动对齐到 shiftwidth 网格
 opt.updatetime = 250 -- 自动触发时间频率
 opt.fixendofline = false -- 让 Neovim 保存文件时自动给末尾补换行符
 
@@ -85,6 +93,9 @@ opt.undodir = vim.fn.stdpath('data') .. '/undo'
 opt.swapfile = false -- 保存前临时复制一份
 opt.backup = false -- 永久备份：每次覆盖原文件之前，都会创建一个永久的备份文件
 opt.writebackup = true -- 写入时临时备份：一旦文件成功写入，这个临时备份就会被自动删除
+
+-- 不让 Neovim 内置 markdown 插件乱改你的缩进，让 md 文件遵守你自己的缩进规则
+g.markdown_recommended_style = 0
 
 -- ===================== 文件对比 =====================
 
@@ -104,6 +115,8 @@ opt.diffopt = {
 opt.foldenable = true -- 启用折叠（关闭则用 zA 等命令也无法折叠）
 opt.foldmethod = 'expr'
 opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- Indent（实验性）
+opt.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 opt.foldlevel = 99 -- 默认不折叠
 opt.foldlevelstart = 99
 opt.foldminlines = 1 -- 避免空折叠
