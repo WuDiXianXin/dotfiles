@@ -41,7 +41,7 @@ opt.scrolloff = 8 -- 垂直保留 8 行缓冲
 
 opt.list = true
 opt.listchars = {
-    tab = '»+', -- Tab 显示为 » + 空格
+    tab = '»-', -- Tab 显示为 »---
     trail = '·', -- 行尾空格显示为 ·
     nbsp = '␣', -- 非断行空格（比如全角空格、&nbsp;）
     -- multispace = '·', -- 突出连续空格（代替space）
