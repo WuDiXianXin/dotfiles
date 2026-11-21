@@ -83,6 +83,7 @@ widget_order = []
 
 [dock]
 background_opacity = 0.29999999329447746
+enabled = true
 launcher_icon = "zoom-scan"
 launcher_position = "start"
 position = "left"
