@@ -2,22 +2,22 @@
 set -euo pipefail
 
 paths=(
-  /etc/fstab
-  /etc/environment
-  /etc/profile
-  /etc/pacman.conf
-  /etc/pacman.d/archlinuxcn
-  /etc/default/limine
-  /etc/modprobe.d/nvidia.conf
-  /etc/greetd/config.toml
-  /etc/greetd/regreet.toml
-  /etc/pam.d/greetd
-  /etc/pam.d/passwd
-  /etc/libvirt/network.conf
-  /etc/libvirt/qemu.conf
-  /etc/udev/rules.d/70-kvmfr.rules
-  /etc/modprobe.d/kvmfr.conf
-  /etc/modules-load.d/kvmfr.conf
+    /etc/fstab
+    /etc/environment
+    /etc/profile
+    /etc/pacman.conf
+    /etc/pacman.d/archlinuxcn
+    /etc/default/limine
+    /etc/modprobe.d/nvidia.conf
+    /etc/greetd/config.toml
+    /etc/greetd/regreet.toml
+    /etc/pam.d/greetd
+    /etc/pam.d/passwd
+    /etc/libvirt/network.conf
+    /etc/libvirt/qemu.conf
+    /etc/udev/rules.d/70-kvmfr.rules
+    /etc/modprobe.d/kvmfr.conf
+    /etc/modules-load.d/kvmfr.conf
 
 )
 
@@ -27,11 +27,11 @@ paths=(
 # --chown：即使 sudo 读源文件，写出的备份仍归当前用户，避免 git 权限问题
 # --ignore-missing-args：某个文件不存在时跳过，不中断
 sudo rsync -aRv --ignore-missing-args \
-  --chown="$(id -u):$(id -g)" \
-  "${paths[@]}" ./
+    --chown="$(id -u):$(id -g)" \
+    "${paths[@]}" ./
 
 sudo rsync -aRv --ignore-missing-args \
-  --chown="$(id -u):$(id -g)" \
-  /var/lib/noctalia-greeter/greeter.toml ./
+    --chown="$(id -u):$(id -g)" \
+    /var/lib/noctalia-greeter/greeter.toml ./
 
 echo "备份完成。"
